@@ -1,8 +1,8 @@
 /* An interpreter for the simple math language we all espouse. */
-package simpleAdder.interpret;
+package sarapatel.interpret;
 
-import simpleAdder.node.* ;
-import simpleAdder.analysis.* ;
+import sarapatel.node.* ;
+import sarapatel.analysis.* ;
 import java.lang.System;
 
 public class Interpreter extends DepthFirstAdapter {

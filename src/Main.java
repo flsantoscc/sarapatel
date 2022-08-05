@@ -1,8 +1,8 @@
 /* Create an AST, then invoke our interpreter. */
-import simpleAdder.interpret.Interpreter;
-import simpleAdder.parser.* ;
-import simpleAdder.lexer.* ;
-import simpleAdder.node.* ;
+import sarapatel.interpret.Interpreter;
+import sarapatel.parser.* ;
+import sarapatel.lexer.* ;
+import sarapatel.node.* ;
 
 import java.io.* ;
 
