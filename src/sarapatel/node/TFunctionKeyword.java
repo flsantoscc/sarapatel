@@ -5,16 +5,16 @@ package sarapatel.node;
 import sarapatel.analysis.*;
 
 @SuppressWarnings("nls")
-public final class TPlus extends Token
+public final class TFunctionKeyword extends Token
 {
-    public TPlus()
+    public TFunctionKeyword()
     {
-        super.setText("+");
+        super.setText("funcao");
     }
 
-    public TPlus(int line, int pos)
+    public TFunctionKeyword(int line, int pos)
     {
-        super.setText("+");
+        super.setText("funcao");
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,18 @@ public final class TPlus extends Token
     @Override
     public Object clone()
     {
-      return new TPlus(getLine(), getPos());
+      return new TFunctionKeyword(getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseTPlus(this);
+        ((Analysis) sw).caseTFunctionKeyword(this);
     }
 
     @Override
     public void setText(@SuppressWarnings("unused") String text)
     {
-        throw new RuntimeException("Cannot change TPlus text.");
+        throw new RuntimeException("Cannot change TFunctionKeyword text.");
     }
 }

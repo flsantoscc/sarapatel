@@ -1,6 +1,6 @@
 /* Create an AST, then invoke our interpreter. */
-import sarapatel.interpret.Interpreter;
-import sarapatel.parser.* ;
+//import sarapatel.interpret.Interpreter;
+//import sarapatel.parser.* ;
 import sarapatel.lexer.* ;
 import sarapatel.node.* ;
 

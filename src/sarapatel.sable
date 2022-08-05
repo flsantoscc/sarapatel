@@ -44,6 +44,7 @@ Tokens
     colon = ':';
     equal = '=';
     mod = '%';
+    semi = ';';
 
     id = idletter idchar*;
     comment = comment;
@@ -56,14 +57,10 @@ Tokens
     boolean_keyword = 'booleano';
     function_keyword = 'funcao';
     procedure_keyword = 'procedimento';
-    begin = 'comece'
-    end = 'termine'
+    begin = 'comece';
+    end = 'termine';
 
-    function_declr = function_keyword colon
-
-
-
-
+    integer = digit+;
 
 Ignored Tokens
     blank, comment, eol;
