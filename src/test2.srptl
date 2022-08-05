@@ -1,0 +1,13 @@
+funcao: inteiro soma(inteiro a | inteiro b)
+comece
+    a+b
+termine
+
+funcao: booleano eh_par(inteiro numero)
+comece
+    --operador se ternário
+    se (numero%2=0)
+        verdade
+    senao
+        falso
+termine

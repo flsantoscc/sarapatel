@@ -7,6 +7,7 @@ import java.lang.System;
 
 public class Interpreter extends DepthFirstAdapter {
 
+    // simpleAdder
     public void caseAProgram(AProgram node) {
         String lhs = node.getLeft().getText().trim();
         String rhs = node.getRight().getText().trim();

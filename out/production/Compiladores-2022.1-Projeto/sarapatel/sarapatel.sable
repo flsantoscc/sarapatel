@@ -30,40 +30,22 @@ Helpers
     integer_constant = decimal_constant | binary_constant;
 
 Tokens
+    equal = '=';
     l_par = '(';
     r_par = ')';
     l_bkt = '[';
     r_bkt = ']';
     l_brace = '{';
     r_brace = '}';
-
     plus = '+';
     minus = '-';
     star = '*';
     slash = '/';
     colon = ':';
-    equal = '=';
-    mod = '%';
-
     id = idletter idchar*;
     comment = comment;
     blank = blank;
     eol = eol;
-    attr = '<<';
-    integer_keyword = 'inteiro';
-    float_keyword = 'real';
-    string_keyword = 'cadeia';
-    boolean_keyword = 'booleano';
-    function_keyword = 'funcao';
-    procedure_keyword = 'procedimento';
-    begin = 'comece'
-    end = 'termine'
-
-    function_declr = function_keyword colon
-
-
-
-
 
 Ignored Tokens
     blank, comment, eol;
