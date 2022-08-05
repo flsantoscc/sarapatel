@@ -51,6 +51,7 @@ Tokens
     blank = blank;
     eol = eol;
     attr = '<<';
+
     integer_keyword = 'inteiro';
     float_keyword = 'real';
     string_keyword = 'cadeia';
