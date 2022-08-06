@@ -69,85 +69,55 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseTLPar(TLPar node)
+    public void caseStart(Start node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseTRPar(TRPar node)
+    public void caseAInteiroTipo(AInteiroTipo node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseTLBkt(TLBkt node)
+    public void caseARealTipo(ARealTipo node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseTRBkt(TRBkt node)
+    public void caseACadeiaTipo(ACadeiaTipo node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseTLBrace(TLBrace node)
+    public void caseABooleanoTipo(ABooleanoTipo node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseTRBrace(TRBrace node)
+    public void caseTInteiro(TInteiro node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseTPlus(TPlus node)
+    public void caseTReal(TReal node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseTMinus(TMinus node)
+    public void caseTCadeia(TCadeia node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseTStar(TStar node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseTSlash(TSlash node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseTColon(TColon node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseTEqual(TEqual node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseTMod(TMod node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseTSemi(TSemi node)
+    public void caseTBooleano(TBooleano node)
     {
         defaultCase(node);
     }
@@ -159,79 +129,19 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseTComment(TComment node)
+    public void caseTComentario(TComentario node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseTBlank(TBlank node)
+    public void caseTVazio(TVazio node)
     {
         defaultCase(node);
     }
 
     @Override
     public void caseTEol(TEol node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseTAttr(TAttr node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseTIntegerKeyword(TIntegerKeyword node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseTFloatKeyword(TFloatKeyword node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseTStringKeyword(TStringKeyword node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseTBooleanKeyword(TBooleanKeyword node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseTFunctionKeyword(TFunctionKeyword node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseTProcedureKeyword(TProcedureKeyword node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseTBegin(TBegin node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseTEnd(TEnd node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseTInteger(TInteger node)
     {
         defaultCase(node);
     }

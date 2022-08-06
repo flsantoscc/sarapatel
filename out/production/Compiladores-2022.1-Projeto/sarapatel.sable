@@ -6,61 +6,42 @@ Helpers
     lowercase = ['a'..'z'];
     uppercase = ['A'..'Z'];
     digit = ['0'..'9'];
-    nonzero_digit = ['1'..'9'];
+    nonzero_digit = [digit - '0'];
 
     tab = 9;
     lf = 10;
     cr = 13;
     eol = cr lf | cr | lf;
     not_cr_lf = [all - [cr + lf]];
-    not_star = [all - '*'];
-    not_star_slash = [not_star - '/'];
     blank = (' ' | tab | eol)+;
+    not_lbkt = [all - '}'];
 
     letter = lowercase | uppercase;
-    idletter = lowercase | '_';
-    idchar = letter | '_' | digit;
+    id_letter = lowercase | '_';
+    id_char = letter | '_' | digit;
+    binary = '0b' ('0' | '1')+;
+    decimal = nonzero_digit digit*;
 
     short_comment = '--' not_cr_lf* eol;
-    long_comment = '/*' not_star* '*'+ (not_star_slash not_star* '*'+)* '/';
-    comment = short_comment | long_comment;
-
-    binary_constant = '0b' ('0' | '1')+;
-    decimal_constant = nonzero_digit digit*;
-    integer_constant = decimal_constant | binary_constant;
+    long_comment = '{' (short_comment | not_lbkt)* '}';
 
 Tokens
-    l_par = '(';
-    r_par = ')';
-    l_bkt = '[';
-    r_bkt = ']';
-    l_brace = '{';
-    r_brace = '}';
+    inteiro = decimal | binary;
+    real = decimal ',' digit+;
+    cadeia = ''' [not_cr_lf - ''']+ ''';
+    booleano = 'verdade' | 'falso';
 
-    plus = '+';
-    minus = '-';
-    star = '*';
-    slash = '/';
-    colon = ':';
-    equal = '=';
-    mod = '%';
-    semi = ';';
-
-    id = idletter idchar*;
-    comment = comment;
-    blank = blank;
+    id = id_letter id_char*;
+    comentario = short_comment | long_comment;
+    vazio = blank;
     eol = eol;
-    attr = '<<';
-    integer_keyword = 'inteiro';
-    float_keyword = 'real';
-    string_keyword = 'cadeia';
-    boolean_keyword = 'booleano';
-    function_keyword = 'funcao';
-    procedure_keyword = 'procedimento';
-    begin = 'comece';
-    end = 'termine';
 
-    integer = digit+;
 
 Ignored Tokens
-    blank, comment, eol;
+    vazio, comentario, eol;
+
+Productions
+    tipo = {inteiro} inteiro
+            | {real} real
+            | {cadeia} cadeia
+            | {booleano} booleano;

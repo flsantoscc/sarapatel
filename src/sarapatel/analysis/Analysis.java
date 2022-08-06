@@ -11,34 +11,20 @@ public interface Analysis extends Switch
     Object getOut(Node node);
     void setOut(Node node, Object o);
 
-    void caseTLPar(TLPar node);
-    void caseTRPar(TRPar node);
-    void caseTLBkt(TLBkt node);
-    void caseTRBkt(TRBkt node);
-    void caseTLBrace(TLBrace node);
-    void caseTRBrace(TRBrace node);
-    void caseTPlus(TPlus node);
-    void caseTMinus(TMinus node);
-    void caseTStar(TStar node);
-    void caseTSlash(TSlash node);
-    void caseTColon(TColon node);
-    void caseTEqual(TEqual node);
-    void caseTMod(TMod node);
-    void caseTSemi(TSemi node);
+    void caseStart(Start node);
+    void caseAInteiroTipo(AInteiroTipo node);
+    void caseARealTipo(ARealTipo node);
+    void caseACadeiaTipo(ACadeiaTipo node);
+    void caseABooleanoTipo(ABooleanoTipo node);
+
+    void caseTInteiro(TInteiro node);
+    void caseTReal(TReal node);
+    void caseTCadeia(TCadeia node);
+    void caseTBooleano(TBooleano node);
     void caseTId(TId node);
-    void caseTComment(TComment node);
-    void caseTBlank(TBlank node);
+    void caseTComentario(TComentario node);
+    void caseTVazio(TVazio node);
     void caseTEol(TEol node);
-    void caseTAttr(TAttr node);
-    void caseTIntegerKeyword(TIntegerKeyword node);
-    void caseTFloatKeyword(TFloatKeyword node);
-    void caseTStringKeyword(TStringKeyword node);
-    void caseTBooleanKeyword(TBooleanKeyword node);
-    void caseTFunctionKeyword(TFunctionKeyword node);
-    void caseTProcedureKeyword(TProcedureKeyword node);
-    void caseTBegin(TBegin node);
-    void caseTEnd(TEnd node);
-    void caseTInteger(TInteger node);
     void caseEOF(EOF node);
     void caseInvalidToken(InvalidToken node);
 }

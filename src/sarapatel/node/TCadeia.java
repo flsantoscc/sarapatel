@@ -5,14 +5,14 @@ package sarapatel.node;
 import sarapatel.analysis.*;
 
 @SuppressWarnings("nls")
-public final class TBlank extends Token
+public final class TCadeia extends Token
 {
-    public TBlank(String text)
+    public TCadeia(String text)
     {
         setText(text);
     }
 
-    public TBlank(String text, int line, int pos)
+    public TCadeia(String text, int line, int pos)
     {
         setText(text);
         setLine(line);
@@ -22,12 +22,12 @@ public final class TBlank extends Token
     @Override
     public Object clone()
     {
-      return new TBlank(getText(), getLine(), getPos());
+      return new TCadeia(getText(), getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseTBlank(this);
+        ((Analysis) sw).caseTCadeia(this);
     }
 }
