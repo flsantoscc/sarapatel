@@ -11,6 +11,8 @@ public interface Analysis extends Switch
     Object getOut(Node node);
     void setOut(Node node, Object o);
 
+    void caseTDigit(TDigit node);
+    void caseTLetter(TLetter node);
     void caseTDot(TDot node);
     void caseTComma(TComma node);
     void caseTColon(TColon node);

@@ -26,6 +26,8 @@ Helpers
     long_comment = '{' (short_comment | not_lbkt)* '}';
 
 Tokens
+    digit = digit;
+    letter = letter;
     dot = '.';
     comma = ',';
     colon = ':';

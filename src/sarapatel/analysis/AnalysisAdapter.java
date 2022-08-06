@@ -69,6 +69,18 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
+    public void caseTDigit(TDigit node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTLetter(TLetter node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
     public void caseTDot(TDot node)
     {
         defaultCase(node);
