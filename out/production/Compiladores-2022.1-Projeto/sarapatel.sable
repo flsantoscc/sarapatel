@@ -42,6 +42,6 @@ Ignored Tokens
 
 Productions
     tipo = {inteiro} inteiro
-            | {real} real
+            | {aaaa} real
             | {cadeia} cadeia
             | {booleano} booleano;

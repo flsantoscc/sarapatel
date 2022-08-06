@@ -5,14 +5,14 @@ package sarapatel.node;
 import sarapatel.analysis.*;
 
 @SuppressWarnings("nls")
-public final class TComentario extends Token
+public final class TComment extends Token
 {
-    public TComentario(String text)
+    public TComment(String text)
     {
         setText(text);
     }
 
-    public TComentario(String text, int line, int pos)
+    public TComment(String text, int line, int pos)
     {
         setText(text);
         setLine(line);
@@ -22,12 +22,12 @@ public final class TComentario extends Token
     @Override
     public Object clone()
     {
-      return new TComentario(getText(), getLine(), getPos());
+      return new TComment(getText(), getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseTComentario(this);
+        ((Analysis) sw).caseTComment(this);
     }
 }

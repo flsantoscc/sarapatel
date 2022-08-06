@@ -26,22 +26,54 @@ Helpers
     long_comment = '{' (short_comment | not_lbkt)* '}';
 
 Tokens
-    inteiro = decimal | binary;
-    real = decimal ',' digit+;
-    cadeia = ''' [not_cr_lf - ''']+ ''';
-    booleano = 'verdade' | 'falso';
+    dot = '.';
+    comma = ',';
+    colon = ':';
+    semicolon = ';';
+    l_par = '(';
+    r_par = ')';
+    l_bracket = '[';
+    r_bracket = ']';
+    l_brace = '{';
+    r_brace = '}';
+    star = '*';
+    div = '/';
+    mod = '%';
+    plus = '+';
+    minus = '-';
+    attr = '<<';
 
-    id = id_letter id_char*;
-    comentario = short_comment | long_comment;
-    vazio = blank;
+    and = 'e';
+    or = 'ou';
+    not = 'nao';
+    greater = '>';
+    greater_or_equal = '>=';
+    true = 'verdade';
+    false = 'falso';
+
     eol = eol;
+    blank = blank;
+    comment = short_comment | long_comment;
 
+    if = 'se';
+    else = 'senao';
+    function = 'funcao';
+    procedure = 'procedimento';
+    while = 'enquanto';
+    begin = 'comece';
+    end = 'termine';
+    var = 'var';
+    const = 'const';
+    print = 'imprima';
+    read = 'leia';
+    size = 'size';
+
+    integer = 'inteiro';
+    float = 'real';
+    string = 'cadeia';
+    boolean = 'booleano';
 
 Ignored Tokens
-    vazio, comentario, eol;
-
-Productions
-    tipo = {inteiro} inteiro
-            | {real} real
-            | {cadeia} cadeia
-            | {booleano} booleano;
+    blank,
+    comment,
+    eol;
