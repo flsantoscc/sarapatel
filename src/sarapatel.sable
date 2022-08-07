@@ -1,13 +1,20 @@
 Package sarapatel;
 
 Helpers
+    // Digitos e letras
     all = [0..0xFFFF];
-
-    lowercase = ['a'..'z'];
-    uppercase = ['A'..'Z'];
     digit = ['0'..'9'];
+    non_digit = ['_' + [['a'..'z'] + ['A'..'Z']]];
+    digit_sequence = digit+;
     nonzero_digit = [digit - '0'];
+    binary_digit = '0' | '1';
 
+    // Constantes numericas
+    binary_constant = '0b' binary_digit+;
+    decimal_constant = nonzero_digit digit*;
+    fractional_constant = digit_sequence? ',' digit_sequence | digit_sequence ',';
+
+    // Terminadores de linha
     tab = 9;
     lf = 10;
     cr = 13;
@@ -16,18 +23,14 @@ Helpers
     blank = (' ' | tab | eol)+;
     not_lbkt = [all - '}'];
 
-    letter = lowercase | uppercase;
-    id_letter = lowercase | '_';
-    id_char = letter | '_' | digit;
-    binary = '0b' ('0' | '1')+;
-    decimal = nonzero_digit digit*;
-
+    // Comentarios
     short_comment = '--' not_cr_lf* eol;
     long_comment = '{' (short_comment | not_lbkt)* '}';
 
 Tokens
+    // Simbolos
     digit = digit;
-    letter = letter;
+    letter = non_digit;
     dot = '.';
     comma = ',';
     colon = ':';
@@ -38,44 +41,93 @@ Tokens
     r_bracket = ']';
     l_brace = '{';
     r_brace = '}';
+
+    // Operadores matematicos
     star = '*';
     div = '/';
     mod = '%';
     plus = '+';
     minus = '-';
+
+    // Atribuicao
     attr = '<<';
 
-    and = 'e';
-    or = 'ou';
-    not = 'nao';
+    // Operadores logicos
+    e = 'e';
+    ou = 'ou';
+    nao = 'nao';
     greater = '>';
     greater_or_equal = '>=';
-    true = 'verdade';
-    false = 'falso';
 
-    eol = eol;
-    blank = blank;
-    comment = short_comment | long_comment;
+    // Booleanos
+    verdade = 'verdade';
+    falso = 'falso';
 
-    if = 'se';
-    else = 'senao';
-    function = 'funcao';
-    procedure = 'procedimento';
-    while = 'enquanto';
-    begin = 'comece';
-    end = 'termine';
+    // Condicionais
+    se = 'se';
+    senao = 'senao';
+
+    // Funcoes e procedimentos
+    funcao = 'funcao';
+    procedimento = 'procedimento';
+
+    // Laço
+    enquanto = 'enquanto';
+
+    // Declaracao de escopo
+    comece = 'comece';
+    termine = 'termine';
+
+    // Declaradores de variaveis
     var = 'var';
     const = 'const';
-    print = 'imprima';
-    read = 'leia';
+
+    // Funcoes nativas
+    imprima = 'imprima';
+    leia = 'leia';
     size = 'size';
 
-    integer = 'inteiro';
-    float = 'real';
-    string = 'cadeia';
-    boolean = 'booleano';
+    // Tipos
+    t_inteiro = 'inteiro';
+    t_real = 'real';
+    t_cadeia = 'cadeia';
+    t_booleano = 'booleano';
+
+    identifier = non_digit (digit | non_digit)*;
+
+    // Declaradores de numeros constantes
+    floating_constant = fractional_constant | digit_sequence;
+    integer_constant = binary_constant | decimal_constant;
+    cadeia_constant = ''' [not_cr_lf - ''']+ ''';
+
+    // Tokens terminadores
+    eol = eol;
+    blank = blank;
+
+    // Comentarios
+    comment = short_comment | long_comment;
 
 Ignored Tokens
     blank,
     comment,
     eol;
+
+Productions
+    // Especificadores de tipos
+    type_specifier =
+        {boolean} boolean_specifier |
+        {integer} integer_specifier |
+        {float}   float_specifier   |
+        {string}  string_specifier;
+
+    integer_specifier = t_inteiro;
+    boolean_specifier = t_booleano;
+    string_specifier = t_cadeia;
+    float_specifier = t_real;
+
+    // Matrizes
+    array_declarator =
+        {identifier} l_bracket integer_constant r_bracket identifier |
+        {array}      array_declarator l_bracket integer_constant r_bracket;
+
+    array_declaration = var colon type_specifier array_declarator semicolon;
