@@ -5,14 +5,14 @@ package sarapatel.node;
 import sarapatel.analysis.*;
 
 @SuppressWarnings("nls")
-public final class TInteger extends Token
+public final class TTInteiro extends Token
 {
-    public TInteger()
+    public TTInteiro()
     {
         super.setText("inteiro");
     }
 
-    public TInteger(int line, int pos)
+    public TTInteiro(int line, int pos)
     {
         super.setText("inteiro");
         setLine(line);
@@ -22,18 +22,18 @@ public final class TInteger extends Token
     @Override
     public Object clone()
     {
-      return new TInteger(getLine(), getPos());
+      return new TTInteiro(getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseTInteger(this);
+        ((Analysis) sw).caseTTInteiro(this);
     }
 
     @Override
     public void setText(@SuppressWarnings("unused") String text)
     {
-        throw new RuntimeException("Cannot change TInteger text.");
+        throw new RuntimeException("Cannot change TTInteiro text.");
     }
 }

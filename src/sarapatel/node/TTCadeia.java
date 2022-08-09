@@ -5,16 +5,16 @@ package sarapatel.node;
 import sarapatel.analysis.*;
 
 @SuppressWarnings("nls")
-public final class TProcedure extends Token
+public final class TTCadeia extends Token
 {
-    public TProcedure()
+    public TTCadeia()
     {
-        super.setText("procedimento");
+        super.setText("cadeia");
     }
 
-    public TProcedure(int line, int pos)
+    public TTCadeia(int line, int pos)
     {
-        super.setText("procedimento");
+        super.setText("cadeia");
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,18 @@ public final class TProcedure extends Token
     @Override
     public Object clone()
     {
-      return new TProcedure(getLine(), getPos());
+      return new TTCadeia(getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseTProcedure(this);
+        ((Analysis) sw).caseTTCadeia(this);
     }
 
     @Override
     public void setText(@SuppressWarnings("unused") String text)
     {
-        throw new RuntimeException("Cannot change TProcedure text.");
+        throw new RuntimeException("Cannot change TTCadeia text.");
     }
 }

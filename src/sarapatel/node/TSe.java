@@ -5,16 +5,16 @@ package sarapatel.node;
 import sarapatel.analysis.*;
 
 @SuppressWarnings("nls")
-public final class TFloat extends Token
+public final class TSe extends Token
 {
-    public TFloat()
+    public TSe()
     {
-        super.setText("real");
+        super.setText("se");
     }
 
-    public TFloat(int line, int pos)
+    public TSe(int line, int pos)
     {
-        super.setText("real");
+        super.setText("se");
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,18 @@ public final class TFloat extends Token
     @Override
     public Object clone()
     {
-      return new TFloat(getLine(), getPos());
+      return new TSe(getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseTFloat(this);
+        ((Analysis) sw).caseTSe(this);
     }
 
     @Override
     public void setText(@SuppressWarnings("unused") String text)
     {
-        throw new RuntimeException("Cannot change TFloat text.");
+        throw new RuntimeException("Cannot change TSe text.");
     }
 }

@@ -5,16 +5,16 @@ package sarapatel.node;
 import sarapatel.analysis.*;
 
 @SuppressWarnings("nls")
-public final class TRead extends Token
+public final class TFuncao extends Token
 {
-    public TRead()
+    public TFuncao()
     {
-        super.setText("leia");
+        super.setText("funcao");
     }
 
-    public TRead(int line, int pos)
+    public TFuncao(int line, int pos)
     {
-        super.setText("leia");
+        super.setText("funcao");
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,18 @@ public final class TRead extends Token
     @Override
     public Object clone()
     {
-      return new TRead(getLine(), getPos());
+      return new TFuncao(getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseTRead(this);
+        ((Analysis) sw).caseTFuncao(this);
     }
 
     @Override
     public void setText(@SuppressWarnings("unused") String text)
     {
-        throw new RuntimeException("Cannot change TRead text.");
+        throw new RuntimeException("Cannot change TFuncao text.");
     }
 }

@@ -279,18 +279,6 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseTVerdade(TVerdade node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseTFalso(TFalso node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
     public void caseTSe(TSe node)
     {
         defaultCase(node);
@@ -406,6 +394,12 @@ public class AnalysisAdapter implements Analysis
 
     @Override
     public void caseTCadeiaConstant(TCadeiaConstant node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTBooleanConstant(TBooleanConstant node)
     {
         defaultCase(node);
     }

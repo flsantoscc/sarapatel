@@ -5,16 +5,16 @@ package sarapatel.node;
 import sarapatel.analysis.*;
 
 @SuppressWarnings("nls")
-public final class TNot extends Token
+public final class TE extends Token
 {
-    public TNot()
+    public TE()
     {
-        super.setText("nao");
+        super.setText("e");
     }
 
-    public TNot(int line, int pos)
+    public TE(int line, int pos)
     {
-        super.setText("nao");
+        super.setText("e");
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,18 @@ public final class TNot extends Token
     @Override
     public Object clone()
     {
-      return new TNot(getLine(), getPos());
+      return new TE(getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseTNot(this);
+        ((Analysis) sw).caseTE(this);
     }
 
     @Override
     public void setText(@SuppressWarnings("unused") String text)
     {
-        throw new RuntimeException("Cannot change TNot text.");
+        throw new RuntimeException("Cannot change TE text.");
     }
 }

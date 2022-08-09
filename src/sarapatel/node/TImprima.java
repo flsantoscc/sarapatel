@@ -5,16 +5,16 @@ package sarapatel.node;
 import sarapatel.analysis.*;
 
 @SuppressWarnings("nls")
-public final class TEnd extends Token
+public final class TImprima extends Token
 {
-    public TEnd()
+    public TImprima()
     {
-        super.setText("termine");
+        super.setText("imprima");
     }
 
-    public TEnd(int line, int pos)
+    public TImprima(int line, int pos)
     {
-        super.setText("termine");
+        super.setText("imprima");
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,18 @@ public final class TEnd extends Token
     @Override
     public Object clone()
     {
-      return new TEnd(getLine(), getPos());
+      return new TImprima(getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseTEnd(this);
+        ((Analysis) sw).caseTImprima(this);
     }
 
     @Override
     public void setText(@SuppressWarnings("unused") String text)
     {
-        throw new RuntimeException("Cannot change TEnd text.");
+        throw new RuntimeException("Cannot change TImprima text.");
     }
 }

@@ -5,16 +5,16 @@ package sarapatel.node;
 import sarapatel.analysis.*;
 
 @SuppressWarnings("nls")
-public final class TIf extends Token
+public final class TNao extends Token
 {
-    public TIf()
+    public TNao()
     {
-        super.setText("se");
+        super.setText("nao");
     }
 
-    public TIf(int line, int pos)
+    public TNao(int line, int pos)
     {
-        super.setText("se");
+        super.setText("nao");
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,18 @@ public final class TIf extends Token
     @Override
     public Object clone()
     {
-      return new TIf(getLine(), getPos());
+      return new TNao(getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseTIf(this);
+        ((Analysis) sw).caseTNao(this);
     }
 
     @Override
     public void setText(@SuppressWarnings("unused") String text)
     {
-        throw new RuntimeException("Cannot change TIf text.");
+        throw new RuntimeException("Cannot change TNao text.");
     }
 }

@@ -5,16 +5,16 @@ package sarapatel.node;
 import sarapatel.analysis.*;
 
 @SuppressWarnings("nls")
-public final class TPrint extends Token
+public final class TTReal extends Token
 {
-    public TPrint()
+    public TTReal()
     {
-        super.setText("imprima");
+        super.setText("real");
     }
 
-    public TPrint(int line, int pos)
+    public TTReal(int line, int pos)
     {
-        super.setText("imprima");
+        super.setText("real");
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,18 @@ public final class TPrint extends Token
     @Override
     public Object clone()
     {
-      return new TPrint(getLine(), getPos());
+      return new TTReal(getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseTPrint(this);
+        ((Analysis) sw).caseTTReal(this);
     }
 
     @Override
     public void setText(@SuppressWarnings("unused") String text)
     {
-        throw new RuntimeException("Cannot change TPrint text.");
+        throw new RuntimeException("Cannot change TTReal text.");
     }
 }

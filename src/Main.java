@@ -11,15 +11,25 @@ public class Main {
         if (args.length > 0) {
             try {
                 // AST Setup
-                File file = new File("src/" + args[0]).getAbsoluteFile();
 
-                Lexer lexer = new Lexer(new PushbackReader(
-                        new FileReader(file), 1024));
-
+                int test_number = 0;
+                Lexer lexer;
                 Token token;
-                while (!((token = lexer.next()) instanceof EOF)) {
-                    System.out.println(token.getClass());
-                    System.out.println(" ( " + token.toString() + ")");
+
+                for(String arg : args){
+                    File file = new File("src/" + arg).getAbsoluteFile();
+
+                    lexer = new Lexer(new PushbackReader(
+                            new FileReader(file), 1024));
+
+
+                    System.out.println("Test #" + (++test_number));
+                    while (!((token = lexer.next()) instanceof EOF)) {
+                        System.out.println(token.getClass());
+                        System.out.println(" ( " + token.toString() + ")");
+                    }
+                    System.out.println();
+                }
 
                 /*
                 Parser parser = new Parser(lexer);
@@ -29,7 +39,6 @@ public class Main {
                 Interpreter interp = new Interpreter () ;
                 ast.apply(interp) ;
                  */
-                }
             }
             catch (Exception e) {
                 System.out.println (e) ;

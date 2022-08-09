@@ -5,16 +5,16 @@ package sarapatel.node;
 import sarapatel.analysis.*;
 
 @SuppressWarnings("nls")
-public final class TAnd extends Token
+public final class TComece extends Token
 {
-    public TAnd()
+    public TComece()
     {
-        super.setText("e");
+        super.setText("comece");
     }
 
-    public TAnd(int line, int pos)
+    public TComece(int line, int pos)
     {
-        super.setText("e");
+        super.setText("comece");
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,18 @@ public final class TAnd extends Token
     @Override
     public Object clone()
     {
-      return new TAnd(getLine(), getPos());
+      return new TComece(getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseTAnd(this);
+        ((Analysis) sw).caseTComece(this);
     }
 
     @Override
     public void setText(@SuppressWarnings("unused") String text)
     {
-        throw new RuntimeException("Cannot change TAnd text.");
+        throw new RuntimeException("Cannot change TComece text.");
     }
 }

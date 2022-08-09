@@ -5,16 +5,16 @@ package sarapatel.node;
 import sarapatel.analysis.*;
 
 @SuppressWarnings("nls")
-public final class TElse extends Token
+public final class TOu extends Token
 {
-    public TElse()
+    public TOu()
     {
-        super.setText("senao");
+        super.setText("ou");
     }
 
-    public TElse(int line, int pos)
+    public TOu(int line, int pos)
     {
-        super.setText("senao");
+        super.setText("ou");
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,18 @@ public final class TElse extends Token
     @Override
     public Object clone()
     {
-      return new TElse(getLine(), getPos());
+      return new TOu(getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseTElse(this);
+        ((Analysis) sw).caseTOu(this);
     }
 
     @Override
     public void setText(@SuppressWarnings("unused") String text)
     {
-        throw new RuntimeException("Cannot change TElse text.");
+        throw new RuntimeException("Cannot change TOu text.");
     }
 }

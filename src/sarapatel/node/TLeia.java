@@ -5,16 +5,16 @@ package sarapatel.node;
 import sarapatel.analysis.*;
 
 @SuppressWarnings("nls")
-public final class TOr extends Token
+public final class TLeia extends Token
 {
-    public TOr()
+    public TLeia()
     {
-        super.setText("ou");
+        super.setText("leia");
     }
 
-    public TOr(int line, int pos)
+    public TLeia(int line, int pos)
     {
-        super.setText("ou");
+        super.setText("leia");
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,18 @@ public final class TOr extends Token
     @Override
     public Object clone()
     {
-      return new TOr(getLine(), getPos());
+      return new TLeia(getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseTOr(this);
+        ((Analysis) sw).caseTLeia(this);
     }
 
     @Override
     public void setText(@SuppressWarnings("unused") String text)
     {
-        throw new RuntimeException("Cannot change TOr text.");
+        throw new RuntimeException("Cannot change TLeia text.");
     }
 }

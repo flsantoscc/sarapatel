@@ -5,16 +5,16 @@ package sarapatel.node;
 import sarapatel.analysis.*;
 
 @SuppressWarnings("nls")
-public final class TBoolean extends Token
+public final class TTermine extends Token
 {
-    public TBoolean()
+    public TTermine()
     {
-        super.setText("booleano");
+        super.setText("termine");
     }
 
-    public TBoolean(int line, int pos)
+    public TTermine(int line, int pos)
     {
-        super.setText("booleano");
+        super.setText("termine");
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,18 @@ public final class TBoolean extends Token
     @Override
     public Object clone()
     {
-      return new TBoolean(getLine(), getPos());
+      return new TTermine(getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseTBoolean(this);
+        ((Analysis) sw).caseTTermine(this);
     }
 
     @Override
     public void setText(@SuppressWarnings("unused") String text)
     {
-        throw new RuntimeException("Cannot change TBoolean text.");
+        throw new RuntimeException("Cannot change TTermine text.");
     }
 }

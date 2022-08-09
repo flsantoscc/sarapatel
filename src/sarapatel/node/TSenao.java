@@ -5,16 +5,16 @@ package sarapatel.node;
 import sarapatel.analysis.*;
 
 @SuppressWarnings("nls")
-public final class TWhile extends Token
+public final class TSenao extends Token
 {
-    public TWhile()
+    public TSenao()
     {
-        super.setText("enquanto");
+        super.setText("senao");
     }
 
-    public TWhile(int line, int pos)
+    public TSenao(int line, int pos)
     {
-        super.setText("enquanto");
+        super.setText("senao");
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,18 @@ public final class TWhile extends Token
     @Override
     public Object clone()
     {
-      return new TWhile(getLine(), getPos());
+      return new TSenao(getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseTWhile(this);
+        ((Analysis) sw).caseTSenao(this);
     }
 
     @Override
     public void setText(@SuppressWarnings("unused") String text)
     {
-        throw new RuntimeException("Cannot change TWhile text.");
+        throw new RuntimeException("Cannot change TSenao text.");
     }
 }

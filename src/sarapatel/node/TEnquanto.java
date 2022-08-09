@@ -5,16 +5,16 @@ package sarapatel.node;
 import sarapatel.analysis.*;
 
 @SuppressWarnings("nls")
-public final class TBegin extends Token
+public final class TEnquanto extends Token
 {
-    public TBegin()
+    public TEnquanto()
     {
-        super.setText("comece");
+        super.setText("enquanto");
     }
 
-    public TBegin(int line, int pos)
+    public TEnquanto(int line, int pos)
     {
-        super.setText("comece");
+        super.setText("enquanto");
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,18 @@ public final class TBegin extends Token
     @Override
     public Object clone()
     {
-      return new TBegin(getLine(), getPos());
+      return new TEnquanto(getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseTBegin(this);
+        ((Analysis) sw).caseTEnquanto(this);
     }
 
     @Override
     public void setText(@SuppressWarnings("unused") String text)
     {
-        throw new RuntimeException("Cannot change TBegin text.");
+        throw new RuntimeException("Cannot change TEnquanto text.");
     }
 }

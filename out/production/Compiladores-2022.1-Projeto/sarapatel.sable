@@ -2,11 +2,13 @@ Package sarapatel;
 
 Helpers
     all = [0..0xFFFF];
-
-    lowercase = ['a'..'z'];
-    uppercase = ['A'..'Z'];
     digit = ['0'..'9'];
+    non_digit = ['_' + [['a'..'z'] + ['A'..'Z']]];
     nonzero_digit = [digit - '0'];
+    binary_digit = '0' | '1';
+
+    binary_constant = '0b' binary_digit+;
+    decimal_constant = nonzero_digit digit*;
 
     tab = 9;
     lf = 10;
@@ -16,18 +18,12 @@ Helpers
     blank = (' ' | tab | eol)+;
     not_lbkt = [all - '}'];
 
-    letter = lowercase | uppercase;
-    id_letter = lowercase | '_';
-    id_char = letter | '_' | digit;
-    binary = '0b' ('0' | '1')+;
-    decimal = nonzero_digit digit*;
-
     short_comment = '--' not_cr_lf* eol;
     long_comment = '{' (short_comment | not_lbkt)* '}';
 
 Tokens
     digit = digit;
-    letter = letter;
+    letter = non_digit;
     dot = '.';
     comma = ',';
     colon = ':';
@@ -43,39 +39,61 @@ Tokens
     mod = '%';
     plus = '+';
     minus = '-';
-    attr = '<<';
 
-    and = 'e';
-    or = 'ou';
-    not = 'nao';
+    attr = '<<';
+    e = 'e';
+    ou = 'ou';
+    nao = 'nao';
     greater = '>';
     greater_or_equal = '>=';
-    true = 'verdade';
-    false = 'falso';
+    se = 'se';
+    senao = 'senao';
+    funcao = 'funcao';
+    procedimento = 'procedimento';
+    enquanto = 'enquanto';
+    comece = 'comece';
+    termine = 'termine';
+    var = 'var';
+    const = 'const';
+    imprima = 'imprima';
+    leia = 'leia';
+    size = 'size';
+
+    t_inteiro = 'inteiro';
+    t_real = 'real';
+    t_cadeia = 'cadeia';
+    t_booleano = 'booleano';
+
+    floating_constant = nonzero_digit digit+ ',' digit+;
+    integer_constant = binary_constant | decimal_constant;
+    cadeia_constant = ''' [not_cr_lf - ''']+ ''';
+    boolean_constant = 'verdade' | 'falso';
 
     eol = eol;
     blank = blank;
+
     comment = short_comment | long_comment;
-
-    if = 'se';
-    else = 'senao';
-    function = 'funcao';
-    procedure = 'procedimento';
-    while = 'enquanto';
-    begin = 'comece';
-    end = 'termine';
-    var = 'var';
-    const = 'const';
-    print = 'imprima';
-    read = 'leia';
-    size = 'size';
-
-    integer = 'inteiro';
-    float = 'real';
-    string = 'cadeia';
-    boolean = 'booleano';
+    identifier = non_digit (digit | non_digit)*;
 
 Ignored Tokens
     blank,
     comment,
     eol;
+
+Productions
+    type_specifier =
+        {boolean} boolean_specifier |
+        {integer} integer_specifier |
+        {float}   float_specifier   |
+        {string}  string_specifier;
+
+    integer_specifier = t_inteiro;
+    boolean_specifier = t_booleano;
+    string_specifier = t_cadeia;
+    float_specifier = t_real;
+
+    array_declarator =
+        {identifier} l_bracket integer_constant r_bracket identifier |
+        {array}      array_declarator l_bracket integer_constant r_bracket;
+
+    array_declaration = var colon type_specifier array_declarator semicolon;
