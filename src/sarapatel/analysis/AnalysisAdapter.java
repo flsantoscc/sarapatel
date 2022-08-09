@@ -279,6 +279,12 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
+    public void caseTEqual(TEqual node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
     public void caseTSe(TSe node)
     {
         defaultCase(node);
@@ -375,12 +381,6 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseTIdentifier(TIdentifier node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
     public void caseTFloatingConstant(TFloatingConstant node)
     {
         defaultCase(node);
@@ -412,6 +412,12 @@ public class AnalysisAdapter implements Analysis
 
     @Override
     public void caseTBlank(TBlank node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTIdentifier(TIdentifier node)
     {
         defaultCase(node);
     }

@@ -18,8 +18,8 @@ Helpers
     blank = (' ' | tab | eol)+;
     not_lbkt = [all - '}'];
 
-    short_comment = '--' not_cr_lf* eol;
-    long_comment = '{' (short_comment | not_lbkt)* '}';
+    short_comment = '--' not_cr_lf* eol?;
+    long_comment = '{' (short_comment | not_lbkt)* '}' eol?;
 
 Tokens
     digit = digit;
@@ -73,8 +73,8 @@ Tokens
     eol = eol;
     blank = blank;
 
-    comment = short_comment | long_comment;
     identifier = non_digit (digit | non_digit)*;
+    comment = short_comment | long_comment;
 
 Ignored Tokens
     blank,

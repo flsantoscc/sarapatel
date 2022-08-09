@@ -10,8 +10,6 @@ public class Main {
     public static void main(String[] args) {
         if (args.length > 0) {
             try {
-                // AST Setup
-
                 int test_number = 0;
                 Lexer lexer;
                 Token token;
@@ -32,6 +30,8 @@ public class Main {
                 }
 
                 /*
+
+                // AST Setup
                 Parser parser = new Parser(lexer);
                 Start ast = parser.parse() ;
 

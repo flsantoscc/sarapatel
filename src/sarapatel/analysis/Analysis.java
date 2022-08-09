@@ -47,6 +47,7 @@ public interface Analysis extends Switch
     void caseTNao(TNao node);
     void caseTGreater(TGreater node);
     void caseTGreaterOrEqual(TGreaterOrEqual node);
+    void caseTEqual(TEqual node);
     void caseTSe(TSe node);
     void caseTSenao(TSenao node);
     void caseTFuncao(TFuncao node);
@@ -63,13 +64,13 @@ public interface Analysis extends Switch
     void caseTTReal(TTReal node);
     void caseTTCadeia(TTCadeia node);
     void caseTTBooleano(TTBooleano node);
-    void caseTIdentifier(TIdentifier node);
     void caseTFloatingConstant(TFloatingConstant node);
     void caseTIntegerConstant(TIntegerConstant node);
     void caseTCadeiaConstant(TCadeiaConstant node);
     void caseTBooleanConstant(TBooleanConstant node);
     void caseTEol(TEol node);
     void caseTBlank(TBlank node);
+    void caseTIdentifier(TIdentifier node);
     void caseTComment(TComment node);
     void caseEOF(EOF node);
     void caseInvalidToken(InvalidToken node);
