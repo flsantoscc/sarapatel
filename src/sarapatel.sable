@@ -46,6 +46,7 @@ Tokens
     nao = 'nao';
     greater = '>';
     greater_or_equal = '>=';
+    equal = '=';
     se = 'se';
     senao = 'senao';
     funcao = 'funcao';
