@@ -20,7 +20,6 @@ public class Main {
                     lexer = new Lexer(new PushbackReader(
                             new FileReader(file), 1024));
 
-
                     System.out.println("Test #" + (++test_number));
                     while (!((token = lexer.next()) instanceof EOF)) {
                         System.out.println(token.getClass());
