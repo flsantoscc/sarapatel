@@ -41,6 +41,7 @@ public interface Analysis extends Switch
     void caseTMod(TMod node);
     void caseTPlus(TPlus node);
     void caseTMinus(TMinus node);
+    void caseTPipe(TPipe node);
     void caseTAttr(TAttr node);
     void caseTE(TE node);
     void caseTOu(TOu node);

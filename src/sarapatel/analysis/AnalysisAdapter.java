@@ -243,6 +243,12 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
+    public void caseTPipe(TPipe node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
     public void caseTAttr(TAttr node)
     {
         defaultCase(node);
