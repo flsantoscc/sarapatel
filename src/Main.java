@@ -10,19 +10,6 @@ import java.io.FileReader;
 
 public class Main {
     public static void main(String args[]) {
-        //ClassLoader sableCC;
-
-        /*
-        /usr/lib/jvm/java-8-openjdk-amd64/bin/java
-        -classpath
-        /home/aluno/workspace/sablecc-3.7/lib/sablecc.jar
-        org.sablecc.sablecc.SableCCSetup
-        /home/aluno/workspace/Compiladores-2022.1-Projeto/src/sarapatel.sable
-        */
-
-        SableCCSetup.clean();
-        SableCCSetup.execute();
-
         File folder = new File("src/tests").getAbsoluteFile();
         File[] listOfFiles = folder.listFiles();
 

@@ -39,6 +39,7 @@ Tokens
     mod = '%';
     plus = '+';
     minus = '-';
+    pipe = '|';
 
     attr = '<<';
     e = 'e';
