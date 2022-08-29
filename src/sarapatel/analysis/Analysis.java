@@ -25,7 +25,6 @@ public interface Analysis extends Switch
     void caseAArrayDeclaration(AArrayDeclaration node);
 
     void caseTDigit(TDigit node);
-    void caseTLetter(TLetter node);
     void caseTDot(TDot node);
     void caseTComma(TComma node);
     void caseTColon(TColon node);
@@ -34,14 +33,13 @@ public interface Analysis extends Switch
     void caseTRPar(TRPar node);
     void caseTLBracket(TLBracket node);
     void caseTRBracket(TRBracket node);
-    void caseTLBrace(TLBrace node);
-    void caseTRBrace(TRBrace node);
     void caseTStar(TStar node);
     void caseTDiv(TDiv node);
     void caseTMod(TMod node);
     void caseTPlus(TPlus node);
     void caseTMinus(TMinus node);
     void caseTPipe(TPipe node);
+    void caseTMainInit(TMainInit node);
     void caseTAttr(TAttr node);
     void caseTE(TE node);
     void caseTOu(TOu node);
@@ -68,7 +66,10 @@ public interface Analysis extends Switch
     void caseTFloatingConstant(TFloatingConstant node);
     void caseTIntegerConstant(TIntegerConstant node);
     void caseTCadeiaConstant(TCadeiaConstant node);
-    void caseTBooleanConstant(TBooleanConstant node);
+    void caseTBooleanConstantTrue(TBooleanConstantTrue node);
+    void caseTBooleanConstantFalse(TBooleanConstantFalse node);
+    void caseTNegativeFloatingConstant(TNegativeFloatingConstant node);
+    void caseTNegativeIntegerConstant(TNegativeIntegerConstant node);
     void caseTEol(TEol node);
     void caseTBlank(TBlank node);
     void caseTIdentifier(TIdentifier node);

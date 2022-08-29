@@ -17,13 +17,13 @@ Helpers
     not_cr_lf = [all - [cr + lf]];
     blank = (' ' | tab | eol)+;
     not_lbkt = [all - '}'];
+    minus = '-';
 
     short_comment = '--' not_cr_lf* eol?;
     long_comment = '{' (short_comment | not_lbkt)* '}' eol?;
 
 Tokens
     digit = digit;
-    letter = non_digit;
     dot = '.';
     comma = ',';
     colon = ':';
@@ -32,15 +32,14 @@ Tokens
     r_par = ')';
     l_bracket = '[';
     r_bracket = ']';
-    l_brace = '{';
-    r_brace = '}';
     star = '*';
     div = '/';
     mod = '%';
     plus = '+';
-    minus = '-';
+    minus = minus;
     pipe = '|';
 
+    main_init = '>>';
     attr = '<<';
     e = 'e';
     ou = 'ou';
@@ -66,10 +65,13 @@ Tokens
     t_cadeia = 'cadeia';
     t_booleano = 'booleano';
 
-    floating_constant = nonzero_digit digit+ ',' digit+;
+    floating_constant = nonzero_digit (digit+)? ',' digit+;
     integer_constant = binary_constant | decimal_constant;
     cadeia_constant = ''' [not_cr_lf - ''']+ ''';
-    boolean_constant = 'verdade' | 'falso';
+    boolean_constant_true = 'verdade';
+    boolean_constant_false = 'falso';
+    negative_floating_constant = minus nonzero_digit digit+ ',' digit+;
+    negative_integer_constant = minus (binary_constant | decimal_constant);
 
     eol = eol;
     blank = blank;

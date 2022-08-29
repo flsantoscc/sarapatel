@@ -5,16 +5,16 @@ package sarapatel.node;
 import sarapatel.analysis.*;
 
 @SuppressWarnings("nls")
-public final class TLBrace extends Token
+public final class TMainInit extends Token
 {
-    public TLBrace()
+    public TMainInit()
     {
-        super.setText("{");
+        super.setText(">>");
     }
 
-    public TLBrace(int line, int pos)
+    public TMainInit(int line, int pos)
     {
-        super.setText("{");
+        super.setText(">>");
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,18 @@ public final class TLBrace extends Token
     @Override
     public Object clone()
     {
-      return new TLBrace(getLine(), getPos());
+      return new TMainInit(getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseTLBrace(this);
+        ((Analysis) sw).caseTMainInit(this);
     }
 
     @Override
     public void setText(@SuppressWarnings("unused") String text)
     {
-        throw new RuntimeException("Cannot change TLBrace text.");
+        throw new RuntimeException("Cannot change TMainInit text.");
     }
 }

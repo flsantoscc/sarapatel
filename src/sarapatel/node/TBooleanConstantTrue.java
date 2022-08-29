@@ -5,16 +5,16 @@ package sarapatel.node;
 import sarapatel.analysis.*;
 
 @SuppressWarnings("nls")
-public final class TRBrace extends Token
+public final class TBooleanConstantTrue extends Token
 {
-    public TRBrace()
+    public TBooleanConstantTrue()
     {
-        super.setText("}");
+        super.setText("verdade");
     }
 
-    public TRBrace(int line, int pos)
+    public TBooleanConstantTrue(int line, int pos)
     {
-        super.setText("}");
+        super.setText("verdade");
         setLine(line);
         setPos(pos);
     }
@@ -22,18 +22,18 @@ public final class TRBrace extends Token
     @Override
     public Object clone()
     {
-      return new TRBrace(getLine(), getPos());
+      return new TBooleanConstantTrue(getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseTRBrace(this);
+        ((Analysis) sw).caseTBooleanConstantTrue(this);
     }
 
     @Override
     public void setText(@SuppressWarnings("unused") String text)
     {
-        throw new RuntimeException("Cannot change TRBrace text.");
+        throw new RuntimeException("Cannot change TBooleanConstantTrue text.");
     }
 }

@@ -521,12 +521,12 @@ public class Parser
 
     private static int[][][] actionTable;
 /*      {
-			{{-1, ERROR, 0}, {37, SHIFT, 1}, {38, SHIFT, 2}, {39, SHIFT, 3}, {40, SHIFT, 4}, },
+			{{-1, ERROR, 0}, {35, SHIFT, 1}, {36, SHIFT, 2}, {37, SHIFT, 3}, {38, SHIFT, 4}, },
 			{{-1, REDUCE, 4}, },
 			{{-1, REDUCE, 7}, },
 			{{-1, REDUCE, 6}, },
 			{{-1, REDUCE, 5}, },
-			{{-1, ERROR, 5}, {46, ACCEPT, -1}, },
+			{{-1, ERROR, 5}, {47, ACCEPT, -1}, },
 			{{-1, REDUCE, 1}, },
 			{{-1, REDUCE, 0}, },
 			{{-1, REDUCE, 3}, },

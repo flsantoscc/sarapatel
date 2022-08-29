@@ -147,12 +147,6 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseTLetter(TLetter node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
     public void caseTDot(TDot node)
     {
         defaultCase(node);
@@ -201,18 +195,6 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseTLBrace(TLBrace node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseTRBrace(TRBrace node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
     public void caseTStar(TStar node)
     {
         defaultCase(node);
@@ -244,6 +226,12 @@ public class AnalysisAdapter implements Analysis
 
     @Override
     public void caseTPipe(TPipe node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTMainInit(TMainInit node)
     {
         defaultCase(node);
     }
@@ -405,7 +393,25 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseTBooleanConstant(TBooleanConstant node)
+    public void caseTBooleanConstantTrue(TBooleanConstantTrue node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTBooleanConstantFalse(TBooleanConstantFalse node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTNegativeFloatingConstant(TNegativeFloatingConstant node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTNegativeIntegerConstant(TNegativeIntegerConstant node)
     {
         defaultCase(node);
     }

@@ -5,14 +5,14 @@ package sarapatel.node;
 import sarapatel.analysis.*;
 
 @SuppressWarnings("nls")
-public final class TLetter extends Token
+public final class TNegativeIntegerConstant extends Token
 {
-    public TLetter(String text)
+    public TNegativeIntegerConstant(String text)
     {
         setText(text);
     }
 
-    public TLetter(String text, int line, int pos)
+    public TNegativeIntegerConstant(String text, int line, int pos)
     {
         setText(text);
         setLine(line);
@@ -22,12 +22,12 @@ public final class TLetter extends Token
     @Override
     public Object clone()
     {
-      return new TLetter(getText(), getLine(), getPos());
+      return new TNegativeIntegerConstant(getText(), getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseTLetter(this);
+        ((Analysis) sw).caseTNegativeIntegerConstant(this);
     }
 }

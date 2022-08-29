@@ -5,14 +5,14 @@ package sarapatel.node;
 import sarapatel.analysis.*;
 
 @SuppressWarnings("nls")
-public final class TBooleanConstant extends Token
+public final class TNegativeFloatingConstant extends Token
 {
-    public TBooleanConstant(String text)
+    public TNegativeFloatingConstant(String text)
     {
         setText(text);
     }
 
-    public TBooleanConstant(String text, int line, int pos)
+    public TNegativeFloatingConstant(String text, int line, int pos)
     {
         setText(text);
         setLine(line);
@@ -22,12 +22,12 @@ public final class TBooleanConstant extends Token
     @Override
     public Object clone()
     {
-      return new TBooleanConstant(getText(), getLine(), getPos());
+      return new TNegativeFloatingConstant(getText(), getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseTBooleanConstant(this);
+        ((Analysis) sw).caseTNegativeFloatingConstant(this);
     }
 }
