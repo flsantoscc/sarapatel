@@ -101,3 +101,5 @@ Productions
         {array}      array_declarator l_bracket integer_constant r_bracket;
 
     array_declaration = var colon type_specifier array_declarator semicolon;
+
+
