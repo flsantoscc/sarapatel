@@ -100,6 +100,38 @@ Productions
         {identifier} l_bracket integer_constant r_bracket identifier |
         {array}      array_declarator l_bracket integer_constant r_bracket;
 
-    array_declaration = var colon type_specifier array_declarator semicolon;
+    array_declaration =
+        {identifier} var colon type_specifier array_declarator semicolon;
 
+    programa =
+        {programa} (dec_var | dec_cons)* (dec_procedimento | dec_funcao)+
 
+    dec_var =
+        {dec_var} 'var' ':' tipo (ID | id_atribuicao) ';'
+    dec_cons =
+        {dec_cons} 'const' ':' tipo id_atribuicao ';'
+
+    tipo =
+        {tipo_base} tipo_base |
+        {tipo} tipo '[' exp ']'
+
+    tipo_base = type_specifier
+
+    id_atribuicao =
+        {id_atribuicao} ID '<<' exp
+
+    array_comp =
+        {array_comp} '[' ID '|' exp ']'
+
+    dec_procedimento =
+        {dec_procedimento} ('>>')? 'procedimento' ':' ID '(' parametros ')' comando
+
+    dec_funcao =
+        {dec_funcao} 'funcao' ':' tipo ID '(' parametros ')' exp
+
+    parametros =
+        {parametro} (parametro ( '|' tipo_parametro)*)?
+
+    tipo_parametro =
+        {tipo_base} tipo_base |
+        {tipo_parametro} tipo_parametro '[' ']'
