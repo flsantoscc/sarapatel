@@ -153,15 +153,27 @@ Productions
         {chamada_proc} chamada_procedimento semicolon |
         {bloco_comandos} bloco_comandos;
 
+    bloco_comandos =
+        {bloco_comandos} comece dec_var_or_const* comando* termine;
 
+    valor =
+        {valor} id |
+        {valor_brkts} valor l_bracket exp r_bracket;
 
+    bloco_expressoes =
+        {bloco_expressoes} comece dec_cons* exp termine;
 
+    chamada_funcao =
+        {chamada_funcao} id l_par lista_exp r_par;
 
+    chamada_procedimento =
+        {chamada_procedimento} id _par lista_exp r_par;
 
+    lista_exp =
+        {lista_exp} lista_exp_aux?;
 
+    lista_exp_aux =
+        {aux} exp pipe_exp*;
 
-
-
-
-
-
+    pipe_exp =
+        {pipe_exp} pipe exp;
