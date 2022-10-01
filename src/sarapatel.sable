@@ -18,7 +18,6 @@ Helpers
     blank = (' ' | tab | eol)+;
     not_lbkt = [all - '}'];
     minus = '-';
-
     short_comment = '--' not_cr_lf* eol?;
     long_comment = '{' (short_comment | not_lbkt)* '}' eol?;
 
@@ -90,7 +89,7 @@ Productions
 
     dec_var_or_const =
         {dec_var} dec_var |
-        {dec_const} dec_const;
+        {dec_const} dec_cons;
 
     dec_proc_or_funcao =
         {dec_proc} dec_procedimento |
@@ -147,7 +146,7 @@ Productions
 
     comando =
         {se_comando} se l_par exp r_par comando |
-        {se_senao_comando} se l_par exp r_par comando senao comando |
+        {se_senao_comando} se l_par exp r_par [left]:comando senao [right]:comando |
         {enquanto} enquanto l_par exp r_par comando |
         {id_atribuicao} id_atribuicao semicolon |
         {chamada_proc} chamada_procedimento semicolon |
@@ -167,7 +166,7 @@ Productions
         {chamada_funcao} id l_par lista_exp r_par;
 
     chamada_procedimento =
-        {chamada_procedimento} id _par lista_exp r_par;
+        {chamada_procedimento} l_par lista_exp r_par;
 
     lista_exp =
         {lista_exp} lista_exp_aux?;
@@ -177,3 +176,26 @@ Productions
 
     pipe_exp =
         {pipe_exp} pipe exp;
+
+    exp = {inteiro} t_inteiro
+          | {real} t_real
+          | {cadia} t_cadeia
+          | {booleano} t_booleano
+          | {valor} valor
+          | {sourrounded_exp} l_par exp r_par
+          | {chamada_funcao} chamada_funcao
+          | {array_comp} array_comp
+          | {minus_exp} minus exp
+          | {if_else} se l_par [condition]:exp r_par [exp1]:exp senao [exp2]:exp
+          | {exp_sum} [left]:exp plus [right]:exp
+          | {exp_sub} [left]:exp minus [right]:exp
+          | {exp_mult} [left]:exp star [right]:exp
+          | {exp_div} [left]:exp div [right]:exp
+          | {exp_mod} [left]:exp mod [right]:exp
+          | {exp_eq} [left]:exp equal [right]:exp
+          | {exp_greater_or_equal} [left]:exp greater_or_equal [right]:exp
+          | {exp_greater} [left]:exp greater [right]:exp
+          | {not_exp} nao [left]:exp
+          | {exp_and_exp} [left]:exp e [right]:exp
+          | {exp_or_exp} [left]:exp ou [right]:exp
+          | {bloco_expressoes} bloco_expressoes;
