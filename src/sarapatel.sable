@@ -44,7 +44,7 @@ Tokens
     ou = 'ou';
     nao = 'nao';
     greater = '>';
-    greater_or_equal = '>=';
+    greater_equal = '>=';
     equal = '=';
     se = 'se';
     senao = 'senao';
@@ -176,25 +176,44 @@ Productions
     pipe_exp =
         {pipe_exp} pipe exp;
 
-    exp = {inteiro} integer_constant
-          | {real} floating_constant
-          | {cadeia} cadeia_constant
-          | {booleano} boolean_constant
-          | {valor} valor
-          | {sourrounded_exp} l_par exp r_par
-          | {chamada_funcao} chamada_funcao
-          | {array_comp} array_comp
-          | {minus_exp} minus exp
-          | {if_else} se l_par [condition]:exp r_par [exp1]:exp senao [exp2]:exp
-          | {exp_sum} [left]:exp plus [right]:exp
-          | {exp_sub} [left]:exp minus [right]:exp
-          | {exp_mult} [left]:exp star [right]:exp
-          | {exp_div} [left]:exp div [right]:exp
-          | {exp_mod} [left]:exp mod [right]:exp
-          | {exp_eq} [left]:exp equal [right]:exp
-          | {exp_greater_or_equal} [left]:exp greater_or_equal [right]:exp
-          | {exp_greater} [left]:exp greater [right]:exp
-          | {not_exp} nao [left]:exp
-          | {exp_and_exp} [left]:exp e [right]:exp
-          | {exp_or_exp} [left]:exp ou [right]:exp
-          | {bloco_expressoes} bloco_expressoes;
+    number =
+        {integer} integer_constant |
+        {real} floating_constant   ;
+
+    literal =
+        {number} number            |
+        {boolean} boolean_constant |
+        {cadeia} cadeia_constant   ;
+
+    multiplicative_exp =
+        {literal} literal                              |
+        {multiplicative} multiplicative_exp star number|
+        {dividitive} multiplicative_exp div number     |
+        {mod} multiplicative_exp mod number            ;
+
+    additive_exp =
+        {multiplicative_exp} multiplicative_exp                 |
+        {additive_exp} additive_exp plus multiplicative_exp     |
+        {subtractive_exp} additive_exp minus multiplicative_exp ;
+
+    relational_exp =
+        {additive_exp} additive_exp                               |
+        {equal_exp} relational_exp equal additive_exp             |
+        {greater} relational_exp greater additive_exp             |
+        {greater_equal} relational_exp greater_equal additive_exp ;
+
+    exp =
+        {literal} literal                                                |
+        {valor} valor                                                    |
+        {sorrounded_exp} l_par exp r_par                                 |
+        {chamada_funcao} chamada_funcao                                  |
+        {array_comp} array_comp                                          |
+        {minus_exp} minus exp                                            |
+        {se_senao} se l_par [exp1]:exp r_par [exp2]:exp senao [exp3]:exp |
+        {multiplicative} multiplicative_exp                              |
+        {additive} additive_exp                                          |
+        {relational} relational_exp                                      |
+        {not} nao exp                                                    |
+        {and} [left]:exp e [right]:exp                                   |
+        {or} [left]:exp ou [right]:exp                                   |
+        {bloco_expressoes} bloco_expressoes                              ;
