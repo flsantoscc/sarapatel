@@ -186,7 +186,7 @@ Productions
         {cadeia} cadeia_constant   ;
 
     multiplicative_exp =
-        {literal} literal                              |
+        {literal} number                               |
         {multiplicative} multiplicative_exp star number|
         {dividitive} multiplicative_exp div number     |
         {mod} multiplicative_exp mod number            ;
