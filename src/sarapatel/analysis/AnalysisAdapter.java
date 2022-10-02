@@ -75,67 +75,373 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseABooleanTypeSpecifier(ABooleanTypeSpecifier node)
+    public void caseAProgramaPrograma(AProgramaPrograma node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAIntegerTypeSpecifier(AIntegerTypeSpecifier node)
+    public void caseADecVarDecVarOrConst(ADecVarDecVarOrConst node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAFloatTypeSpecifier(AFloatTypeSpecifier node)
+    public void caseADecConstDecVarOrConst(ADecConstDecVarOrConst node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAStringTypeSpecifier(AStringTypeSpecifier node)
+    public void caseADecProcDecProcOrFuncao(ADecProcDecProcOrFuncao node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAIntegerSpecifier(AIntegerSpecifier node)
+    public void caseADecFuncaoDecProcOrFuncao(ADecFuncaoDecProcOrFuncao node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseABooleanSpecifier(ABooleanSpecifier node)
+    public void caseADecVarDecVar(ADecVarDecVar node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAStringSpecifier(AStringSpecifier node)
+    public void caseADecConsDecCons(ADecConsDecCons node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAFloatSpecifier(AFloatSpecifier node)
+    public void caseAIdIdOrIdAtribuicao(AIdIdOrIdAtribuicao node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAIdentifierArrayDeclarator(AIdentifierArrayDeclarator node)
+    public void caseAIdAtribuicaoIdOrIdAtribuicao(AIdAtribuicaoIdOrIdAtribuicao node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAArrayArrayDeclarator(AArrayArrayDeclarator node)
+    public void caseAIdAtribuicaoIdAtribuicao(AIdAtribuicaoIdAtribuicao node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAArrayDeclaration(AArrayDeclaration node)
+    public void caseATipoBaseTipo(ATipoBaseTipo node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseATipoBrktTipo(ATipoBrktTipo node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAInteiroTipoBase(AInteiroTipoBase node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseABooleanoTipoBase(ABooleanoTipoBase node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseARealTipoBase(ARealTipoBase node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseACadeiaTipoBase(ACadeiaTipoBase node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAArrayCompArrayComp(AArrayCompArrayComp node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseADecProcedimentoDecProcedimento(ADecProcedimentoDecProcedimento node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseADecFuncaoDecFuncao(ADecFuncaoDecFuncao node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAParametrosParametros(AParametrosParametros node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAPipeParametroClosureParametrosAux(APipeParametroClosureParametrosAux node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAPipeParametroPipeParametro(APipeParametroPipeParametro node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAParametroParametro(AParametroParametro node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseATipoBaseTipoParametro(ATipoBaseTipoParametro node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseATipoParametroBrktTipoParametro(ATipoParametroBrktTipoParametro node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseASeComandoComando(ASeComandoComando node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseASeSenaoComandoComando(ASeSenaoComandoComando node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAEnquantoComando(AEnquantoComando node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAIdAtribuicaoComando(AIdAtribuicaoComando node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAChamadaProcComando(AChamadaProcComando node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseABlocoComandosComando(ABlocoComandosComando node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseABlocoComandosBlocoComandos(ABlocoComandosBlocoComandos node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAValorValor(AValorValor node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAValorBrktsValor(AValorBrktsValor node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseABlocoExpressoesBlocoExpressoes(ABlocoExpressoesBlocoExpressoes node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAChamadaFuncaoChamadaFuncao(AChamadaFuncaoChamadaFuncao node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAChamadaProcedimentoChamadaProcedimento(AChamadaProcedimentoChamadaProcedimento node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAListaExpListaExp(AListaExpListaExp node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAAuxListaExpAux(AAuxListaExpAux node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAPipeExpPipeExp(APipeExpPipeExp node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAInteiroExp(AInteiroExp node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseARealExp(ARealExp node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseACadeiaExp(ACadeiaExp node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseABooleanoExp(ABooleanoExp node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAValorExp(AValorExp node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseASourroundedExpExp(ASourroundedExpExp node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAChamadaFuncaoExp(AChamadaFuncaoExp node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAArrayCompExp(AArrayCompExp node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAMinusExpExp(AMinusExpExp node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAIfElseExp(AIfElseExp node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExpSumExp(AExpSumExp node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExpSubExp(AExpSubExp node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExpMultExp(AExpMultExp node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExpDivExp(AExpDivExp node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExpModExp(AExpModExp node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExpEqExp(AExpEqExp node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExpGreaterOrEqualExp(AExpGreaterOrEqualExp node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExpGreaterExp(AExpGreaterExp node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseANotExpExp(ANotExpExp node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExpAndExpExp(AExpAndExpExp node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExpOrExpExp(AExpOrExpExp node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseABlocoExpressoesExp(ABlocoExpressoesExp node)
     {
         defaultCase(node);
     }
@@ -393,13 +699,7 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseTBooleanConstantTrue(TBooleanConstantTrue node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseTBooleanConstantFalse(TBooleanConstantFalse node)
+    public void caseTBooleanConstant(TBooleanConstant node)
     {
         defaultCase(node);
     }
@@ -429,7 +729,7 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseTIdentifier(TIdentifier node)
+    public void caseTId(TId node)
     {
         defaultCase(node);
     }

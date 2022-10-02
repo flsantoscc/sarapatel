@@ -67,8 +67,7 @@ Tokens
     floating_constant = nonzero_digit (digit+)? ',' digit+;
     integer_constant = binary_constant | decimal_constant;
     cadeia_constant = ''' [not_cr_lf - ''']+ ''';
-    boolean_constant_true = 'verdade';
-    boolean_constant_false = 'falso';
+    boolean_constant = 'verdade' | 'falso';
     negative_floating_constant = minus nonzero_digit digit+ ',' digit+;
     negative_integer_constant = minus (binary_constant | decimal_constant);
 
@@ -177,10 +176,10 @@ Productions
     pipe_exp =
         {pipe_exp} pipe exp;
 
-    exp = {inteiro} t_inteiro
-          | {real} t_real
-          | {cadia} t_cadeia
-          | {booleano} t_booleano
+    exp = {inteiro} integer_constant
+          | {real} floating_constant
+          | {cadeia} cadeia_constant
+          | {booleano} boolean_constant
           | {valor} valor
           | {sourrounded_exp} l_par exp r_par
           | {chamada_funcao} chamada_funcao

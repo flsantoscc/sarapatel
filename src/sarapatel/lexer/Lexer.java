@@ -602,6 +602,7 @@ public class Lexer
                     case 42:
                         {
                             @SuppressWarnings("hiding") Token token = new42(
+                                getText(accept_length),
                                 start_line + 1,
                                 start_pos + 1);
                             pushBack(accept_length);
@@ -612,6 +613,7 @@ public class Lexer
                     case 43:
                         {
                             @SuppressWarnings("hiding") Token token = new43(
+                                getText(accept_length),
                                 start_line + 1,
                                 start_pos + 1);
                             pushBack(accept_length);
@@ -666,17 +668,6 @@ public class Lexer
                     case 48:
                         {
                             @SuppressWarnings("hiding") Token token = new48(
-                                getText(accept_length),
-                                start_line + 1,
-                                start_pos + 1);
-                            pushBack(accept_length);
-                            this.pos = accept_pos;
-                            this.line = accept_line;
-                            return token;
-                        }
-                    case 49:
-                        {
-                            @SuppressWarnings("hiding") Token token = new49(
                                 getText(accept_length),
                                 start_line + 1,
                                 start_pos + 1);
@@ -748,14 +739,13 @@ public class Lexer
     Token new39(@SuppressWarnings("hiding") String text, @SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TFloatingConstant(text, line, pos); }
     Token new40(@SuppressWarnings("hiding") String text, @SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TIntegerConstant(text, line, pos); }
     Token new41(@SuppressWarnings("hiding") String text, @SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TCadeiaConstant(text, line, pos); }
-    Token new42(@SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TBooleanConstantTrue(line, pos); }
-    Token new43(@SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TBooleanConstantFalse(line, pos); }
-    Token new44(@SuppressWarnings("hiding") String text, @SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TNegativeFloatingConstant(text, line, pos); }
-    Token new45(@SuppressWarnings("hiding") String text, @SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TNegativeIntegerConstant(text, line, pos); }
-    Token new46(@SuppressWarnings("hiding") String text, @SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TEol(text, line, pos); }
-    Token new47(@SuppressWarnings("hiding") String text, @SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TBlank(text, line, pos); }
-    Token new48(@SuppressWarnings("hiding") String text, @SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TIdentifier(text, line, pos); }
-    Token new49(@SuppressWarnings("hiding") String text, @SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TComment(text, line, pos); }
+    Token new42(@SuppressWarnings("hiding") String text, @SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TBooleanConstant(text, line, pos); }
+    Token new43(@SuppressWarnings("hiding") String text, @SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TNegativeFloatingConstant(text, line, pos); }
+    Token new44(@SuppressWarnings("hiding") String text, @SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TNegativeIntegerConstant(text, line, pos); }
+    Token new45(@SuppressWarnings("hiding") String text, @SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TEol(text, line, pos); }
+    Token new46(@SuppressWarnings("hiding") String text, @SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TBlank(text, line, pos); }
+    Token new47(@SuppressWarnings("hiding") String text, @SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TId(text, line, pos); }
+    Token new48(@SuppressWarnings("hiding") String text, @SuppressWarnings("hiding") int line, @SuppressWarnings("hiding") int pos) { return new TComment(text, line, pos); }
 
     private int getChar() throws IOException
     {
@@ -997,7 +987,7 @@ public class Lexer
     private static int[][] accept;
 /*  {
         // INITIAL
-        {-1, 47, 46, 46, 47, 11, -1, 5, 6, 9, 12, 2, 13, 1, 10, 0, 0, 3, 4, -1, 22, 20, 48, 7, 8, 48, 48, 17, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, -1, 14, 47, 47, 46, -1, 49, -1, 45, -1, -1, 40, 16, 21, 15, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 18, 48, 48, 23, 48, 48, 48, 48, -1, -1, 49, 47, 41, 49, 49, 49, -1, 45, 40, 40, 39, 48, 48, 48, 48, 48, 48, 48, 48, 48, 48, 19, 48, 48, 48, 48, 48, 30, 48, -1, 49, 49, 49, 45, 45, -1, 48, 48, 48, 48, 48, 48, 48, 48, 48, 33, 48, 36, 48, 34, 48, 48, -1, -1, -1, -1, 49, 49, 44, 48, 48, 48, 31, 48, 43, 48, 48, 48, 48, 24, 48, 48, -1, -1, 49, 49, 48, 37, 28, 48, 25, 48, 48, 48, 48, 48, 49, 48, 48, 32, 35, 48, 29, 42, 38, 27, 48, 48, 48, 48, 26, },
+        {-1, 46, 45, 45, 46, 11, -1, 5, 6, 9, 12, 2, 13, 1, 10, 0, 0, 3, 4, -1, 22, 20, 47, 7, 8, 47, 47, 17, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, -1, 14, 46, 46, 45, -1, 48, -1, 44, -1, -1, 40, 16, 21, 15, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 18, 47, 47, 23, 47, 47, 47, 47, -1, -1, 48, 46, 41, 48, 48, 48, -1, 44, 40, 40, 39, 47, 47, 47, 47, 47, 47, 47, 47, 47, 47, 19, 47, 47, 47, 47, 47, 30, 47, -1, 48, 48, 48, 44, 44, -1, 47, 47, 47, 47, 47, 47, 47, 47, 47, 33, 47, 36, 47, 34, 47, 47, -1, -1, -1, -1, 48, 48, 43, 47, 47, 47, 31, 47, 42, 47, 47, 47, 47, 24, 47, 47, -1, -1, 48, 48, 47, 37, 28, 47, 25, 47, 47, 47, 47, 47, 48, 47, 47, 32, 35, 47, 29, 42, 38, 27, 47, 47, 47, 47, 26, },
 
     };*/
 
