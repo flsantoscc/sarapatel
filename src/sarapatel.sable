@@ -87,12 +87,12 @@ Productions
         {programa} dec_var_or_const* dec_proc_or_funcao+;
 
     dec_var_or_const =
-        {dec_var} dec_var |
+        {dec_var} dec_var   |
         {dec_const} dec_cons;
 
     dec_proc_or_funcao =
         {dec_proc} dec_procedimento |
-        {dec_funcao} dec_funcao;
+        {dec_funcao} dec_funcao     ;
 
     dec_var =
         {dec_var} var colon tipo id_or_id_atribuicao semicolon;
@@ -101,7 +101,7 @@ Productions
         {dec_cons} const colon tipo id_atribuicao semicolon;
 
     id_or_id_atribuicao =
-        {id} id |
+        {id} id                      |
         {id_atribuicao} id_atribuicao;
 
     id_atribuicao =
@@ -143,18 +143,18 @@ Productions
         {tipo_parametro_brkt} tipo_parametro l_bracket r_bracket;
 
     comando =
-        {se_comando} se l_par exp r_par comando |
+        {se_comando} se l_par exp r_par comando                                    |
         {se_senao_comando} se l_par exp r_par [left]:comando senao [right]:comando |
-        {enquanto} enquanto l_par exp r_par comando |
-        {id_atribuicao} id_atribuicao semicolon |
-        {chamada_proc} chamada_procedimento semicolon |
-        {bloco_comandos} bloco_comandos;
+        {enquanto} enquanto l_par exp r_par comando                                |
+        {id_atribuicao} id_atribuicao semicolon                                    |
+        {chamada_proc} chamada_procedimento semicolon                              |
+        {bloco_comandos} bloco_comandos                                            ;
 
     bloco_comandos =
         {bloco_comandos} comece dec_var_or_const* comando* termine;
 
     valor =
-        {valor} id |
+        {id} id                                    |
         {valor_brkts} valor l_bracket exp r_bracket;
 
     bloco_expressoes =
@@ -184,7 +184,7 @@ Productions
         {boolean} boolean_constant;
 
     cadeia_exp =
-        {cadeia} cadeia_constant   ;
+        {cadeia} cadeia_constant;
 
     literal =
             {integer} integer_constant |
@@ -208,15 +208,6 @@ Productions
     subtractive_exp =
         {subtractive_exp} additive_exp minus multiplicative_exp;
 
-    conditional =
-        {if} se l_par exp r_par conditional                           |
-        {if_else} se l_par exp r_par conditional_aux senao conditional |
-        {comando} comando                                             ;
-
-    conditional_aux = {if_else}
-        se l_par exp r_par [thenbranch]:conditional_aux senao [elsebranch]:conditional_aux |
-        {comando} comando                                                                 ;
-
     exp =
         {boolean_exp} boolean_exp                                        |
         {cadeia_exp} cadeia_exp                                          |
@@ -225,7 +216,7 @@ Productions
         {chamada_funcao} chamada_funcao                                  |
         {array_comp} array_comp                                          |
         {minus_exp} minus number                                         |
-        {conditional} conditional                                        |
+        {comando} comando                                                |
         {additive_exp} additive_exp                                      |
         {subtractive_exp} subtractive_exp                                |
         {multiplicative_exp} multiplicative_exp                          |
