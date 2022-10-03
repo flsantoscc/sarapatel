@@ -98,13 +98,10 @@ Productions
         {dec_var} var colon tipo id_or_id_atribuicao semicolon;
 
     dec_cons =
-        {dec_cons} const colon tipo id_atribuicao semicolon;
+        {dec_cons} const colon tipo id attr exp semicolon;
 
     id_or_id_atribuicao =
         {id} id                      |
-        {id_atribuicao} id_atribuicao;
-
-    id_atribuicao =
         {id_atribuicao} id attr exp;
 
     tipo =
@@ -143,10 +140,10 @@ Productions
         {tipo_parametro_brkt} tipo_parametro l_bracket r_bracket;
 
     comando =
-        {se_comando} se l_par exp r_par comando                                    |
+        {se_comando} se l_par exp r_par comando semicolon                          |
         {se_senao_comando} se l_par exp r_par [left]:comando senao [right]:comando |
         {enquanto} enquanto l_par exp r_par comando                                |
-        {id_atribuicao} id_atribuicao semicolon                                    |
+        {id_atribuicao} id attr exp semicolon                                      |
         {chamada_proc} chamada_procedimento semicolon                              |
         {bloco_comandos} bloco_comandos                                            ;
 
@@ -216,7 +213,6 @@ Productions
         {chamada_funcao} chamada_funcao                                  |
         {array_comp} array_comp                                          |
         {minus_exp} minus number                                         |
-        {comando} comando                                                |
         {additive_exp} additive_exp                                      |
         {subtractive_exp} subtractive_exp                                |
         {multiplicative_exp} multiplicative_exp                          |
