@@ -5,84 +5,44 @@ package sarapatel.node;
 import sarapatel.analysis.*;
 
 @SuppressWarnings("nls")
-public final class ASeComandoComando extends PComando
+public final class ASorroundedExpExp extends PExp
 {
-    private TSe _se_;
     private TLPar _lPar_;
     private PExp _exp_;
     private TRPar _rPar_;
-    private PComando _comando_;
-    private TSemicolon _semicolon_;
 
-    public ASeComandoComando()
+    public ASorroundedExpExp()
     {
         // Constructor
     }
 
-    public ASeComandoComando(
-        @SuppressWarnings("hiding") TSe _se_,
+    public ASorroundedExpExp(
         @SuppressWarnings("hiding") TLPar _lPar_,
         @SuppressWarnings("hiding") PExp _exp_,
-        @SuppressWarnings("hiding") TRPar _rPar_,
-        @SuppressWarnings("hiding") PComando _comando_,
-        @SuppressWarnings("hiding") TSemicolon _semicolon_)
+        @SuppressWarnings("hiding") TRPar _rPar_)
     {
         // Constructor
-        setSe(_se_);
-
         setLPar(_lPar_);
 
         setExp(_exp_);
 
         setRPar(_rPar_);
 
-        setComando(_comando_);
-
-        setSemicolon(_semicolon_);
-
     }
 
     @Override
     public Object clone()
     {
-        return new ASeComandoComando(
-            cloneNode(this._se_),
+        return new ASorroundedExpExp(
             cloneNode(this._lPar_),
             cloneNode(this._exp_),
-            cloneNode(this._rPar_),
-            cloneNode(this._comando_),
-            cloneNode(this._semicolon_));
+            cloneNode(this._rPar_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseASeComandoComando(this);
-    }
-
-    public TSe getSe()
-    {
-        return this._se_;
-    }
-
-    public void setSe(TSe node)
-    {
-        if(this._se_ != null)
-        {
-            this._se_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._se_ = node;
+        ((Analysis) sw).caseASorroundedExpExp(this);
     }
 
     public TLPar getLPar()
@@ -160,78 +120,19 @@ public final class ASeComandoComando extends PComando
         this._rPar_ = node;
     }
 
-    public PComando getComando()
-    {
-        return this._comando_;
-    }
-
-    public void setComando(PComando node)
-    {
-        if(this._comando_ != null)
-        {
-            this._comando_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._comando_ = node;
-    }
-
-    public TSemicolon getSemicolon()
-    {
-        return this._semicolon_;
-    }
-
-    public void setSemicolon(TSemicolon node)
-    {
-        if(this._semicolon_ != null)
-        {
-            this._semicolon_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._semicolon_ = node;
-    }
-
     @Override
     public String toString()
     {
         return ""
-            + toString(this._se_)
             + toString(this._lPar_)
             + toString(this._exp_)
-            + toString(this._rPar_)
-            + toString(this._comando_)
-            + toString(this._semicolon_);
+            + toString(this._rPar_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._se_ == child)
-        {
-            this._se_ = null;
-            return;
-        }
-
         if(this._lPar_ == child)
         {
             this._lPar_ = null;
@@ -250,18 +151,6 @@ public final class ASeComandoComando extends PComando
             return;
         }
 
-        if(this._comando_ == child)
-        {
-            this._comando_ = null;
-            return;
-        }
-
-        if(this._semicolon_ == child)
-        {
-            this._semicolon_ = null;
-            return;
-        }
-
         throw new RuntimeException("Not a child.");
     }
 
@@ -269,12 +158,6 @@ public final class ASeComandoComando extends PComando
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._se_ == oldChild)
-        {
-            setSe((TSe) newChild);
-            return;
-        }
-
         if(this._lPar_ == oldChild)
         {
             setLPar((TLPar) newChild);
@@ -290,18 +173,6 @@ public final class ASeComandoComando extends PComando
         if(this._rPar_ == oldChild)
         {
             setRPar((TRPar) newChild);
-            return;
-        }
-
-        if(this._comando_ == oldChild)
-        {
-            setComando((PComando) newChild);
-            return;
-        }
-
-        if(this._semicolon_ == oldChild)
-        {
-            setSemicolon((TSemicolon) newChild);
             return;
         }
 

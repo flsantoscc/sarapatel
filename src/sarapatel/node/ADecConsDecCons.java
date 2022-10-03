@@ -10,7 +10,9 @@ public final class ADecConsDecCons extends PDecCons
     private TConst _const_;
     private TColon _colon_;
     private PTipo _tipo_;
-    private PIdAtribuicao _idAtribuicao_;
+    private TId _id_;
+    private TAttr _attr_;
+    private PExp _exp_;
     private TSemicolon _semicolon_;
 
     public ADecConsDecCons()
@@ -22,7 +24,9 @@ public final class ADecConsDecCons extends PDecCons
         @SuppressWarnings("hiding") TConst _const_,
         @SuppressWarnings("hiding") TColon _colon_,
         @SuppressWarnings("hiding") PTipo _tipo_,
-        @SuppressWarnings("hiding") PIdAtribuicao _idAtribuicao_,
+        @SuppressWarnings("hiding") TId _id_,
+        @SuppressWarnings("hiding") TAttr _attr_,
+        @SuppressWarnings("hiding") PExp _exp_,
         @SuppressWarnings("hiding") TSemicolon _semicolon_)
     {
         // Constructor
@@ -32,7 +36,11 @@ public final class ADecConsDecCons extends PDecCons
 
         setTipo(_tipo_);
 
-        setIdAtribuicao(_idAtribuicao_);
+        setId(_id_);
+
+        setAttr(_attr_);
+
+        setExp(_exp_);
 
         setSemicolon(_semicolon_);
 
@@ -45,7 +53,9 @@ public final class ADecConsDecCons extends PDecCons
             cloneNode(this._const_),
             cloneNode(this._colon_),
             cloneNode(this._tipo_),
-            cloneNode(this._idAtribuicao_),
+            cloneNode(this._id_),
+            cloneNode(this._attr_),
+            cloneNode(this._exp_),
             cloneNode(this._semicolon_));
     }
 
@@ -130,16 +140,16 @@ public final class ADecConsDecCons extends PDecCons
         this._tipo_ = node;
     }
 
-    public PIdAtribuicao getIdAtribuicao()
+    public TId getId()
     {
-        return this._idAtribuicao_;
+        return this._id_;
     }
 
-    public void setIdAtribuicao(PIdAtribuicao node)
+    public void setId(TId node)
     {
-        if(this._idAtribuicao_ != null)
+        if(this._id_ != null)
         {
-            this._idAtribuicao_.parent(null);
+            this._id_.parent(null);
         }
 
         if(node != null)
@@ -152,7 +162,57 @@ public final class ADecConsDecCons extends PDecCons
             node.parent(this);
         }
 
-        this._idAtribuicao_ = node;
+        this._id_ = node;
+    }
+
+    public TAttr getAttr()
+    {
+        return this._attr_;
+    }
+
+    public void setAttr(TAttr node)
+    {
+        if(this._attr_ != null)
+        {
+            this._attr_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._attr_ = node;
+    }
+
+    public PExp getExp()
+    {
+        return this._exp_;
+    }
+
+    public void setExp(PExp node)
+    {
+        if(this._exp_ != null)
+        {
+            this._exp_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._exp_ = node;
     }
 
     public TSemicolon getSemicolon()
@@ -187,7 +247,9 @@ public final class ADecConsDecCons extends PDecCons
             + toString(this._const_)
             + toString(this._colon_)
             + toString(this._tipo_)
-            + toString(this._idAtribuicao_)
+            + toString(this._id_)
+            + toString(this._attr_)
+            + toString(this._exp_)
             + toString(this._semicolon_);
     }
 
@@ -213,9 +275,21 @@ public final class ADecConsDecCons extends PDecCons
             return;
         }
 
-        if(this._idAtribuicao_ == child)
+        if(this._id_ == child)
         {
-            this._idAtribuicao_ = null;
+            this._id_ = null;
+            return;
+        }
+
+        if(this._attr_ == child)
+        {
+            this._attr_ = null;
+            return;
+        }
+
+        if(this._exp_ == child)
+        {
+            this._exp_ = null;
             return;
         }
 
@@ -250,9 +324,21 @@ public final class ADecConsDecCons extends PDecCons
             return;
         }
 
-        if(this._idAtribuicao_ == oldChild)
+        if(this._id_ == oldChild)
         {
-            setIdAtribuicao((PIdAtribuicao) newChild);
+            setId((TId) newChild);
+            return;
+        }
+
+        if(this._attr_ == oldChild)
+        {
+            setAttr((TAttr) newChild);
+            return;
+        }
+
+        if(this._exp_ == oldChild)
+        {
+            setExp((PExp) newChild);
             return;
         }
 

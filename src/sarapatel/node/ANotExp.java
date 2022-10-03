@@ -5,51 +5,51 @@ package sarapatel.node;
 import sarapatel.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AMinusExpExp extends PExp
+public final class ANotExp extends PExp
 {
-    private TMinus _minus_;
-    private PNumber _number_;
+    private TNao _nao_;
+    private PBooleanExp _booleanExp_;
 
-    public AMinusExpExp()
+    public ANotExp()
     {
         // Constructor
     }
 
-    public AMinusExpExp(
-        @SuppressWarnings("hiding") TMinus _minus_,
-        @SuppressWarnings("hiding") PNumber _number_)
+    public ANotExp(
+        @SuppressWarnings("hiding") TNao _nao_,
+        @SuppressWarnings("hiding") PBooleanExp _booleanExp_)
     {
         // Constructor
-        setMinus(_minus_);
+        setNao(_nao_);
 
-        setNumber(_number_);
+        setBooleanExp(_booleanExp_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AMinusExpExp(
-            cloneNode(this._minus_),
-            cloneNode(this._number_));
+        return new ANotExp(
+            cloneNode(this._nao_),
+            cloneNode(this._booleanExp_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAMinusExpExp(this);
+        ((Analysis) sw).caseANotExp(this);
     }
 
-    public TMinus getMinus()
+    public TNao getNao()
     {
-        return this._minus_;
+        return this._nao_;
     }
 
-    public void setMinus(TMinus node)
+    public void setNao(TNao node)
     {
-        if(this._minus_ != null)
+        if(this._nao_ != null)
         {
-            this._minus_.parent(null);
+            this._nao_.parent(null);
         }
 
         if(node != null)
@@ -62,19 +62,19 @@ public final class AMinusExpExp extends PExp
             node.parent(this);
         }
 
-        this._minus_ = node;
+        this._nao_ = node;
     }
 
-    public PNumber getNumber()
+    public PBooleanExp getBooleanExp()
     {
-        return this._number_;
+        return this._booleanExp_;
     }
 
-    public void setNumber(PNumber node)
+    public void setBooleanExp(PBooleanExp node)
     {
-        if(this._number_ != null)
+        if(this._booleanExp_ != null)
         {
-            this._number_.parent(null);
+            this._booleanExp_.parent(null);
         }
 
         if(node != null)
@@ -87,30 +87,30 @@ public final class AMinusExpExp extends PExp
             node.parent(this);
         }
 
-        this._number_ = node;
+        this._booleanExp_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._minus_)
-            + toString(this._number_);
+            + toString(this._nao_)
+            + toString(this._booleanExp_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._minus_ == child)
+        if(this._nao_ == child)
         {
-            this._minus_ = null;
+            this._nao_ = null;
             return;
         }
 
-        if(this._number_ == child)
+        if(this._booleanExp_ == child)
         {
-            this._number_ = null;
+            this._booleanExp_ = null;
             return;
         }
 
@@ -121,15 +121,15 @@ public final class AMinusExpExp extends PExp
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._minus_ == oldChild)
+        if(this._nao_ == oldChild)
         {
-            setMinus((TMinus) newChild);
+            setNao((TNao) newChild);
             return;
         }
 
-        if(this._number_ == oldChild)
+        if(this._booleanExp_ == oldChild)
         {
-            setNumber((PNumber) newChild);
+            setBooleanExp((PBooleanExp) newChild);
             return;
         }
 

@@ -5,22 +5,26 @@ package sarapatel.node;
 import sarapatel.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AMinusExpExp extends PExp
+public final class AGreaterExp extends PExp
 {
-    private TMinus _minus_;
+    private PExp _exp_;
+    private TGreater _greater_;
     private PNumber _number_;
 
-    public AMinusExpExp()
+    public AGreaterExp()
     {
         // Constructor
     }
 
-    public AMinusExpExp(
-        @SuppressWarnings("hiding") TMinus _minus_,
+    public AGreaterExp(
+        @SuppressWarnings("hiding") PExp _exp_,
+        @SuppressWarnings("hiding") TGreater _greater_,
         @SuppressWarnings("hiding") PNumber _number_)
     {
         // Constructor
-        setMinus(_minus_);
+        setExp(_exp_);
+
+        setGreater(_greater_);
 
         setNumber(_number_);
 
@@ -29,27 +33,28 @@ public final class AMinusExpExp extends PExp
     @Override
     public Object clone()
     {
-        return new AMinusExpExp(
-            cloneNode(this._minus_),
+        return new AGreaterExp(
+            cloneNode(this._exp_),
+            cloneNode(this._greater_),
             cloneNode(this._number_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAMinusExpExp(this);
+        ((Analysis) sw).caseAGreaterExp(this);
     }
 
-    public TMinus getMinus()
+    public PExp getExp()
     {
-        return this._minus_;
+        return this._exp_;
     }
 
-    public void setMinus(TMinus node)
+    public void setExp(PExp node)
     {
-        if(this._minus_ != null)
+        if(this._exp_ != null)
         {
-            this._minus_.parent(null);
+            this._exp_.parent(null);
         }
 
         if(node != null)
@@ -62,7 +67,32 @@ public final class AMinusExpExp extends PExp
             node.parent(this);
         }
 
-        this._minus_ = node;
+        this._exp_ = node;
+    }
+
+    public TGreater getGreater()
+    {
+        return this._greater_;
+    }
+
+    public void setGreater(TGreater node)
+    {
+        if(this._greater_ != null)
+        {
+            this._greater_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._greater_ = node;
     }
 
     public PNumber getNumber()
@@ -94,7 +124,8 @@ public final class AMinusExpExp extends PExp
     public String toString()
     {
         return ""
-            + toString(this._minus_)
+            + toString(this._exp_)
+            + toString(this._greater_)
             + toString(this._number_);
     }
 
@@ -102,9 +133,15 @@ public final class AMinusExpExp extends PExp
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._minus_ == child)
+        if(this._exp_ == child)
         {
-            this._minus_ = null;
+            this._exp_ = null;
+            return;
+        }
+
+        if(this._greater_ == child)
+        {
+            this._greater_ = null;
             return;
         }
 
@@ -121,9 +158,15 @@ public final class AMinusExpExp extends PExp
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._minus_ == oldChild)
+        if(this._exp_ == oldChild)
         {
-            setMinus((TMinus) newChild);
+            setExp((PExp) newChild);
+            return;
+        }
+
+        if(this._greater_ == oldChild)
+        {
+            setGreater((TGreater) newChild);
             return;
         }
 

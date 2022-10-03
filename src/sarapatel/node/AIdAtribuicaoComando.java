@@ -7,7 +7,9 @@ import sarapatel.analysis.*;
 @SuppressWarnings("nls")
 public final class AIdAtribuicaoComando extends PComando
 {
-    private PIdAtribuicao _idAtribuicao_;
+    private TId _id_;
+    private TAttr _attr_;
+    private PExp _exp_;
     private TSemicolon _semicolon_;
 
     public AIdAtribuicaoComando()
@@ -16,11 +18,17 @@ public final class AIdAtribuicaoComando extends PComando
     }
 
     public AIdAtribuicaoComando(
-        @SuppressWarnings("hiding") PIdAtribuicao _idAtribuicao_,
+        @SuppressWarnings("hiding") TId _id_,
+        @SuppressWarnings("hiding") TAttr _attr_,
+        @SuppressWarnings("hiding") PExp _exp_,
         @SuppressWarnings("hiding") TSemicolon _semicolon_)
     {
         // Constructor
-        setIdAtribuicao(_idAtribuicao_);
+        setId(_id_);
+
+        setAttr(_attr_);
+
+        setExp(_exp_);
 
         setSemicolon(_semicolon_);
 
@@ -30,7 +38,9 @@ public final class AIdAtribuicaoComando extends PComando
     public Object clone()
     {
         return new AIdAtribuicaoComando(
-            cloneNode(this._idAtribuicao_),
+            cloneNode(this._id_),
+            cloneNode(this._attr_),
+            cloneNode(this._exp_),
             cloneNode(this._semicolon_));
     }
 
@@ -40,16 +50,16 @@ public final class AIdAtribuicaoComando extends PComando
         ((Analysis) sw).caseAIdAtribuicaoComando(this);
     }
 
-    public PIdAtribuicao getIdAtribuicao()
+    public TId getId()
     {
-        return this._idAtribuicao_;
+        return this._id_;
     }
 
-    public void setIdAtribuicao(PIdAtribuicao node)
+    public void setId(TId node)
     {
-        if(this._idAtribuicao_ != null)
+        if(this._id_ != null)
         {
-            this._idAtribuicao_.parent(null);
+            this._id_.parent(null);
         }
 
         if(node != null)
@@ -62,7 +72,57 @@ public final class AIdAtribuicaoComando extends PComando
             node.parent(this);
         }
 
-        this._idAtribuicao_ = node;
+        this._id_ = node;
+    }
+
+    public TAttr getAttr()
+    {
+        return this._attr_;
+    }
+
+    public void setAttr(TAttr node)
+    {
+        if(this._attr_ != null)
+        {
+            this._attr_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._attr_ = node;
+    }
+
+    public PExp getExp()
+    {
+        return this._exp_;
+    }
+
+    public void setExp(PExp node)
+    {
+        if(this._exp_ != null)
+        {
+            this._exp_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._exp_ = node;
     }
 
     public TSemicolon getSemicolon()
@@ -94,7 +154,9 @@ public final class AIdAtribuicaoComando extends PComando
     public String toString()
     {
         return ""
-            + toString(this._idAtribuicao_)
+            + toString(this._id_)
+            + toString(this._attr_)
+            + toString(this._exp_)
             + toString(this._semicolon_);
     }
 
@@ -102,9 +164,21 @@ public final class AIdAtribuicaoComando extends PComando
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._idAtribuicao_ == child)
+        if(this._id_ == child)
         {
-            this._idAtribuicao_ = null;
+            this._id_ = null;
+            return;
+        }
+
+        if(this._attr_ == child)
+        {
+            this._attr_ = null;
+            return;
+        }
+
+        if(this._exp_ == child)
+        {
+            this._exp_ = null;
             return;
         }
 
@@ -121,9 +195,21 @@ public final class AIdAtribuicaoComando extends PComando
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._idAtribuicao_ == oldChild)
+        if(this._id_ == oldChild)
         {
-            setIdAtribuicao((PIdAtribuicao) newChild);
+            setId((TId) newChild);
+            return;
+        }
+
+        if(this._attr_ == oldChild)
+        {
+            setAttr((TAttr) newChild);
+            return;
+        }
+
+        if(this._exp_ == oldChild)
+        {
+            setExp((PExp) newChild);
             return;
         }
 

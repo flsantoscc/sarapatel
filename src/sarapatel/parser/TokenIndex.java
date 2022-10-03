@@ -136,7 +136,7 @@ class TokenIndex extends AnalysisAdapter
     }
 
     @Override
-    public void caseTGreaterOrEqual(@SuppressWarnings("unused") TGreaterOrEqual node)
+    public void caseTGreaterEqual(@SuppressWarnings("unused") TGreaterEqual node)
     {
         this.index = 21;
     }
@@ -262,38 +262,32 @@ class TokenIndex extends AnalysisAdapter
     }
 
     @Override
-    public void caseTBooleanConstantTrue(@SuppressWarnings("unused") TBooleanConstantTrue node)
+    public void caseTBooleanConstant(@SuppressWarnings("unused") TBooleanConstant node)
     {
         this.index = 42;
     }
 
     @Override
-    public void caseTBooleanConstantFalse(@SuppressWarnings("unused") TBooleanConstantFalse node)
+    public void caseTNegativeFloatingConstant(@SuppressWarnings("unused") TNegativeFloatingConstant node)
     {
         this.index = 43;
     }
 
     @Override
-    public void caseTNegativeFloatingConstant(@SuppressWarnings("unused") TNegativeFloatingConstant node)
+    public void caseTNegativeIntegerConstant(@SuppressWarnings("unused") TNegativeIntegerConstant node)
     {
         this.index = 44;
     }
 
     @Override
-    public void caseTNegativeIntegerConstant(@SuppressWarnings("unused") TNegativeIntegerConstant node)
+    public void caseTId(@SuppressWarnings("unused") TId node)
     {
         this.index = 45;
     }
 
     @Override
-    public void caseTIdentifier(@SuppressWarnings("unused") TIdentifier node)
-    {
-        this.index = 46;
-    }
-
-    @Override
     public void caseEOF(@SuppressWarnings("unused") EOF node)
     {
-        this.index = 47;
+        this.index = 46;
     }
 }

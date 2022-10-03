@@ -5,22 +5,26 @@ package sarapatel.node;
 import sarapatel.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AMinusExpExp extends PExp
+public final class ADivisionDividitiveExp extends PDividitiveExp
 {
-    private TMinus _minus_;
+    private PMultiplicativeExp _multiplicativeExp_;
+    private TDiv _div_;
     private PNumber _number_;
 
-    public AMinusExpExp()
+    public ADivisionDividitiveExp()
     {
         // Constructor
     }
 
-    public AMinusExpExp(
-        @SuppressWarnings("hiding") TMinus _minus_,
+    public ADivisionDividitiveExp(
+        @SuppressWarnings("hiding") PMultiplicativeExp _multiplicativeExp_,
+        @SuppressWarnings("hiding") TDiv _div_,
         @SuppressWarnings("hiding") PNumber _number_)
     {
         // Constructor
-        setMinus(_minus_);
+        setMultiplicativeExp(_multiplicativeExp_);
+
+        setDiv(_div_);
 
         setNumber(_number_);
 
@@ -29,27 +33,28 @@ public final class AMinusExpExp extends PExp
     @Override
     public Object clone()
     {
-        return new AMinusExpExp(
-            cloneNode(this._minus_),
+        return new ADivisionDividitiveExp(
+            cloneNode(this._multiplicativeExp_),
+            cloneNode(this._div_),
             cloneNode(this._number_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAMinusExpExp(this);
+        ((Analysis) sw).caseADivisionDividitiveExp(this);
     }
 
-    public TMinus getMinus()
+    public PMultiplicativeExp getMultiplicativeExp()
     {
-        return this._minus_;
+        return this._multiplicativeExp_;
     }
 
-    public void setMinus(TMinus node)
+    public void setMultiplicativeExp(PMultiplicativeExp node)
     {
-        if(this._minus_ != null)
+        if(this._multiplicativeExp_ != null)
         {
-            this._minus_.parent(null);
+            this._multiplicativeExp_.parent(null);
         }
 
         if(node != null)
@@ -62,7 +67,32 @@ public final class AMinusExpExp extends PExp
             node.parent(this);
         }
 
-        this._minus_ = node;
+        this._multiplicativeExp_ = node;
+    }
+
+    public TDiv getDiv()
+    {
+        return this._div_;
+    }
+
+    public void setDiv(TDiv node)
+    {
+        if(this._div_ != null)
+        {
+            this._div_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._div_ = node;
     }
 
     public PNumber getNumber()
@@ -94,7 +124,8 @@ public final class AMinusExpExp extends PExp
     public String toString()
     {
         return ""
-            + toString(this._minus_)
+            + toString(this._multiplicativeExp_)
+            + toString(this._div_)
             + toString(this._number_);
     }
 
@@ -102,9 +133,15 @@ public final class AMinusExpExp extends PExp
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._minus_ == child)
+        if(this._multiplicativeExp_ == child)
         {
-            this._minus_ = null;
+            this._multiplicativeExp_ = null;
+            return;
+        }
+
+        if(this._div_ == child)
+        {
+            this._div_ = null;
             return;
         }
 
@@ -121,9 +158,15 @@ public final class AMinusExpExp extends PExp
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._minus_ == oldChild)
+        if(this._multiplicativeExp_ == oldChild)
         {
-            setMinus((TMinus) newChild);
+            setMultiplicativeExp((PMultiplicativeExp) newChild);
+            return;
+        }
+
+        if(this._div_ == oldChild)
+        {
+            setDiv((TDiv) newChild);
             return;
         }
 

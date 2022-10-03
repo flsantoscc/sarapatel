@@ -5,22 +5,22 @@ package sarapatel.node;
 import sarapatel.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AMinusExpExp extends PExp
+public final class AModExpExp extends PExp
 {
-    private TMinus _minus_;
+    private PModExp _modExp_;
     private PNumber _number_;
 
-    public AMinusExpExp()
+    public AModExpExp()
     {
         // Constructor
     }
 
-    public AMinusExpExp(
-        @SuppressWarnings("hiding") TMinus _minus_,
+    public AModExpExp(
+        @SuppressWarnings("hiding") PModExp _modExp_,
         @SuppressWarnings("hiding") PNumber _number_)
     {
         // Constructor
-        setMinus(_minus_);
+        setModExp(_modExp_);
 
         setNumber(_number_);
 
@@ -29,27 +29,27 @@ public final class AMinusExpExp extends PExp
     @Override
     public Object clone()
     {
-        return new AMinusExpExp(
-            cloneNode(this._minus_),
+        return new AModExpExp(
+            cloneNode(this._modExp_),
             cloneNode(this._number_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAMinusExpExp(this);
+        ((Analysis) sw).caseAModExpExp(this);
     }
 
-    public TMinus getMinus()
+    public PModExp getModExp()
     {
-        return this._minus_;
+        return this._modExp_;
     }
 
-    public void setMinus(TMinus node)
+    public void setModExp(PModExp node)
     {
-        if(this._minus_ != null)
+        if(this._modExp_ != null)
         {
-            this._minus_.parent(null);
+            this._modExp_.parent(null);
         }
 
         if(node != null)
@@ -62,7 +62,7 @@ public final class AMinusExpExp extends PExp
             node.parent(this);
         }
 
-        this._minus_ = node;
+        this._modExp_ = node;
     }
 
     public PNumber getNumber()
@@ -94,7 +94,7 @@ public final class AMinusExpExp extends PExp
     public String toString()
     {
         return ""
-            + toString(this._minus_)
+            + toString(this._modExp_)
             + toString(this._number_);
     }
 
@@ -102,9 +102,9 @@ public final class AMinusExpExp extends PExp
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._minus_ == child)
+        if(this._modExp_ == child)
         {
-            this._minus_ = null;
+            this._modExp_ = null;
             return;
         }
 
@@ -121,9 +121,9 @@ public final class AMinusExpExp extends PExp
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._minus_ == oldChild)
+        if(this._modExp_ == oldChild)
         {
-            setMinus((TMinus) newChild);
+            setModExp((PModExp) newChild);
             return;
         }
 

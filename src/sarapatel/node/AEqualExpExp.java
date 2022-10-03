@@ -5,94 +5,44 @@ package sarapatel.node;
 import sarapatel.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AIdAtribuicaoIdOrIdAtribuicao extends PIdOrIdAtribuicao
+public final class AEqualExpExp extends PExp
 {
-    private TId _id_;
-    private TAttr _attr_;
     private PExp _exp_;
+    private TEqual _equal_;
+    private PLiteral _literal_;
 
-    public AIdAtribuicaoIdOrIdAtribuicao()
+    public AEqualExpExp()
     {
         // Constructor
     }
 
-    public AIdAtribuicaoIdOrIdAtribuicao(
-        @SuppressWarnings("hiding") TId _id_,
-        @SuppressWarnings("hiding") TAttr _attr_,
-        @SuppressWarnings("hiding") PExp _exp_)
+    public AEqualExpExp(
+        @SuppressWarnings("hiding") PExp _exp_,
+        @SuppressWarnings("hiding") TEqual _equal_,
+        @SuppressWarnings("hiding") PLiteral _literal_)
     {
         // Constructor
-        setId(_id_);
-
-        setAttr(_attr_);
-
         setExp(_exp_);
+
+        setEqual(_equal_);
+
+        setLiteral(_literal_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AIdAtribuicaoIdOrIdAtribuicao(
-            cloneNode(this._id_),
-            cloneNode(this._attr_),
-            cloneNode(this._exp_));
+        return new AEqualExpExp(
+            cloneNode(this._exp_),
+            cloneNode(this._equal_),
+            cloneNode(this._literal_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAIdAtribuicaoIdOrIdAtribuicao(this);
-    }
-
-    public TId getId()
-    {
-        return this._id_;
-    }
-
-    public void setId(TId node)
-    {
-        if(this._id_ != null)
-        {
-            this._id_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._id_ = node;
-    }
-
-    public TAttr getAttr()
-    {
-        return this._attr_;
-    }
-
-    public void setAttr(TAttr node)
-    {
-        if(this._attr_ != null)
-        {
-            this._attr_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._attr_ = node;
+        ((Analysis) sw).caseAEqualExpExp(this);
     }
 
     public PExp getExp()
@@ -120,34 +70,84 @@ public final class AIdAtribuicaoIdOrIdAtribuicao extends PIdOrIdAtribuicao
         this._exp_ = node;
     }
 
+    public TEqual getEqual()
+    {
+        return this._equal_;
+    }
+
+    public void setEqual(TEqual node)
+    {
+        if(this._equal_ != null)
+        {
+            this._equal_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._equal_ = node;
+    }
+
+    public PLiteral getLiteral()
+    {
+        return this._literal_;
+    }
+
+    public void setLiteral(PLiteral node)
+    {
+        if(this._literal_ != null)
+        {
+            this._literal_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._literal_ = node;
+    }
+
     @Override
     public String toString()
     {
         return ""
-            + toString(this._id_)
-            + toString(this._attr_)
-            + toString(this._exp_);
+            + toString(this._exp_)
+            + toString(this._equal_)
+            + toString(this._literal_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._id_ == child)
-        {
-            this._id_ = null;
-            return;
-        }
-
-        if(this._attr_ == child)
-        {
-            this._attr_ = null;
-            return;
-        }
-
         if(this._exp_ == child)
         {
             this._exp_ = null;
+            return;
+        }
+
+        if(this._equal_ == child)
+        {
+            this._equal_ = null;
+            return;
+        }
+
+        if(this._literal_ == child)
+        {
+            this._literal_ = null;
             return;
         }
 
@@ -158,21 +158,21 @@ public final class AIdAtribuicaoIdOrIdAtribuicao extends PIdOrIdAtribuicao
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._id_ == oldChild)
-        {
-            setId((TId) newChild);
-            return;
-        }
-
-        if(this._attr_ == oldChild)
-        {
-            setAttr((TAttr) newChild);
-            return;
-        }
-
         if(this._exp_ == oldChild)
         {
             setExp((PExp) newChild);
+            return;
+        }
+
+        if(this._equal_ == oldChild)
+        {
+            setEqual((TEqual) newChild);
+            return;
+        }
+
+        if(this._literal_ == oldChild)
+        {
+            setLiteral((PLiteral) newChild);
             return;
         }
 
