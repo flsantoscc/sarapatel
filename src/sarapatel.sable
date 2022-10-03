@@ -126,7 +126,6 @@ Productions
     dec_funcao =
         {dec_funcao} funcao colon tipo id l_par parametros r_par exp;
 
-
     parametros =
         {parametros} parametros_aux?;
 
@@ -176,44 +175,66 @@ Productions
     pipe_exp =
         {pipe_exp} pipe exp;
 
+
     number =
         {integer} integer_constant |
         {real} floating_constant   ;
 
-    literal =
-        {number} number            |
-        {boolean} boolean_constant |
+    boolean_exp =
+        {boolean} boolean_constant;
+
+    cadeia_exp =
         {cadeia} cadeia_constant   ;
 
+    literal =
+            {integer} integer_constant |
+            {real} floating_constant   |
+            {boolean} boolean_constant |
+            {cadeia} cadeia_constant   ;
+
     multiplicative_exp =
-        {number} number                                |
-        {multiplicative} multiplicative_exp star number|
-        {dividitive} multiplicative_exp div number     |
-        {mod} multiplicative_exp mod number            ;
+        {multiplication} multiplicative_exp star number |
+        {number} number                                 ;
+
+    dividitive_exp =
+        {division} multiplicative_exp div number;
+
+    mod_exp =
+        {mod} multiplicative_exp mod number;
 
     additive_exp =
-        {multiplicative_exp} multiplicative_exp                 |
-        {additive_exp} additive_exp plus multiplicative_exp     |
-        {subtractive_exp} additive_exp minus multiplicative_exp ;
+        {additive_exp} additive_exp plus multiplicative_exp;
 
-    relational_exp =
-        {additive_exp} additive_exp                               |
-        {equal_exp} relational_exp equal additive_exp             |
-        {greater} relational_exp greater additive_exp             |
-        {greater_equal} relational_exp greater_equal additive_exp ;
+    subtractive_exp =
+        {subtractive_exp} additive_exp minus multiplicative_exp;
+
+    conditional =
+        {if} se l_par exp r_par conditional                           |
+        {if_else} se l_par exp r_par conditional_aux senao conditional |
+        {comando} comando                                             ;
+
+    conditional_aux = {if_else}
+        se l_par exp r_par [thenbranch]:conditional_aux senao [elsebranch]:conditional_aux |
+        {comando} comando                                                                 ;
 
     exp =
-        {literal} literal                                                |
+        {boolean_exp} boolean_exp                                        |
+        {cadeia_exp} cadeia_exp                                          |
         {valor} valor                                                    |
         {sorrounded_exp} l_par exp r_par                                 |
         {chamada_funcao} chamada_funcao                                  |
         {array_comp} array_comp                                          |
-        {minus_exp} minus exp                                            |
-        {se_senao} se l_par [exp1]:exp r_par [exp2]:exp senao [exp3]:exp |
-        {multiplicative} multiplicative_exp                              |
-        {additive} additive_exp                                          |
-        {relational} relational_exp                                      |
-        {not} nao exp                                                    |
-        {and} [left]:exp e [right]:exp                                   |
-        {or} [left]:exp ou [right]:exp                                   |
+        {minus_exp} minus number                                         |
+        {conditional} conditional                                        |
+        {additive_exp} additive_exp                                      |
+        {subtractive_exp} subtractive_exp                                |
+        {multiplicative_exp} multiplicative_exp                          |
+        {dividitive_exp} dividitive_exp                                  |
+        {mod_exp} mod_exp number                                         |
+        {equal_exp} exp equal literal                                    |
+        {greater} exp greater number                                     |
+        {greater_equal} exp greater_equal number                         |
+        {not} nao boolean_exp                                            |
+        {and} exp e boolean_exp                                          |
+        {or}  exp ou boolean_exp                                         |
         {bloco_expressoes} bloco_expressoes                              ;
