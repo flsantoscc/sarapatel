@@ -81,6 +81,12 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
+    public void caseADecProcedimentoDecProcPrincipal(ADecProcedimentoDecProcPrincipal node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
     public void caseADecVarDecVarOrConst(ADecVarDecVarOrConst node)
     {
         defaultCase(node);
@@ -435,25 +441,7 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseAAdditiveExpExp(AAdditiveExpExp node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
     public void caseASubtractiveExpExp(ASubtractiveExpExp node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAMultiplicativeExpExp(AMultiplicativeExpExp node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseADividitiveExpExp(ADividitiveExpExp node)
     {
         defaultCase(node);
     }
@@ -712,6 +700,12 @@ public class AnalysisAdapter implements Analysis
 
     @Override
     public void caseTSize(TSize node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseTPrincipal(TPrincipal node)
     {
         defaultCase(node);
     }

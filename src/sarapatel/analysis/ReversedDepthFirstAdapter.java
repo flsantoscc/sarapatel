@@ -50,6 +50,10 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     public void caseAProgramaPrograma(AProgramaPrograma node)
     {
         inAProgramaPrograma(node);
+        if(node.getDecProcPrincipal() != null)
+        {
+            node.getDecProcPrincipal().apply(this);
+        }
         {
             List<PDecProcOrFuncao> copy = new ArrayList<PDecProcOrFuncao>(node.getDecProcOrFuncao());
             Collections.reverse(copy);
@@ -67,6 +71,63 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
             }
         }
         outAProgramaPrograma(node);
+    }
+
+    public void inADecProcedimentoDecProcPrincipal(ADecProcedimentoDecProcPrincipal node)
+    {
+        defaultIn(node);
+    }
+
+    public void outADecProcedimentoDecProcPrincipal(ADecProcedimentoDecProcPrincipal node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseADecProcedimentoDecProcPrincipal(ADecProcedimentoDecProcPrincipal node)
+    {
+        inADecProcedimentoDecProcPrincipal(node);
+        if(node.getTermine() != null)
+        {
+            node.getTermine().apply(this);
+        }
+        if(node.getComando() != null)
+        {
+            node.getComando().apply(this);
+        }
+        if(node.getComece() != null)
+        {
+            node.getComece().apply(this);
+        }
+        if(node.getRPar() != null)
+        {
+            node.getRPar().apply(this);
+        }
+        if(node.getParametros() != null)
+        {
+            node.getParametros().apply(this);
+        }
+        if(node.getLPar() != null)
+        {
+            node.getLPar().apply(this);
+        }
+        if(node.getPrincipal() != null)
+        {
+            node.getPrincipal().apply(this);
+        }
+        if(node.getColon() != null)
+        {
+            node.getColon().apply(this);
+        }
+        if(node.getProcedimento() != null)
+        {
+            node.getProcedimento().apply(this);
+        }
+        if(node.getAttr() != null)
+        {
+            node.getAttr().apply(this);
+        }
+        outADecProcedimentoDecProcPrincipal(node);
     }
 
     public void inADecVarDecVarOrConst(ADecVarDecVarOrConst node)
@@ -474,9 +535,17 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     public void caseADecProcedimentoDecProcedimento(ADecProcedimentoDecProcedimento node)
     {
         inADecProcedimentoDecProcedimento(node);
+        if(node.getTermine() != null)
+        {
+            node.getTermine().apply(this);
+        }
         if(node.getComando() != null)
         {
             node.getComando().apply(this);
+        }
+        if(node.getComece() != null)
+        {
+            node.getComece().apply(this);
         }
         if(node.getRPar() != null)
         {
@@ -523,6 +592,14 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     public void caseADecFuncaoDecFuncao(ADecFuncaoDecFuncao node)
     {
         inADecFuncaoDecFuncao(node);
+        if(node.getTermine() != null)
+        {
+            node.getTermine().apply(this);
+        }
+        if(node.getComece() != null)
+        {
+            node.getComece().apply(this);
+        }
         if(node.getExp() != null)
         {
             node.getExp().apply(this);
@@ -1469,9 +1546,9 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     public void caseAAdditiveExpAdditiveExp(AAdditiveExpAdditiveExp node)
     {
         inAAdditiveExpAdditiveExp(node);
-        if(node.getMultiplicativeExp() != null)
+        if(node.getDividitiveExp() != null)
         {
-            node.getMultiplicativeExp().apply(this);
+            node.getDividitiveExp().apply(this);
         }
         if(node.getPlus() != null)
         {
@@ -1498,9 +1575,9 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
     public void caseASubtractiveExpSubtractiveExp(ASubtractiveExpSubtractiveExp node)
     {
         inASubtractiveExpSubtractiveExp(node);
-        if(node.getMultiplicativeExp() != null)
+        if(node.getDividitiveExp() != null)
         {
-            node.getMultiplicativeExp().apply(this);
+            node.getDividitiveExp().apply(this);
         }
         if(node.getMinus() != null)
         {
@@ -1672,27 +1749,6 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         outAMinusExpExp(node);
     }
 
-    public void inAAdditiveExpExp(AAdditiveExpExp node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAAdditiveExpExp(AAdditiveExpExp node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAAdditiveExpExp(AAdditiveExpExp node)
-    {
-        inAAdditiveExpExp(node);
-        if(node.getAdditiveExp() != null)
-        {
-            node.getAdditiveExp().apply(this);
-        }
-        outAAdditiveExpExp(node);
-    }
-
     public void inASubtractiveExpExp(ASubtractiveExpExp node)
     {
         defaultIn(node);
@@ -1712,48 +1768,6 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
             node.getSubtractiveExp().apply(this);
         }
         outASubtractiveExpExp(node);
-    }
-
-    public void inAMultiplicativeExpExp(AMultiplicativeExpExp node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAMultiplicativeExpExp(AMultiplicativeExpExp node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAMultiplicativeExpExp(AMultiplicativeExpExp node)
-    {
-        inAMultiplicativeExpExp(node);
-        if(node.getMultiplicativeExp() != null)
-        {
-            node.getMultiplicativeExp().apply(this);
-        }
-        outAMultiplicativeExpExp(node);
-    }
-
-    public void inADividitiveExpExp(ADividitiveExpExp node)
-    {
-        defaultIn(node);
-    }
-
-    public void outADividitiveExpExp(ADividitiveExpExp node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseADividitiveExpExp(ADividitiveExpExp node)
-    {
-        inADividitiveExpExp(node);
-        if(node.getDividitiveExp() != null)
-        {
-            node.getDividitiveExp().apply(this);
-        }
-        outADividitiveExpExp(node);
     }
 
     public void inAModExpExp(AModExpExp node)

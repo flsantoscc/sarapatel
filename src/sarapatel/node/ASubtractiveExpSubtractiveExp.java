@@ -9,7 +9,7 @@ public final class ASubtractiveExpSubtractiveExp extends PSubtractiveExp
 {
     private PAdditiveExp _additiveExp_;
     private TMinus _minus_;
-    private PMultiplicativeExp _multiplicativeExp_;
+    private PDividitiveExp _dividitiveExp_;
 
     public ASubtractiveExpSubtractiveExp()
     {
@@ -19,14 +19,14 @@ public final class ASubtractiveExpSubtractiveExp extends PSubtractiveExp
     public ASubtractiveExpSubtractiveExp(
         @SuppressWarnings("hiding") PAdditiveExp _additiveExp_,
         @SuppressWarnings("hiding") TMinus _minus_,
-        @SuppressWarnings("hiding") PMultiplicativeExp _multiplicativeExp_)
+        @SuppressWarnings("hiding") PDividitiveExp _dividitiveExp_)
     {
         // Constructor
         setAdditiveExp(_additiveExp_);
 
         setMinus(_minus_);
 
-        setMultiplicativeExp(_multiplicativeExp_);
+        setDividitiveExp(_dividitiveExp_);
 
     }
 
@@ -36,7 +36,7 @@ public final class ASubtractiveExpSubtractiveExp extends PSubtractiveExp
         return new ASubtractiveExpSubtractiveExp(
             cloneNode(this._additiveExp_),
             cloneNode(this._minus_),
-            cloneNode(this._multiplicativeExp_));
+            cloneNode(this._dividitiveExp_));
     }
 
     @Override
@@ -95,16 +95,16 @@ public final class ASubtractiveExpSubtractiveExp extends PSubtractiveExp
         this._minus_ = node;
     }
 
-    public PMultiplicativeExp getMultiplicativeExp()
+    public PDividitiveExp getDividitiveExp()
     {
-        return this._multiplicativeExp_;
+        return this._dividitiveExp_;
     }
 
-    public void setMultiplicativeExp(PMultiplicativeExp node)
+    public void setDividitiveExp(PDividitiveExp node)
     {
-        if(this._multiplicativeExp_ != null)
+        if(this._dividitiveExp_ != null)
         {
-            this._multiplicativeExp_.parent(null);
+            this._dividitiveExp_.parent(null);
         }
 
         if(node != null)
@@ -117,7 +117,7 @@ public final class ASubtractiveExpSubtractiveExp extends PSubtractiveExp
             node.parent(this);
         }
 
-        this._multiplicativeExp_ = node;
+        this._dividitiveExp_ = node;
     }
 
     @Override
@@ -126,7 +126,7 @@ public final class ASubtractiveExpSubtractiveExp extends PSubtractiveExp
         return ""
             + toString(this._additiveExp_)
             + toString(this._minus_)
-            + toString(this._multiplicativeExp_);
+            + toString(this._dividitiveExp_);
     }
 
     @Override
@@ -145,9 +145,9 @@ public final class ASubtractiveExpSubtractiveExp extends PSubtractiveExp
             return;
         }
 
-        if(this._multiplicativeExp_ == child)
+        if(this._dividitiveExp_ == child)
         {
-            this._multiplicativeExp_ = null;
+            this._dividitiveExp_ = null;
             return;
         }
 
@@ -170,9 +170,9 @@ public final class ASubtractiveExpSubtractiveExp extends PSubtractiveExp
             return;
         }
 
-        if(this._multiplicativeExp_ == oldChild)
+        if(this._dividitiveExp_ == oldChild)
         {
-            setMultiplicativeExp((PMultiplicativeExp) newChild);
+            setDividitiveExp((PDividitiveExp) newChild);
             return;
         }
 

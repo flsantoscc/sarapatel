@@ -10,6 +10,7 @@ public final class AProgramaPrograma extends PPrograma
 {
     private final LinkedList<PDecVarOrConst> _decVarOrConst_ = new LinkedList<PDecVarOrConst>();
     private final LinkedList<PDecProcOrFuncao> _decProcOrFuncao_ = new LinkedList<PDecProcOrFuncao>();
+    private PDecProcPrincipal _decProcPrincipal_;
 
     public AProgramaPrograma()
     {
@@ -18,12 +19,15 @@ public final class AProgramaPrograma extends PPrograma
 
     public AProgramaPrograma(
         @SuppressWarnings("hiding") List<?> _decVarOrConst_,
-        @SuppressWarnings("hiding") List<?> _decProcOrFuncao_)
+        @SuppressWarnings("hiding") List<?> _decProcOrFuncao_,
+        @SuppressWarnings("hiding") PDecProcPrincipal _decProcPrincipal_)
     {
         // Constructor
         setDecVarOrConst(_decVarOrConst_);
 
         setDecProcOrFuncao(_decProcOrFuncao_);
+
+        setDecProcPrincipal(_decProcPrincipal_);
 
     }
 
@@ -32,7 +36,8 @@ public final class AProgramaPrograma extends PPrograma
     {
         return new AProgramaPrograma(
             cloneList(this._decVarOrConst_),
-            cloneList(this._decProcOrFuncao_));
+            cloneList(this._decProcOrFuncao_),
+            cloneNode(this._decProcPrincipal_));
     }
 
     @Override
@@ -93,12 +98,38 @@ public final class AProgramaPrograma extends PPrograma
         }
     }
 
+    public PDecProcPrincipal getDecProcPrincipal()
+    {
+        return this._decProcPrincipal_;
+    }
+
+    public void setDecProcPrincipal(PDecProcPrincipal node)
+    {
+        if(this._decProcPrincipal_ != null)
+        {
+            this._decProcPrincipal_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._decProcPrincipal_ = node;
+    }
+
     @Override
     public String toString()
     {
         return ""
             + toString(this._decVarOrConst_)
-            + toString(this._decProcOrFuncao_);
+            + toString(this._decProcOrFuncao_)
+            + toString(this._decProcPrincipal_);
     }
 
     @Override
@@ -112,6 +143,12 @@ public final class AProgramaPrograma extends PPrograma
 
         if(this._decProcOrFuncao_.remove(child))
         {
+            return;
+        }
+
+        if(this._decProcPrincipal_ == child)
+        {
+            this._decProcPrincipal_ = null;
             return;
         }
 
@@ -156,6 +193,12 @@ public final class AProgramaPrograma extends PPrograma
                 oldChild.parent(null);
                 return;
             }
+        }
+
+        if(this._decProcPrincipal_ == oldChild)
+        {
+            setDecProcPrincipal((PDecProcPrincipal) newChild);
+            return;
         }
 
         throw new RuntimeException("Not a child.");

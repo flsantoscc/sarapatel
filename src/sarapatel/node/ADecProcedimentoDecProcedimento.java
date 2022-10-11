@@ -14,7 +14,9 @@ public final class ADecProcedimentoDecProcedimento extends PDecProcedimento
     private TLPar _lPar_;
     private PParametros _parametros_;
     private TRPar _rPar_;
+    private TComece _comece_;
     private PComando _comando_;
+    private TTermine _termine_;
 
     public ADecProcedimentoDecProcedimento()
     {
@@ -29,7 +31,9 @@ public final class ADecProcedimentoDecProcedimento extends PDecProcedimento
         @SuppressWarnings("hiding") TLPar _lPar_,
         @SuppressWarnings("hiding") PParametros _parametros_,
         @SuppressWarnings("hiding") TRPar _rPar_,
-        @SuppressWarnings("hiding") PComando _comando_)
+        @SuppressWarnings("hiding") TComece _comece_,
+        @SuppressWarnings("hiding") PComando _comando_,
+        @SuppressWarnings("hiding") TTermine _termine_)
     {
         // Constructor
         setAttr(_attr_);
@@ -46,7 +50,11 @@ public final class ADecProcedimentoDecProcedimento extends PDecProcedimento
 
         setRPar(_rPar_);
 
+        setComece(_comece_);
+
         setComando(_comando_);
+
+        setTermine(_termine_);
 
     }
 
@@ -61,7 +69,9 @@ public final class ADecProcedimentoDecProcedimento extends PDecProcedimento
             cloneNode(this._lPar_),
             cloneNode(this._parametros_),
             cloneNode(this._rPar_),
-            cloneNode(this._comando_));
+            cloneNode(this._comece_),
+            cloneNode(this._comando_),
+            cloneNode(this._termine_));
     }
 
     @Override
@@ -245,6 +255,31 @@ public final class ADecProcedimentoDecProcedimento extends PDecProcedimento
         this._rPar_ = node;
     }
 
+    public TComece getComece()
+    {
+        return this._comece_;
+    }
+
+    public void setComece(TComece node)
+    {
+        if(this._comece_ != null)
+        {
+            this._comece_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._comece_ = node;
+    }
+
     public PComando getComando()
     {
         return this._comando_;
@@ -270,6 +305,31 @@ public final class ADecProcedimentoDecProcedimento extends PDecProcedimento
         this._comando_ = node;
     }
 
+    public TTermine getTermine()
+    {
+        return this._termine_;
+    }
+
+    public void setTermine(TTermine node)
+    {
+        if(this._termine_ != null)
+        {
+            this._termine_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._termine_ = node;
+    }
+
     @Override
     public String toString()
     {
@@ -281,7 +341,9 @@ public final class ADecProcedimentoDecProcedimento extends PDecProcedimento
             + toString(this._lPar_)
             + toString(this._parametros_)
             + toString(this._rPar_)
-            + toString(this._comando_);
+            + toString(this._comece_)
+            + toString(this._comando_)
+            + toString(this._termine_);
     }
 
     @Override
@@ -330,9 +392,21 @@ public final class ADecProcedimentoDecProcedimento extends PDecProcedimento
             return;
         }
 
+        if(this._comece_ == child)
+        {
+            this._comece_ = null;
+            return;
+        }
+
         if(this._comando_ == child)
         {
             this._comando_ = null;
+            return;
+        }
+
+        if(this._termine_ == child)
+        {
+            this._termine_ = null;
             return;
         }
 
@@ -385,9 +459,21 @@ public final class ADecProcedimentoDecProcedimento extends PDecProcedimento
             return;
         }
 
+        if(this._comece_ == oldChild)
+        {
+            setComece((TComece) newChild);
+            return;
+        }
+
         if(this._comando_ == oldChild)
         {
             setComando((PComando) newChild);
+            return;
+        }
+
+        if(this._termine_ == oldChild)
+        {
+            setTermine((TTermine) newChild);
             return;
         }
 

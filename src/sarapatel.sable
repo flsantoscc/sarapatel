@@ -58,6 +58,7 @@ Tokens
     imprima = 'imprima';
     leia = 'leia';
     size = 'size';
+    principal = 'principal';
 
     t_inteiro = 'inteiro';
     t_real = 'real';
@@ -84,7 +85,10 @@ Ignored Tokens
 
 Productions
     programa =
-        {programa} dec_var_or_const* dec_proc_or_funcao+;
+        {programa} dec_var_or_const* dec_proc_or_funcao+ dec_proc_principal;
+
+    dec_proc_principal =
+        {dec_procedimento} attr procedimento colon principal l_par parametros r_par comece comando termine;
 
     dec_var_or_const =
         {dec_var} dec_var   |
@@ -118,10 +122,10 @@ Productions
         {array_comp} l_bracket id pipe exp r_bracket;
 
     dec_procedimento =
-        {dec_procedimento} attr? procedimento colon id l_par parametros r_par comando;
+        {dec_procedimento} attr? procedimento colon id l_par parametros r_par comece comando termine;
 
     dec_funcao =
-        {dec_funcao} funcao colon tipo id l_par parametros r_par exp;
+        {dec_funcao} funcao colon tipo id l_par parametros r_par exp comece termine;
 
     parametros =
         {parametros} parametros_aux?;
@@ -138,21 +142,14 @@ Productions
     tipo_parametro =
         {tipo_base} tipo_base |
         {tipo_parametro_brkt} tipo_parametro l_bracket r_bracket;
-	
-    if = 
-    	{if} se l_par exp r_par senao if 	      |
-	{else} se l_par exp r_par [left]:if2 senao if ;
-   if2 =
-   	{if} se l_par exp r_par [left]:if2 senao [right]:if2;
 
     comando =
-	    {se} se l_par exp r_par comando		     			               |
-	    {se_senao} se l_par exp r_par [left]:comando senao [right]:comando |
-	    {enquanto} enquanto l_par exp r_par comando  			           |                              
-        {id_atribuicao} id attr exp semicolon        			           |                              
-        {chamada_proc} chamada_procedimento semicolon			           |                              
-        {bloco_comandos} bloco_comandos              			           |
-	    {exp} exp							                               ;
+        {se_comando} se l_par exp r_par comando semicolon                          |
+        {se_senao_comando} se l_par exp r_par [left]:comando senao [right]:comando |
+        {enquanto} enquanto l_par exp r_par comando                                |
+        {id_atribuicao} id attr exp semicolon                                      |
+        {chamada_proc} chamada_procedimento semicolon                              |
+        {bloco_comandos} bloco_comandos                                            ;
 
     bloco_comandos =
         {bloco_comandos} comece dec_var_or_const* comando* termine;
@@ -207,30 +204,25 @@ Productions
         {mod} multiplicative_exp mod number;
 
     additive_exp =
-        {additive_exp} additive_exp plus multiplicative_exp;
+        {additive_exp} additive_exp plus dividitive_exp;
 
     subtractive_exp =
-        {subtractive_exp} additive_exp minus multiplicative_exp;
+        {subtractive_exp} additive_exp minus dividitive_exp;
 
     exp =
-        {boolean_exp} boolean_exp                   			   |
-        {cadeia_exp} cadeia_exp                     			   |
-        {valor} valor                               			   |
-        {sorrounded_exp} l_par exp r_par            			   |
-        {chamada_funcao} chamada_funcao             			   |
-        {array_comp} array_comp                     			   |
-        {minus_exp} minus number                    			   |
-	    {se} se l_par exp r_par if		 		     	           |
-	    {se_senao} se l_par exp r_par [left]:if2 senao [right]:if2 |
-	    {additive_exp} additive_exp                 			   |
-        {subtractive_exp} subtractive_exp           			   | 
-        {multiplicative_exp} multiplicative_exp     			   |
-        {dividitive_exp} dividitive_exp             			   |
-        {mod_exp} mod_exp number                    			   |
-        {equal_exp} exp equal literal               			   |
-        {greater} exp greater number                			   |
-        {greater_equal} exp greater_equal number    			   |
-        {not} nao boolean_exp                       			   |
-        {and} exp e boolean_exp                     			   |
-        {or}  exp ou boolean_exp                    			   |
-        {bloco_expressoes} bloco_expressoes         			   ;
+        {boolean_exp} boolean_exp                                        |
+        {cadeia_exp} cadeia_exp                                          |
+        {valor} valor                                                    |
+        {sorrounded_exp} l_par exp r_par                                 |
+        {chamada_funcao} chamada_funcao                                  |
+        {array_comp} array_comp                                          |
+        {minus_exp} minus number                                         |
+        {subtractive_exp} subtractive_exp                                |
+        {mod_exp} mod_exp number                                         |
+        {equal_exp} exp equal literal                                    |
+        {greater} exp greater number                                     |
+        {greater_equal} exp greater_equal number                         |
+        {not} nao boolean_exp                                            |
+        {and} exp e boolean_exp                                          |
+        {or}  exp ou boolean_exp                                         |
+        {bloco_expressoes} bloco_expressoes                              ;

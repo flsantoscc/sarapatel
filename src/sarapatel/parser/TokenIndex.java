@@ -220,74 +220,80 @@ class TokenIndex extends AnalysisAdapter
     }
 
     @Override
-    public void caseTTInteiro(@SuppressWarnings("unused") TTInteiro node)
+    public void caseTPrincipal(@SuppressWarnings("unused") TPrincipal node)
     {
         this.index = 35;
     }
 
     @Override
-    public void caseTTReal(@SuppressWarnings("unused") TTReal node)
+    public void caseTTInteiro(@SuppressWarnings("unused") TTInteiro node)
     {
         this.index = 36;
     }
 
     @Override
-    public void caseTTCadeia(@SuppressWarnings("unused") TTCadeia node)
+    public void caseTTReal(@SuppressWarnings("unused") TTReal node)
     {
         this.index = 37;
     }
 
     @Override
-    public void caseTTBooleano(@SuppressWarnings("unused") TTBooleano node)
+    public void caseTTCadeia(@SuppressWarnings("unused") TTCadeia node)
     {
         this.index = 38;
     }
 
     @Override
-    public void caseTFloatingConstant(@SuppressWarnings("unused") TFloatingConstant node)
+    public void caseTTBooleano(@SuppressWarnings("unused") TTBooleano node)
     {
         this.index = 39;
     }
 
     @Override
-    public void caseTIntegerConstant(@SuppressWarnings("unused") TIntegerConstant node)
+    public void caseTFloatingConstant(@SuppressWarnings("unused") TFloatingConstant node)
     {
         this.index = 40;
     }
 
     @Override
-    public void caseTCadeiaConstant(@SuppressWarnings("unused") TCadeiaConstant node)
+    public void caseTIntegerConstant(@SuppressWarnings("unused") TIntegerConstant node)
     {
         this.index = 41;
     }
 
     @Override
-    public void caseTBooleanConstant(@SuppressWarnings("unused") TBooleanConstant node)
+    public void caseTCadeiaConstant(@SuppressWarnings("unused") TCadeiaConstant node)
     {
         this.index = 42;
     }
 
     @Override
-    public void caseTNegativeFloatingConstant(@SuppressWarnings("unused") TNegativeFloatingConstant node)
+    public void caseTBooleanConstant(@SuppressWarnings("unused") TBooleanConstant node)
     {
         this.index = 43;
     }
 
     @Override
-    public void caseTNegativeIntegerConstant(@SuppressWarnings("unused") TNegativeIntegerConstant node)
+    public void caseTNegativeFloatingConstant(@SuppressWarnings("unused") TNegativeFloatingConstant node)
     {
         this.index = 44;
     }
 
     @Override
-    public void caseTId(@SuppressWarnings("unused") TId node)
+    public void caseTNegativeIntegerConstant(@SuppressWarnings("unused") TNegativeIntegerConstant node)
     {
         this.index = 45;
     }
 
     @Override
-    public void caseEOF(@SuppressWarnings("unused") EOF node)
+    public void caseTId(@SuppressWarnings("unused") TId node)
     {
         this.index = 46;
+    }
+
+    @Override
+    public void caseEOF(@SuppressWarnings("unused") EOF node)
+    {
+        this.index = 47;
     }
 }

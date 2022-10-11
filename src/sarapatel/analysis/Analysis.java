@@ -13,6 +13,7 @@ public interface Analysis extends Switch
 
     void caseStart(Start node);
     void caseAProgramaPrograma(AProgramaPrograma node);
+    void caseADecProcedimentoDecProcPrincipal(ADecProcedimentoDecProcPrincipal node);
     void caseADecVarDecVarOrConst(ADecVarDecVarOrConst node);
     void caseADecConstDecVarOrConst(ADecConstDecVarOrConst node);
     void caseADecProcDecProcOrFuncao(ADecProcDecProcOrFuncao node);
@@ -72,10 +73,7 @@ public interface Analysis extends Switch
     void caseAChamadaFuncaoExp(AChamadaFuncaoExp node);
     void caseAArrayCompExp(AArrayCompExp node);
     void caseAMinusExpExp(AMinusExpExp node);
-    void caseAAdditiveExpExp(AAdditiveExpExp node);
     void caseASubtractiveExpExp(ASubtractiveExpExp node);
-    void caseAMultiplicativeExpExp(AMultiplicativeExpExp node);
-    void caseADividitiveExpExp(ADividitiveExpExp node);
     void caseAModExpExp(AModExpExp node);
     void caseAEqualExpExp(AEqualExpExp node);
     void caseAGreaterExp(AGreaterExp node);
@@ -120,6 +118,7 @@ public interface Analysis extends Switch
     void caseTImprima(TImprima node);
     void caseTLeia(TLeia node);
     void caseTSize(TSize node);
+    void caseTPrincipal(TPrincipal node);
     void caseTTInteiro(TTInteiro node);
     void caseTTReal(TTReal node);
     void caseTTCadeia(TTCadeia node);

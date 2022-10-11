@@ -5,44 +5,44 @@ package sarapatel.node;
 import sarapatel.analysis.*;
 
 @SuppressWarnings("nls")
-public final class ADecFuncaoDecFuncao extends PDecFuncao
+public final class ADecProcedimentoDecProcPrincipal extends PDecProcPrincipal
 {
-    private TFuncao _funcao_;
+    private TAttr _attr_;
+    private TProcedimento _procedimento_;
     private TColon _colon_;
-    private PTipo _tipo_;
-    private TId _id_;
+    private TPrincipal _principal_;
     private TLPar _lPar_;
     private PParametros _parametros_;
     private TRPar _rPar_;
-    private PExp _exp_;
     private TComece _comece_;
+    private PComando _comando_;
     private TTermine _termine_;
 
-    public ADecFuncaoDecFuncao()
+    public ADecProcedimentoDecProcPrincipal()
     {
         // Constructor
     }
 
-    public ADecFuncaoDecFuncao(
-        @SuppressWarnings("hiding") TFuncao _funcao_,
+    public ADecProcedimentoDecProcPrincipal(
+        @SuppressWarnings("hiding") TAttr _attr_,
+        @SuppressWarnings("hiding") TProcedimento _procedimento_,
         @SuppressWarnings("hiding") TColon _colon_,
-        @SuppressWarnings("hiding") PTipo _tipo_,
-        @SuppressWarnings("hiding") TId _id_,
+        @SuppressWarnings("hiding") TPrincipal _principal_,
         @SuppressWarnings("hiding") TLPar _lPar_,
         @SuppressWarnings("hiding") PParametros _parametros_,
         @SuppressWarnings("hiding") TRPar _rPar_,
-        @SuppressWarnings("hiding") PExp _exp_,
         @SuppressWarnings("hiding") TComece _comece_,
+        @SuppressWarnings("hiding") PComando _comando_,
         @SuppressWarnings("hiding") TTermine _termine_)
     {
         // Constructor
-        setFuncao(_funcao_);
+        setAttr(_attr_);
+
+        setProcedimento(_procedimento_);
 
         setColon(_colon_);
 
-        setTipo(_tipo_);
-
-        setId(_id_);
+        setPrincipal(_principal_);
 
         setLPar(_lPar_);
 
@@ -50,9 +50,9 @@ public final class ADecFuncaoDecFuncao extends PDecFuncao
 
         setRPar(_rPar_);
 
-        setExp(_exp_);
-
         setComece(_comece_);
+
+        setComando(_comando_);
 
         setTermine(_termine_);
 
@@ -61,35 +61,35 @@ public final class ADecFuncaoDecFuncao extends PDecFuncao
     @Override
     public Object clone()
     {
-        return new ADecFuncaoDecFuncao(
-            cloneNode(this._funcao_),
+        return new ADecProcedimentoDecProcPrincipal(
+            cloneNode(this._attr_),
+            cloneNode(this._procedimento_),
             cloneNode(this._colon_),
-            cloneNode(this._tipo_),
-            cloneNode(this._id_),
+            cloneNode(this._principal_),
             cloneNode(this._lPar_),
             cloneNode(this._parametros_),
             cloneNode(this._rPar_),
-            cloneNode(this._exp_),
             cloneNode(this._comece_),
+            cloneNode(this._comando_),
             cloneNode(this._termine_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseADecFuncaoDecFuncao(this);
+        ((Analysis) sw).caseADecProcedimentoDecProcPrincipal(this);
     }
 
-    public TFuncao getFuncao()
+    public TAttr getAttr()
     {
-        return this._funcao_;
+        return this._attr_;
     }
 
-    public void setFuncao(TFuncao node)
+    public void setAttr(TAttr node)
     {
-        if(this._funcao_ != null)
+        if(this._attr_ != null)
         {
-            this._funcao_.parent(null);
+            this._attr_.parent(null);
         }
 
         if(node != null)
@@ -102,7 +102,32 @@ public final class ADecFuncaoDecFuncao extends PDecFuncao
             node.parent(this);
         }
 
-        this._funcao_ = node;
+        this._attr_ = node;
+    }
+
+    public TProcedimento getProcedimento()
+    {
+        return this._procedimento_;
+    }
+
+    public void setProcedimento(TProcedimento node)
+    {
+        if(this._procedimento_ != null)
+        {
+            this._procedimento_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._procedimento_ = node;
     }
 
     public TColon getColon()
@@ -130,16 +155,16 @@ public final class ADecFuncaoDecFuncao extends PDecFuncao
         this._colon_ = node;
     }
 
-    public PTipo getTipo()
+    public TPrincipal getPrincipal()
     {
-        return this._tipo_;
+        return this._principal_;
     }
 
-    public void setTipo(PTipo node)
+    public void setPrincipal(TPrincipal node)
     {
-        if(this._tipo_ != null)
+        if(this._principal_ != null)
         {
-            this._tipo_.parent(null);
+            this._principal_.parent(null);
         }
 
         if(node != null)
@@ -152,32 +177,7 @@ public final class ADecFuncaoDecFuncao extends PDecFuncao
             node.parent(this);
         }
 
-        this._tipo_ = node;
-    }
-
-    public TId getId()
-    {
-        return this._id_;
-    }
-
-    public void setId(TId node)
-    {
-        if(this._id_ != null)
-        {
-            this._id_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._id_ = node;
+        this._principal_ = node;
     }
 
     public TLPar getLPar()
@@ -255,31 +255,6 @@ public final class ADecFuncaoDecFuncao extends PDecFuncao
         this._rPar_ = node;
     }
 
-    public PExp getExp()
-    {
-        return this._exp_;
-    }
-
-    public void setExp(PExp node)
-    {
-        if(this._exp_ != null)
-        {
-            this._exp_.parent(null);
-        }
-
-        if(node != null)
-        {
-            if(node.parent() != null)
-            {
-                node.parent().removeChild(node);
-            }
-
-            node.parent(this);
-        }
-
-        this._exp_ = node;
-    }
-
     public TComece getComece()
     {
         return this._comece_;
@@ -303,6 +278,31 @@ public final class ADecFuncaoDecFuncao extends PDecFuncao
         }
 
         this._comece_ = node;
+    }
+
+    public PComando getComando()
+    {
+        return this._comando_;
+    }
+
+    public void setComando(PComando node)
+    {
+        if(this._comando_ != null)
+        {
+            this._comando_.parent(null);
+        }
+
+        if(node != null)
+        {
+            if(node.parent() != null)
+            {
+                node.parent().removeChild(node);
+            }
+
+            node.parent(this);
+        }
+
+        this._comando_ = node;
     }
 
     public TTermine getTermine()
@@ -334,15 +334,15 @@ public final class ADecFuncaoDecFuncao extends PDecFuncao
     public String toString()
     {
         return ""
-            + toString(this._funcao_)
+            + toString(this._attr_)
+            + toString(this._procedimento_)
             + toString(this._colon_)
-            + toString(this._tipo_)
-            + toString(this._id_)
+            + toString(this._principal_)
             + toString(this._lPar_)
             + toString(this._parametros_)
             + toString(this._rPar_)
-            + toString(this._exp_)
             + toString(this._comece_)
+            + toString(this._comando_)
             + toString(this._termine_);
     }
 
@@ -350,9 +350,15 @@ public final class ADecFuncaoDecFuncao extends PDecFuncao
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._funcao_ == child)
+        if(this._attr_ == child)
         {
-            this._funcao_ = null;
+            this._attr_ = null;
+            return;
+        }
+
+        if(this._procedimento_ == child)
+        {
+            this._procedimento_ = null;
             return;
         }
 
@@ -362,15 +368,9 @@ public final class ADecFuncaoDecFuncao extends PDecFuncao
             return;
         }
 
-        if(this._tipo_ == child)
+        if(this._principal_ == child)
         {
-            this._tipo_ = null;
-            return;
-        }
-
-        if(this._id_ == child)
-        {
-            this._id_ = null;
+            this._principal_ = null;
             return;
         }
 
@@ -392,15 +392,15 @@ public final class ADecFuncaoDecFuncao extends PDecFuncao
             return;
         }
 
-        if(this._exp_ == child)
-        {
-            this._exp_ = null;
-            return;
-        }
-
         if(this._comece_ == child)
         {
             this._comece_ = null;
+            return;
+        }
+
+        if(this._comando_ == child)
+        {
+            this._comando_ = null;
             return;
         }
 
@@ -417,9 +417,15 @@ public final class ADecFuncaoDecFuncao extends PDecFuncao
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._funcao_ == oldChild)
+        if(this._attr_ == oldChild)
         {
-            setFuncao((TFuncao) newChild);
+            setAttr((TAttr) newChild);
+            return;
+        }
+
+        if(this._procedimento_ == oldChild)
+        {
+            setProcedimento((TProcedimento) newChild);
             return;
         }
 
@@ -429,15 +435,9 @@ public final class ADecFuncaoDecFuncao extends PDecFuncao
             return;
         }
 
-        if(this._tipo_ == oldChild)
+        if(this._principal_ == oldChild)
         {
-            setTipo((PTipo) newChild);
-            return;
-        }
-
-        if(this._id_ == oldChild)
-        {
-            setId((TId) newChild);
+            setPrincipal((TPrincipal) newChild);
             return;
         }
 
@@ -459,15 +459,15 @@ public final class ADecFuncaoDecFuncao extends PDecFuncao
             return;
         }
 
-        if(this._exp_ == oldChild)
-        {
-            setExp((PExp) newChild);
-            return;
-        }
-
         if(this._comece_ == oldChild)
         {
             setComece((TComece) newChild);
+            return;
+        }
+
+        if(this._comando_ == oldChild)
+        {
+            setComando((PComando) newChild);
             return;
         }
 

@@ -5,44 +5,44 @@ package sarapatel.node;
 import sarapatel.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AAdditiveExpAdditiveExp extends PAdditiveExp
+public final class ASubtractiveExpAdditiveExp extends PAdditiveExp
 {
     private PAdditiveExp _additiveExp_;
-    private TPlus _plus_;
-    private PDividitiveExp _dividitiveExp_;
+    private TMinus _minus_;
+    private PMultiplicativeExp _multiplicativeExp_;
 
-    public AAdditiveExpAdditiveExp()
+    public ASubtractiveExpAdditiveExp()
     {
         // Constructor
     }
 
-    public AAdditiveExpAdditiveExp(
+    public ASubtractiveExpAdditiveExp(
         @SuppressWarnings("hiding") PAdditiveExp _additiveExp_,
-        @SuppressWarnings("hiding") TPlus _plus_,
-        @SuppressWarnings("hiding") PDividitiveExp _dividitiveExp_)
+        @SuppressWarnings("hiding") TMinus _minus_,
+        @SuppressWarnings("hiding") PMultiplicativeExp _multiplicativeExp_)
     {
         // Constructor
         setAdditiveExp(_additiveExp_);
 
-        setPlus(_plus_);
+        setMinus(_minus_);
 
-        setDividitiveExp(_dividitiveExp_);
+        setMultiplicativeExp(_multiplicativeExp_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AAdditiveExpAdditiveExp(
+        return new ASubtractiveExpAdditiveExp(
             cloneNode(this._additiveExp_),
-            cloneNode(this._plus_),
-            cloneNode(this._dividitiveExp_));
+            cloneNode(this._minus_),
+            cloneNode(this._multiplicativeExp_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAAdditiveExpAdditiveExp(this);
+        ((Analysis) sw).caseASubtractiveExpAdditiveExp(this);
     }
 
     public PAdditiveExp getAdditiveExp()
@@ -70,16 +70,16 @@ public final class AAdditiveExpAdditiveExp extends PAdditiveExp
         this._additiveExp_ = node;
     }
 
-    public TPlus getPlus()
+    public TMinus getMinus()
     {
-        return this._plus_;
+        return this._minus_;
     }
 
-    public void setPlus(TPlus node)
+    public void setMinus(TMinus node)
     {
-        if(this._plus_ != null)
+        if(this._minus_ != null)
         {
-            this._plus_.parent(null);
+            this._minus_.parent(null);
         }
 
         if(node != null)
@@ -92,19 +92,19 @@ public final class AAdditiveExpAdditiveExp extends PAdditiveExp
             node.parent(this);
         }
 
-        this._plus_ = node;
+        this._minus_ = node;
     }
 
-    public PDividitiveExp getDividitiveExp()
+    public PMultiplicativeExp getMultiplicativeExp()
     {
-        return this._dividitiveExp_;
+        return this._multiplicativeExp_;
     }
 
-    public void setDividitiveExp(PDividitiveExp node)
+    public void setMultiplicativeExp(PMultiplicativeExp node)
     {
-        if(this._dividitiveExp_ != null)
+        if(this._multiplicativeExp_ != null)
         {
-            this._dividitiveExp_.parent(null);
+            this._multiplicativeExp_.parent(null);
         }
 
         if(node != null)
@@ -117,7 +117,7 @@ public final class AAdditiveExpAdditiveExp extends PAdditiveExp
             node.parent(this);
         }
 
-        this._dividitiveExp_ = node;
+        this._multiplicativeExp_ = node;
     }
 
     @Override
@@ -125,8 +125,8 @@ public final class AAdditiveExpAdditiveExp extends PAdditiveExp
     {
         return ""
             + toString(this._additiveExp_)
-            + toString(this._plus_)
-            + toString(this._dividitiveExp_);
+            + toString(this._minus_)
+            + toString(this._multiplicativeExp_);
     }
 
     @Override
@@ -139,15 +139,15 @@ public final class AAdditiveExpAdditiveExp extends PAdditiveExp
             return;
         }
 
-        if(this._plus_ == child)
+        if(this._minus_ == child)
         {
-            this._plus_ = null;
+            this._minus_ = null;
             return;
         }
 
-        if(this._dividitiveExp_ == child)
+        if(this._multiplicativeExp_ == child)
         {
-            this._dividitiveExp_ = null;
+            this._multiplicativeExp_ = null;
             return;
         }
 
@@ -164,15 +164,15 @@ public final class AAdditiveExpAdditiveExp extends PAdditiveExp
             return;
         }
 
-        if(this._plus_ == oldChild)
+        if(this._minus_ == oldChild)
         {
-            setPlus((TPlus) newChild);
+            setMinus((TMinus) newChild);
             return;
         }
 
-        if(this._dividitiveExp_ == oldChild)
+        if(this._multiplicativeExp_ == oldChild)
         {
-            setDividitiveExp((PDividitiveExp) newChild);
+            setMultiplicativeExp((PMultiplicativeExp) newChild);
             return;
         }
 
