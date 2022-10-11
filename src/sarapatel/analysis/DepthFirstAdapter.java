@@ -1625,6 +1625,27 @@ public class DepthFirstAdapter extends AnalysisAdapter
         outACadeiaExpExp(node);
     }
 
+    public void inAIdExp(AIdExp node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAIdExp(AIdExp node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAIdExp(AIdExp node)
+    {
+        inAIdExp(node);
+        if(node.getId() != null)
+        {
+            node.getId().apply(this);
+        }
+        outAIdExp(node);
+    }
+
     public void inAValorExp(AValorExp node)
     {
         defaultIn(node);

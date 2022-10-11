@@ -18,7 +18,6 @@ Helpers
     blank = (' ' | tab | eol)+;
     not_lbkt = [all - '}'];
     minus = '-';
-
     short_comment = '--' not_cr_lf* eol?;
     long_comment = '{' (short_comment | not_lbkt)* '}' eol?;
 
@@ -45,7 +44,7 @@ Tokens
     ou = 'ou';
     nao = 'nao';
     greater = '>';
-    greater_or_equal = '>=';
+    greater_equal = '>=';
     equal = '=';
     se = 'se';
     senao = 'senao';
@@ -59,6 +58,7 @@ Tokens
     imprima = 'imprima';
     leia = 'leia';
     size = 'size';
+    principal = 'principal';
 
     t_inteiro = 'inteiro';
     t_real = 'real';
@@ -68,15 +68,14 @@ Tokens
     floating_constant = nonzero_digit (digit+)? ',' digit+;
     integer_constant = binary_constant | decimal_constant;
     cadeia_constant = ''' [not_cr_lf - ''']+ ''';
-    boolean_constant_true = 'verdade';
-    boolean_constant_false = 'falso';
+    boolean_constant = 'verdade' | 'falso';
     negative_floating_constant = minus nonzero_digit digit+ ',' digit+;
     negative_integer_constant = minus (binary_constant | decimal_constant);
 
     eol = eol;
     blank = blank;
 
-    identifier = non_digit (digit | non_digit)*;
+    id = non_digit (digit | non_digit)*;
     comment = short_comment | long_comment;
 
 Ignored Tokens
@@ -85,53 +84,145 @@ Ignored Tokens
     eol;
 
 Productions
-    type_specifier =
-        {boolean} boolean_specifier |
-        {integer} integer_specifier |
-        {float}   float_specifier   |
-        {string}  string_specifier;
-
-    integer_specifier = t_inteiro;
-    boolean_specifier = t_booleano;
-    string_specifier = t_cadeia;
-    float_specifier = t_real;
-
-    array_declarator =
-        {identifier} l_bracket integer_constant r_bracket identifier |
-        {array}      array_declarator l_bracket integer_constant r_bracket;
-
-    array_declaration =
-        {identifier} var colon type_specifier array_declarator semicolon;
-
     programa =
-        {programa} (dec_var | dec_cons)* (dec_procedimento | dec_funcao)+
+        {programa} dec_var_or_const* dec_proc_or_funcao+ dec_proc_principal;
+
+    dec_proc_principal =
+        {dec_procedimento} attr procedimento colon principal l_par parametros r_par comece comando termine;
+
+    dec_var_or_const =
+        {dec_var} dec_var   |
+        {dec_const} dec_cons;
+
+    dec_proc_or_funcao =
+        {dec_proc} dec_procedimento |
+        {dec_funcao} dec_funcao     ;
 
     dec_var =
-        {dec_var} 'var' ':' tipo (ID | id_atribuicao) ';'
+        {dec_var} var colon tipo id_or_id_atribuicao semicolon;
+
     dec_cons =
-        {dec_cons} 'const' ':' tipo id_atribuicao ';'
+        {dec_cons} const colon tipo id attr exp semicolon;
+
+    id_or_id_atribuicao =
+        {id} id                      |
+        {id_atribuicao} id attr exp;
 
     tipo =
         {tipo_base} tipo_base |
-        {tipo} tipo '[' exp ']'
+        {tipo_brkt} tipo l_bracket exp r_bracket;
 
-    tipo_base = type_specifier
-
-    id_atribuicao =
-        {id_atribuicao} ID '<<' exp
+    tipo_base =
+        {inteiro} t_inteiro |
+        {booleano} t_booleano |
+        {real} t_real |
+        {cadeia} t_cadeia;
 
     array_comp =
-        {array_comp} '[' ID '|' exp ']'
+        {array_comp} l_bracket id pipe exp r_bracket;
 
     dec_procedimento =
-        {dec_procedimento} ('>>')? 'procedimento' ':' ID '(' parametros ')' comando
+        {dec_procedimento} attr? procedimento colon id l_par parametros r_par comece comando termine;
 
     dec_funcao =
-        {dec_funcao} 'funcao' ':' tipo ID '(' parametros ')' exp
+        {dec_funcao} funcao colon tipo id l_par parametros r_par exp comece termine;
 
     parametros =
-        {parametro} (parametro ( '|' tipo_parametro)*)?
+        {parametros} parametros_aux?;
+
+    parametros_aux =
+        {pipe_parametro_closure} parametro pipe_parametro*;
+
+    pipe_parametro =
+        {pipe_parametro} pipe parametro;
+
+    parametro =
+        {parametro} tipo_parametro id;
 
     tipo_parametro =
         {tipo_base} tipo_base |
-        {tipo_parametro} tipo_parametro '[' ']'
+        {tipo_parametro_brkt} tipo_parametro l_bracket r_bracket;
+
+    comando =
+        {se_comando} se l_par exp r_par comando semicolon                          |
+        {se_senao_comando} se l_par exp r_par [left]:comando senao [right]:comando |
+        {enquanto} enquanto l_par exp r_par comando                                |
+        {id_atribuicao} id attr exp semicolon                                      |
+        {chamada_proc} chamada_procedimento semicolon                              |
+        {bloco_comandos} bloco_comandos                                            ;
+
+    bloco_comandos =
+        {bloco_comandos} comece dec_var_or_const* comando* termine;
+
+    valor =
+        {id} id                                    |
+        {valor_brkts} valor l_bracket exp r_bracket;
+
+    bloco_expressoes =
+        {bloco_expressoes} comece dec_cons* exp termine;
+
+    chamada_funcao =
+        {chamada_funcao} id l_par lista_exp r_par;
+
+    chamada_procedimento =
+        {chamada_procedimento} l_par lista_exp r_par;
+
+    lista_exp =
+        {lista_exp} lista_exp_aux?;
+
+    lista_exp_aux =
+        {aux} exp pipe_exp*;
+
+    pipe_exp =
+        {pipe_exp} pipe exp;
+
+
+    number =
+        {integer} integer_constant |
+        {real} floating_constant   ;
+
+    boolean_exp =
+        {boolean} boolean_constant;
+
+    cadeia_exp =
+        {cadeia} cadeia_constant;
+
+    literal =
+            {integer} integer_constant |
+            {real} floating_constant   |
+            {boolean} boolean_constant |
+            {cadeia} cadeia_constant   ;
+
+    multiplicative_exp =
+        {multiplication} multiplicative_exp star number |
+        {number} number                                 ;
+
+    dividitive_exp =
+        {division} multiplicative_exp div number;
+
+    mod_exp =
+        {mod} multiplicative_exp mod number;
+
+    additive_exp =
+        {additive_exp} additive_exp plus dividitive_exp;
+
+    subtractive_exp =
+        {subtractive_exp} additive_exp minus dividitive_exp;
+
+    exp =
+        {boolean_exp} boolean_exp                                        |
+        {cadeia_exp} cadeia_exp                                          |
+        {valor} valor                                                    |
+        {sorrounded_exp} l_par exp r_par                                 |
+        {chamada_funcao} chamada_funcao                                  |
+        {array_comp} array_comp                                          |
+        {minus_exp} minus number                                         |
+        {subtractive_exp} subtractive_exp                                |
+        {mod_exp} mod_exp number                                         |
+        {equal_exp} exp equal literal                                    |
+        {greater} exp greater number                                     |
+        {greater_equal} exp greater_equal number                         |
+        {not} nao boolean_exp                                            |
+        {and} exp e boolean_exp                                          |
+        {or}  exp ou boolean_exp                                         |
+        {bloco_expressoes} bloco_expressoes                              ;
