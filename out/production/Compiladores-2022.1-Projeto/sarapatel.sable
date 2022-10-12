@@ -97,9 +97,9 @@ Productions
     dec_proc_principal
          {-> P.dec_proc_principal  } =
 
-     {dec_procedimento} main_init procedimento colon principal l_par parametros r_par comece comando termine
+     {dec_procedimento} attr procedimento colon principal l_par parametros r_par comece comando termine
          {-> New dec_proc_principal.dec_procedimento
-            (main_init , procedimento, colon ,principal ,l_par ,parametros ,r_par ,comece ,comando ,termine)}
+            (attr , procedimento, colon ,principal ,l_par ,parametros ,r_par ,comece ,comando ,termine)}
      ;
 
     dec_var_or_const
@@ -185,8 +185,8 @@ Productions
      {adecprocedimentodecprocedimento1} procedimento colon id l_par parametros r_par comece comando termine
          {-> New dec_procedimento.dec_procedimento (Null , procedimento , colon , id , l_par , parametros , r_par , comece , comando , termine  )  }   |
 
-     {adecprocedimentodecprocedimento2} main_init procedimento colon id l_par parametros r_par comece comando termine
-         {-> New dec_procedimento.dec_procedimento (main_init , procedimento , colon , id , l_par , parametros , r_par , comece , comando , termine  )  }
+     {adecprocedimentodecprocedimento2} attr procedimento colon id l_par parametros r_par comece comando termine
+         {-> New dec_procedimento.dec_procedimento (attr , procedimento , colon , id , l_par , parametros , r_par , comece , comando , termine  )  }
      ;
 
     dec_funcao
@@ -475,7 +475,7 @@ Abstract Syntax Tree
      ;
 
     dec_proc_principal =
-     {dec_procedimento} main_init procedimento colon principal l_par parametros r_par comece comando termine
+     {dec_procedimento} attr procedimento colon principal l_par parametros r_par comece comando termine
      ;
 
     dec_var_or_const =
@@ -518,7 +518,7 @@ Abstract Syntax Tree
      ;
 
     dec_procedimento =
-     {dec_procedimento} main_init? procedimento colon id l_par parametros r_par comece comando termine
+     {dec_procedimento} attr? procedimento colon id l_par parametros r_par comece comando termine
      ;
 
     dec_funcao =
