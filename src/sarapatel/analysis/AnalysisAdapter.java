@@ -417,7 +417,7 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseASorroundedExpExp(ASorroundedExpExp node)
+    public void caseASurroundedExpExp(ASurroundedExpExp node)
     {
         defaultCase(node);
     }

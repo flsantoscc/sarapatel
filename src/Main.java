@@ -4,7 +4,6 @@ import sarapatel.lexer.*;
 import sarapatel.node.*;
 
 import java.io.File;
-import java.io.IOException;
 import java.io.PushbackReader;
 import java.io.FileReader;
 

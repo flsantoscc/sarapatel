@@ -1646,20 +1646,20 @@ public class DepthFirstAdapter extends AnalysisAdapter
         outAValorExp(node);
     }
 
-    public void inASorroundedExpExp(ASorroundedExpExp node)
+    public void inASurroundedExpExp(ASurroundedExpExp node)
     {
         defaultIn(node);
     }
 
-    public void outASorroundedExpExp(ASorroundedExpExp node)
+    public void outASurroundedExpExp(ASurroundedExpExp node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseASorroundedExpExp(ASorroundedExpExp node)
+    public void caseASurroundedExpExp(ASurroundedExpExp node)
     {
-        inASorroundedExpExp(node);
+        inASurroundedExpExp(node);
         if(node.getLPar() != null)
         {
             node.getLPar().apply(this);
@@ -1672,7 +1672,7 @@ public class DepthFirstAdapter extends AnalysisAdapter
         {
             node.getRPar().apply(this);
         }
-        outASorroundedExpExp(node);
+        outASurroundedExpExp(node);
     }
 
     public void inAChamadaFuncaoExp(AChamadaFuncaoExp node)

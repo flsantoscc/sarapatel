@@ -69,7 +69,7 @@ public interface Analysis extends Switch
     void caseABooleanExpExp(ABooleanExpExp node);
     void caseACadeiaExpExp(ACadeiaExpExp node);
     void caseAValorExp(AValorExp node);
-    void caseASorroundedExpExp(ASorroundedExpExp node);
+    void caseASurroundedExpExp(ASurroundedExpExp node);
     void caseAChamadaFuncaoExp(AChamadaFuncaoExp node);
     void caseAArrayCompExp(AArrayCompExp node);
     void caseAMinusExpExp(AMinusExpExp node);

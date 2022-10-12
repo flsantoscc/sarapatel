@@ -5,51 +5,51 @@ package sarapatel.node;
 import sarapatel.analysis.*;
 
 @SuppressWarnings("nls")
-public final class ANotExpExp extends PExp
+public final class AATipoBase extends PTipoBase
 {
-    private TNao _nao_;
-    private PExp _left_;
+    private TTReal _tReal_;
+    private TTCadeia _tCadeia_;
 
-    public ANotExpExp()
+    public AATipoBase()
     {
         // Constructor
     }
 
-    public ANotExpExp(
-        @SuppressWarnings("hiding") TNao _nao_,
-        @SuppressWarnings("hiding") PExp _left_)
+    public AATipoBase(
+        @SuppressWarnings("hiding") TTReal _tReal_,
+        @SuppressWarnings("hiding") TTCadeia _tCadeia_)
     {
         // Constructor
-        setNao(_nao_);
+        setTReal(_tReal_);
 
-        setLeft(_left_);
+        setTCadeia(_tCadeia_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new ANotExpExp(
-            cloneNode(this._nao_),
-            cloneNode(this._left_));
+        return new AATipoBase(
+            cloneNode(this._tReal_),
+            cloneNode(this._tCadeia_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseANotExpExp(this);
+        ((Analysis) sw).caseAATipoBase(this);
     }
 
-    public TNao getNao()
+    public TTReal getTReal()
     {
-        return this._nao_;
+        return this._tReal_;
     }
 
-    public void setNao(TNao node)
+    public void setTReal(TTReal node)
     {
-        if(this._nao_ != null)
+        if(this._tReal_ != null)
         {
-            this._nao_.parent(null);
+            this._tReal_.parent(null);
         }
 
         if(node != null)
@@ -62,19 +62,19 @@ public final class ANotExpExp extends PExp
             node.parent(this);
         }
 
-        this._nao_ = node;
+        this._tReal_ = node;
     }
 
-    public PExp getLeft()
+    public TTCadeia getTCadeia()
     {
-        return this._left_;
+        return this._tCadeia_;
     }
 
-    public void setLeft(PExp node)
+    public void setTCadeia(TTCadeia node)
     {
-        if(this._left_ != null)
+        if(this._tCadeia_ != null)
         {
-            this._left_.parent(null);
+            this._tCadeia_.parent(null);
         }
 
         if(node != null)
@@ -87,30 +87,30 @@ public final class ANotExpExp extends PExp
             node.parent(this);
         }
 
-        this._left_ = node;
+        this._tCadeia_ = node;
     }
 
     @Override
     public String toString()
     {
         return ""
-            + toString(this._nao_)
-            + toString(this._left_);
+            + toString(this._tReal_)
+            + toString(this._tCadeia_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._nao_ == child)
+        if(this._tReal_ == child)
         {
-            this._nao_ = null;
+            this._tReal_ = null;
             return;
         }
 
-        if(this._left_ == child)
+        if(this._tCadeia_ == child)
         {
-            this._left_ = null;
+            this._tCadeia_ = null;
             return;
         }
 
@@ -121,15 +121,15 @@ public final class ANotExpExp extends PExp
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._nao_ == oldChild)
+        if(this._tReal_ == oldChild)
         {
-            setNao((TNao) newChild);
+            setTReal((TTReal) newChild);
             return;
         }
 
-        if(this._left_ == oldChild)
+        if(this._tCadeia_ == oldChild)
         {
-            setLeft((PExp) newChild);
+            setTCadeia((TTCadeia) newChild);
             return;
         }
 
