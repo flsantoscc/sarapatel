@@ -24,4 +24,10 @@ hs_err_pid*
 replay_pid*
 
 # SableCC Classes
-sarapatel/
+sarapatel/analysis
+sarapatel/lexer
+sarapatel/node
+sarapatel/parser
+
+
+out/
