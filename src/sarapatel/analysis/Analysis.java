@@ -68,7 +68,6 @@ public interface Analysis extends Switch
     void caseASubtractiveExpSubtractiveExp(ASubtractiveExpSubtractiveExp node);
     void caseABooleanExpExp(ABooleanExpExp node);
     void caseACadeiaExpExp(ACadeiaExpExp node);
-    void caseAIdExp(AIdExp node);
     void caseAValorExp(AValorExp node);
     void caseASorroundedExpExp(ASorroundedExpExp node);
     void caseAChamadaFuncaoExp(AChamadaFuncaoExp node);

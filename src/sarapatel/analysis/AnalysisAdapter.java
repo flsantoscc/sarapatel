@@ -411,12 +411,6 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseAIdExp(AIdExp node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
     public void caseAValorExp(AValorExp node)
     {
         defaultCase(node);
