@@ -1,41 +1,22 @@
-package sarapatel;//import sarapatel.interpret.Interpreter;
-//import sarapatel.parser.* ;
-import sarapatel.lexer.*;
-import sarapatel.node.*;
-import sarapatel.parser.Parser;
+package sarapatel;
 
-import java.io.File;
-import java.io.PushbackReader;
+import sarapatel.lexer.Lexer;
+import sarapatel.node.Start;
+import sarapatel.parser.Parser;
 import java.io.FileReader;
+import java.io.PushbackReader;
 
 public class Main {
-    public static void main(String args[]) {
-        File folder = new File("src/tests").getAbsoluteFile();
-        File[] listOfFiles = folder.listFiles();
+    public static void main(String[] args){
+        try {
+            String file = "src/tests/teste.srptl";
 
-        Lexer lexer;
-        Token token;
-
-        for (File file : listOfFiles) {
-            if (file.isFile()) {
-                try {
-                    lexer = new Lexer(new PushbackReader(
-                            new FileReader(file), 1024));
-                    System.out.println("Test: " + file.getName());
-
-                    while (!((token = lexer.next()) instanceof EOF)) {
-                        System.out.println(token.getClass());
-                        System.out.println(" ( " + token.toString() + ")");
-                    }
-                    System.out.println();
-
-                    Start tree = (new Parser(lexer)).parse();
-                    tree.apply(new ASTDisplay());
-                } catch (Exception e) {
-                    System.out.println(e);
-                    e.printStackTrace();
-                }
-            }
+            Parser p = new Parser(new Lexer(new PushbackReader(new FileReader(file), 1024)));
+            Start tree = p.parse();
+            tree.apply(new ASTDisplay());
+            tree.apply(new ASTPrinter());
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
         }
     }
 }

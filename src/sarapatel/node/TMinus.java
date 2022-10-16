@@ -7,14 +7,14 @@ import sarapatel.analysis.*;
 @SuppressWarnings("nls")
 public final class TMinus extends Token
 {
-    public TMinus(String text)
+    public TMinus()
     {
-        setText(text);
+        super.setText("-");
     }
 
-    public TMinus(String text, int line, int pos)
+    public TMinus(int line, int pos)
     {
-        setText(text);
+        super.setText("-");
         setLine(line);
         setPos(pos);
     }
@@ -22,12 +22,18 @@ public final class TMinus extends Token
     @Override
     public Object clone()
     {
-      return new TMinus(getText(), getLine(), getPos());
+      return new TMinus(getLine(), getPos());
     }
 
     @Override
     public void apply(Switch sw)
     {
         ((Analysis) sw).caseTMinus(this);
+    }
+
+    @Override
+    public void setText(@SuppressWarnings("unused") String text)
+    {
+        throw new RuntimeException("Cannot change TMinus text.");
     }
 }
