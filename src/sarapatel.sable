@@ -232,7 +232,7 @@ Productions
 
     adicao {-> P.adicao  } =
         {produto} produto {-> New adicao.produto (produto)} |
-        {soma} adicao plus produto  {-> New adicao.soma (adicao , plus , produto)} |
+        {soma} adicao plus produto  {-> New adicao.soma (adicao ,produto)} |
         {minus} adicao minus produto{-> New adicao.minus (adicao , minus , produto)};
 
     produto{-> P.produto  } =
@@ -242,12 +242,12 @@ Productions
         {mod} produto mod rel_unaria {-> New produto.mod (produto , mod , rel_unaria)};
 
     rel_unaria  {-> P.rel_unaria  } =
-        {aux} exp_aux {-> New rel_unaria.aux (exp_aux  )  }   |
+        {exp_aux} exp_aux {-> exp_aux.rel_unaria }   |
         {mais} plus exp_aux {-> New rel_unaria.mais (plus , exp_aux  )  }   |
         {menos} minus exp_aux {-> New rel_unaria.menos (minus , exp_aux  )  }   |
         {nega} negacao exp_aux {-> New rel_unaria.nega (negacao , exp_aux  )  };
 
-    exp_aux {-> P.exp_aux} =
+    exp_aux {-> P.rel_unaria} =
         {int} int {-> New exp_aux.int (int) }                                |
         {bool} bool {-> New exp_aux.bool (bool)}                             |
         {real} float {-> New exp_aux.real (float)}                           |
@@ -368,7 +368,7 @@ Abstract Syntax Tree
 
     adicao =
         {produto} produto |
-        {soma} adicao plus produto |
+        {soma} adicao produto |
         {minus} adicao minus produto;
 
     produto =
@@ -378,7 +378,7 @@ Abstract Syntax Tree
         {mod} produto mod rel_unaria;
 
     rel_unaria =
-        {aux} exp_aux |
+        {exp_aux} exp_aux |
         {mais} plus exp_aux |
         {menos} minus exp_aux |
         {nega} negacao exp_aux;
