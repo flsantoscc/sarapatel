@@ -196,8 +196,6 @@ Productions
         {id} id {-> New valor.id (id)} |
         {exp} valor l_brkt exp r_brkt{-> New valor.exp (valor , l_brkt , exp , r_brkt)};
 
-    exp {-> P.exp} = {se} condicao {-> New exp.se (condicao)};
-
     exp_list {-> P.exp_list  } =
         {aexplist1} exp{-> New exp_list (exp , [])} |
         {aexplist2} exp P.pipe_exp {-> New exp_list (exp, [pipe_exp.pipe_exp])};
@@ -206,58 +204,56 @@ Productions
         {pipe_exp} pipe exp
             {-> New pipe_exp.pipe_exp (pipe , exp)};
 
-    bloco_expressoes{-> P.bloco_expressoes  } =
-        {ablocoexpressoes1} comece exp termine {-> New bloco_expressoes (comece , [  ], exp , termine)} |
-        {ablocoexpressoes2} comece P.dec_const exp termine
-            {-> New bloco_expressoes (comece , [ dec_const.dec_const  ], exp , termine)};
+    exp { -> exp } =
+        {array_c} array_comp                  { -> New exp.array_c(array_comp) }               |
+        {b_exp} comece dec_const* exp termine { -> New exp.b_exp([dec_const.dec_const], exp) } |
+        {condicao} condicao                   { -> condicao.exp }                              ;
 
-    condicao {-> P.condicao  } =
-        {disj} disjuncao {-> New condicao.disj (disjuncao)} |
-        {se_exp} se l_par [if]: condicao r_par [then]: condicao senao disjuncao
-            {-> New condicao.se_exp (se , l_par , if , r_par , then , senao , disjuncao)};
+    condicao { -> exp } =
+        {se_exp} se l_par [if]:condicao r_par [then]:condicao senao [else]:disjuncao { -> New exp.se_exp(if.exp, then.exp, else.exp) } |
+        {disj} disjuncao                                                             { -> disjuncao.exp }                       ;
 
-    disjuncao{-> P.disjuncao  } =
-        {conj} conjuncao  {-> New disjuncao.conj (conjuncao)} |
-        {ou} disjuncao ou conjuncao {-> New disjuncao.ou (disjuncao , ou , conjuncao)};
+    disjuncao { -> exp } =
+        {ou} [left]:disjuncao ou [right]:conjuncao { -> New exp.ou(left.exp, right.exp) } |
+        {conj} conjuncao                           { -> conjuncao.exp }                   ;
 
-    conjuncao {-> P.conjuncao  } =
-        {rel} relacao {-> New conjuncao.rel (relacao)} |
-        {e} conjuncao e relacao {-> New conjuncao.e (conjuncao , e , relacao)};
+    conjuncao { -> exp } =
+        {e} [left]:conjuncao e [right]:relacao { -> New exp.e(left.exp, right.exp)} |
+        {rel} relacao                          { -> relacao.exp }                  ;
 
-    relacao {-> P.relacao  } =
-        {adicao} adicao {-> New relacao.adicao (adicao  )  }   |
-        {equal} relacao equal adicao {-> New relacao.equal (relacao , equal , adicao  )  }   |
-        {greater_eq} relacao greater_eq adicao {-> New relacao.greater_eq (relacao , greater_eq , adicao  )  }   |
-        {greater} relacao greater adicao{-> New relacao.greater (relacao , greater , adicao  )  };
+    relacao { -> exp } =
+        {equal} [left]:relacao equal [right]:adicao           { -> New exp.equal(left.exp, right.exp) }      |
+        {greater_eq} [left]:relacao greater_eq [right]:adicao { -> New exp.greater_eq(left.exp, right.exp) } |
+        {greater} [left]:relacao greater [right]:adicao       { -> New exp.greater(left.exp, right.exp) }    |
+        {adicao} adicao                                       { -> adicao.exp }                              ;
 
-    adicao {-> P.adicao  } =
-        {produto} produto {-> New adicao.produto (produto)} |
-        {soma} adicao plus produto  {-> New adicao.soma (adicao ,produto)} |
-        {minus} adicao minus produto{-> New adicao.minus (adicao , minus , produto)};
+    adicao { -> exp } =
+        {soma} [left]:adicao plus [right]:produto  { -> New exp.soma(left.exp, right.exp) }  |
+        {sub} [left]:adicao minus [right]:produto  { -> New exp.minus(left.exp, right.exp) } |
+        {produto} produto                          { -> produto.exp }                        ;
 
-    produto{-> P.produto  } =
-        {rel_unaria} rel_unaria {-> New produto.rel_unaria (rel_unaria)} |
-        {mult} produto star rel_unaria {-> New produto.mult (produto , star , rel_unaria)} |
-        {div} produto div rel_unaria {-> New produto.div (produto , div , rel_unaria)} |
-        {mod} produto mod rel_unaria {-> New produto.mod (produto , mod , rel_unaria)};
+    produto { -> exp } =
+        {mult}[left]:produto star [right]:rel_unaria { -> New exp.mult(left.exp, right.exp) } |
+        {div} [left]:produto div [right]:rel_unaria  { -> New exp.div(left.exp, right.exp) }  |
+        {mod} [left]:produto mod [right]:rel_unaria  { -> New exp.mod(left.exp, right.exp) }  |
+        {rel_unaria} rel_unaria                      { -> rel_unaria.exp }                    ;
 
-    rel_unaria  {-> P.rel_unaria  } =
-        {exp_aux} exp_aux {-> exp_aux.rel_unaria }   |
-        {mais} plus exp_aux {-> New rel_unaria.mais (plus , exp_aux  )  }   |
-        {menos} minus exp_aux {-> New rel_unaria.menos (minus , exp_aux  )  }   |
-        {nega} negacao exp_aux {-> New rel_unaria.nega (negacao , exp_aux  )  };
+    rel_unaria { -> exp } =
+        {incremento} plus exp    { -> New exp.incremento(plus, exp) }  |
+        {decremento} minus exp   { -> New exp.decremento(minus, exp) } |
+        {negacao} negacao exp    { -> New exp.negacao(negacao, exp) }     |
+        {value} value            { -> value.exp }                      ;    
 
-    exp_aux {-> P.rel_unaria} =
-        {int} int {-> New exp_aux.int (int) }                                |
-        {bool} bool {-> New exp_aux.bool (bool)}                             |
-        {real} float {-> New exp_aux.real (float)}                           |
-        {cadeia} string {-> New exp_aux.cadeia (string)  }                   |
-        {valor} valor {-> New exp_aux.valor (valor)  }                       |
-        {par} l_par exp r_par {-> New exp_aux.par (l_par , exp , r_par)  }   |
-        {c_func} chamada_funcao {-> New exp_aux.c_func (chamada_funcao)  }   |
-        {array_c} array_comp {-> New exp_aux.array_c (array_comp)}           |
-        {b_exp} bloco_expressoes {-> New exp_aux.b_exp (bloco_expressoes)};
-
+    value { -> exp } =
+        {int} int                { -> New exp.int(int) }               |
+        {bool} bool              { -> New exp.bool(bool) }             |
+        {real} float             { -> New exp.real(float) }            |
+        {cadeia} string          { -> New exp.cadeia(string) }         |
+        {valor} valor            { -> New exp.valor(valor) }           |
+        {par} l_par exp r_par    { -> New exp.par(l_par, exp.exp, r_par ) }           |
+        {c_func} chamada_funcao  { -> New exp.c_func(chamada_funcao) } ;
+    
+        
 Abstract Syntax Tree
     programa = dec_var_or_const* dec_proc_or_func+;
 
@@ -340,56 +336,37 @@ Abstract Syntax Tree
         {id} id |
         {exp} valor l_brkt exp r_brkt;
 
-    exp = {se} condicao;
-
     exp_list = exp pipe_exp*;
 
     pipe_exp = {pipe_exp} pipe exp;
 
+    dec_const_list = 
+        {single} exp                            |                      
+        {multiple} exp dec_const dec_const_list ;
+
     bloco_expressoes = comece dec_const* exp termine;
 
-    condicao =
-        {disj} disjuncao |
-        {se_exp} se l_par [if]: condicao r_par [then]: condicao senao disjuncao;
-
-    disjuncao =
-        {conj} conjuncao |
-        {ou} disjuncao ou conjuncao;
-
-    conjuncao =
-        {rel} relacao |
-        {e} conjuncao e relacao;
-
-    relacao =
-        {adicao} adicao |
-        {equal} relacao equal adicao |
-        {greater_eq} relacao greater_eq adicao |
-        {greater} relacao greater adicao;
-
-    adicao =
-        {produto} produto |
-        {soma} adicao produto |
-        {minus} adicao minus produto;
-
-    produto =
-        {rel_unaria} rel_unaria |
-        {mult} produto star rel_unaria |
-        {div} produto div rel_unaria |
-        {mod} produto mod rel_unaria;
-
-    rel_unaria =
-        {exp_aux} exp_aux |
-        {mais} plus exp_aux |
-        {menos} minus exp_aux |
-        {nega} negacao exp_aux;
-
-    exp_aux =
+    exp =
         {int} int |
         {bool} bool |
         {real} float |
         {cadeia} string |
         {valor} valor |
-        {par} l_par exp r_par |
         {c_func} chamada_funcao |
         {array_c} array_comp |
-        {b_exp} bloco_expressoes;
+        {incremento} plus exp |
+        {decremento} minus exp |
+        {se_exp} [if]:exp [then]:exp [else]:exp |
+        {soma} [left]:exp [right]:exp |
+        {minus} [left]:exp [right]:exp |
+        {mult} [left]:exp [right]:exp |
+        {div} [left]:exp [right]:exp |
+        {mod} [left]:exp [right]:exp |
+        {equal} [left]:exp [right]:exp |
+        {greater_eq} [left]:exp [right]:exp |
+        {greater} [left]:exp [right]:exp |
+        {e} [left]:exp [right]:exp |
+        {ou} [left]:exp [right]:exp | 
+        {par} l_par exp r_par |
+        {negacao} negacao exp |
+        {b_exp} [dc_cons]:dec_const* exp;
