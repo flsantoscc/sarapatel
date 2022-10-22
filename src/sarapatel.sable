@@ -77,21 +77,9 @@ Productions
         {aprograma1} dec_proc_or_dec_func_list                           { -> New programa.aprograma([], [dec_proc_or_dec_func_list.dec_proc_or_dec_func]) }                                               |
         {aprograma2} dec_var_or_dec_const_list dec_proc_or_dec_func_list { -> New programa.aprograma([dec_var_or_dec_const_list.dec_var_or_dec_const], [dec_proc_or_dec_func_list.dec_proc_or_dec_func]) } ;
 
-    dec_proc_or_dec_func_list { -> dec_proc_or_dec_func* } =
-        {single} dec_proc_or_dec_func                             { -> [dec_proc_or_dec_func] }                                                 |
-        {multiple} dec_proc_or_dec_func dec_proc_or_dec_func_list { -> [dec_proc_or_dec_func, dec_proc_or_dec_func_list.dec_proc_or_dec_func] } ;
-
     dec_var_or_dec_const_list { -> dec_var_or_dec_const * } = 
         {single} dec_var_or_dec_const                             { -> [dec_var_or_dec_const] }                                                 |
         {multiple} dec_var_or_dec_const dec_var_or_dec_const_list { -> [dec_var_or_dec_const, dec_var_or_dec_const_list.dec_var_or_dec_const] } ;
-
-    dec_proc_list { -> dec_proc* } =
-        {single} dec_proc { -> [dec_proc] }                                         |
-        {multiple} dec_proc dec_proc_list { -> [dec_proc, dec_proc_list.dec_proc] } ;
-      
-    dec_func_list { -> dec_func* } =
-        {single} dec_func { -> [dec_func] }                                         |
-        {multiple} dec_func dec_func_list { -> [dec_func, dec_func_list.dec_func] } ;
 
     dec_var_list { -> dec_var* } =
         {single} dec_var { -> [dec_var] }                                      |
@@ -101,12 +89,45 @@ Productions
         {single} dec_const { -> [dec_const] }                                            |
         {multiple} dec_const dec_const_list { -> [dec_const, dec_const_list.dec_const] } ;
 
+    dec_var_or_dec_const { -> dec_var_or_dec_const } =
+        {dec_var} dec_var     { -> New dec_var_or_dec_const.dec_var(dec_var) }     |
+        {dec_const} dec_const { -> New dec_var_or_dec_const.dec_const(dec_const) } ;
+
     dec_var { -> dec_var } = 
         {dec_var1} var colon tipo id semi   { -> New dec_var(tipo, id, Null) }                     |
         {dec_var2} var colon tipo id_atribuicao semi { -> New dec_var(tipo, Null, id_atribuicao) } ;
         
     dec_const { -> dec_const  } = 
-        const colon tipo id_atribuicao semi { -> New dec_const(tipo , id_atribuicao) };
+        const colon tipo id_atribuicao semi { -> New dec_const(tipo , id_atribuicao) } ;
+
+    tipo { -> tipo  } =
+        {base} tipo_base             { -> New tipo.base(tipo_base) } |
+        {arr} tipo l_brkt exp r_brkt { -> New tipo.arr(tipo, exp) }  ;
+
+    tipo_base{ -> tipo_base } =
+        {int} int_kw       { -> New tipo_base.int(int_kw) }       |
+        {bool} bool_kw     { -> New tipo_base.bool(bool_kw) }     |
+        {real} float_kw    { -> New tipo_base.real(float_kw) }    |
+        {cadeia} string_kw { -> New tipo_base.cadeia(string_kw) } ;
+
+    id_atribuicao { -> id_atribuicao } =
+        valor dd exp { -> New id_atribuicao(valor, exp)} ;
+
+    dec_proc_or_dec_func_list { -> dec_proc_or_dec_func* } =
+        {single} dec_proc_or_dec_func                             { -> [dec_proc_or_dec_func] }                                                 |
+        {multiple} dec_proc_or_dec_func dec_proc_or_dec_func_list { -> [dec_proc_or_dec_func, dec_proc_or_dec_func_list.dec_proc_or_dec_func] } ;
+
+    dec_proc_list { -> dec_proc* } =
+        {single} dec_proc { -> [dec_proc] }                                         |
+        {multiple} dec_proc dec_proc_list { -> [dec_proc, dec_proc_list.dec_proc] } ;
+      
+    dec_func_list { -> dec_func* } =
+        {single} dec_func { -> [dec_func] }                                         |
+        {multiple} dec_func dec_func_list { -> [dec_func, dec_func_list.dec_func] } ;
+    
+    dec_proc_or_dec_func { -> dec_proc_or_dec_func } =
+        {dec_var} dec_proc   { -> New dec_proc_or_dec_func.dec_proc(dec_proc) } |
+        {dec_const} dec_func { -> New dec_proc_or_dec_func.dec_func(dec_func) } ;
 
     dec_proc { -> dec_proc } =
         {adecproc1} procedimento colon id l_par r_par comando                      { -> New dec_proc(id, [], comando) }                     |
@@ -118,34 +139,6 @@ Productions
         {adecfunc1} funcao colon tipo_func id l_par r_par exp            { -> New dec_func(tipo_func, id, [], exp) }                     |
         {adecfunc2} funcao colon tipo_func id l_par list_param r_par exp { -> New dec_func(tipo_func, id, [list_param.parametro], exp) } ;
 
-    chamada_funcao { -> chamada_funcao } =
-        {achamadafuncao1} id l_par r_par          { -> New chamada_funcao(id, []) }             |
-        {achamadafuncao2} id l_par exp_list r_par { -> New chamada_funcao(id, [exp_list.exp]) } ;
-
-    chamada_procedimento { -> chamada_procedimento } =
-        {achamadaprocedimento1} id l_par r_par          { -> New chamada_procedimento(id, []) }             |
-        {achamadaprocedimento2} id l_par exp_list r_par { -> New chamada_procedimento(id, [exp_list.exp]) } ;
-
-    tipo { -> tipo  } =
-        {base} tipo_base             { -> New tipo.base(tipo_base) } |
-        {arr} tipo l_brkt exp r_brkt { -> New tipo.arr(tipo, exp) }  ;
-
-    tipo_func { -> tipo_func } =
-        {base} tipo_base              { -> New tipo_func.base(tipo_base) } |
-        {arr} tipo_func l_brkt r_brkt { -> New tipo_func.arr(tipo_func) }  ;
-
-    tipo_base{ -> tipo_base } =
-        {int} int_kw       { -> New tipo_base.int(int_kw) }       |
-        {bool} bool_kw     { -> New tipo_base.bool(bool_kw) }     |
-        {real} float_kw    { -> New tipo_base.real(float_kw) }    |
-        {cadeia} string_kw { -> New tipo_base.cadeia(string_kw) } ;
-
-    id_atribuicao { -> id_atribuicao } =
-        valor dd exp { -> New id_atribuicao(valor, exp)};
-
-    array_comp { -> array_comp } =
-        l_brkt id pipe exp r_brkt { -> New array_comp(id, exp) };
-
     list_param { -> parametro* } = 
         {single} parametro                   { -> [parametro] }                       |
         {multiple} parametro pipe list_param { -> [parametro, list_param.parametro] } ;
@@ -156,6 +149,17 @@ Productions
     tipo_param { -> tipo_param  } =
         {par} tipo_base                    { -> New tipo_param.par(tipo_base) }      |
         {arr_par} tipo_param l_brkt r_brkt { -> New tipo_param.arr_par(tipo_param) } ;
+
+    tipo_func { -> tipo_func } =
+        {base} tipo_base              { -> New tipo_func.base(tipo_base) } |
+        {arr} tipo_func l_brkt r_brkt { -> New tipo_func.arr(tipo_func) }  ;
+
+    valor { -> valor } =
+        {id} id                       { -> New valor.id(id) }          |
+        {exp} valor l_brkt exp r_brkt { -> New valor.exp(valor ,exp) } ;
+
+    array_comp { -> array_comp } =
+        l_brkt id pipe exp r_brkt { -> New array_comp(id, exp) } ;
 
     comando { -> comando } =
         {se} se l_par exp r_par comando                                                  { -> New comando.se(exp, comando) }                                                                                |
@@ -179,20 +183,8 @@ Productions
         {bloco_comando} comece comando_list termine                                     { -> New comando_aux.dec_var_or_dec_const([], [comando_list.comando]) }                                                ;
 
     comando_list { -> comando* } =
-        {single} comando                { -> [comando] }             |
-        {multiple} comando comando_list { -> [comando_list.comando] };
-
-    dec_var_or_dec_const { -> dec_var_or_dec_const } =
-        {dec_var} dec_var     { -> New dec_var_or_dec_const.dec_var(dec_var) }     |
-        {dec_const} dec_const { -> New dec_var_or_dec_const.dec_const(dec_const) } ;
-
-    dec_proc_or_dec_func { -> dec_proc_or_dec_func } =
-        {dec_var} dec_proc     { -> New dec_proc_or_dec_func.dec_proc(dec_proc) } |
-        {dec_const} dec_func   { -> New dec_proc_or_dec_func.dec_func(dec_func) } ;
-
-    valor { -> valor } =
-        {id} id                       { -> New valor.id(id) }          |
-        {exp} valor l_brkt exp r_brkt { -> New valor.exp(valor ,exp) } ;
+        {single} comando                { -> [comando] }              |
+        {multiple} comando comando_list { -> [comando_list.comando] } ;
 
     exp_list { -> exp* } =
         {single} exp                 { -> [exp] }               |
@@ -233,10 +225,6 @@ Productions
         {negacao} negacao value  { -> New exp.negacao(value.exp) }    |
         {value} value            { -> value.exp }                     ;
 
-    bloco_expressoes { -> bloco_expressoes } =
-        {b_exp} comece exp termine { -> New bloco_expressoes([], exp)}                               |
-        {b_dec_const_exp} comece dec_const exp termine { -> New bloco_expressoes([dec_const], exp) } ;
-
     value { -> exp } =
         {int} int                { -> New exp.int(int) }                |
         {bool} bool              { -> New exp.bool(bool) }              |
@@ -248,15 +236,25 @@ Productions
         {b_exp} bloco_expressoes { -> New exp.b_exp(bloco_expressoes) } |
         {array_c} array_comp     { -> New exp.array_c(array_comp) }     ;
 
-    
+    bloco_expressoes { -> bloco_expressoes } =
+        {b_exp} comece exp termine { -> New bloco_expressoes([], exp)}                               |
+        {b_dec_const_exp} comece dec_const exp termine { -> New bloco_expressoes([dec_const], exp) } ;
+
+    chamada_funcao { -> chamada_funcao } =
+        {achamadafuncao1} id l_par r_par          { -> New chamada_funcao(id, []) }             |
+        {achamadafuncao2} id l_par exp_list r_par { -> New chamada_funcao(id, [exp_list.exp]) } ;
+
+    chamada_procedimento { -> chamada_procedimento } =
+        {achamadaprocedimento1} id l_par r_par          { -> New chamada_procedimento(id, []) }             |
+        {achamadaprocedimento2} id l_par exp_list r_par { -> New chamada_procedimento(id, [exp_list.exp]) } ;    
         
 Abstract Syntax Tree
     programa =
-        {aprograma} dec_var_or_dec_const* dec_proc_or_dec_func+;
+        {aprograma} dec_var_or_dec_const* dec_proc_or_dec_func+ ;
 
-    dec_var = tipo id? id_atribuicao?;
+    dec_var = tipo id? id_atribuicao? ;
 
-    dec_const = tipo id_atribuicao;
+    dec_const = tipo id_atribuicao ;
 
     dec_var_or_dec_const =
         {dec_var} dec_var     |
@@ -274,15 +272,15 @@ Abstract Syntax Tree
 
     id_atribuicao = valor exp;
 
-    dec_proc = id parametro* comando ;
-
-    dec_func = tipo_func id parametro* exp ;
-
     dec_proc_or_dec_func =
         {dec_proc} dec_proc |
         {dec_func} dec_func ;
 
-    parametro = tipo_param id;
+    dec_proc = id parametro* comando ;
+
+    dec_func = tipo_func id parametro* exp ;
+
+    parametro = tipo_param id ;
 
     tipo_param =
         {par} tipo_base      |
@@ -339,7 +337,7 @@ Abstract Syntax Tree
 
     bloco_expressoes = dec_const* exp ;
     
-    array_comp = id exp;
+    array_comp = id exp ;
 
     chamada_funcao = id exp* ;
     
