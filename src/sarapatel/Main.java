@@ -3,20 +3,50 @@ package sarapatel;
 import sarapatel.lexer.Lexer;
 import sarapatel.node.Start;
 import sarapatel.parser.Parser;
+
 import java.io.FileReader;
+import java.io.IOException;
 import java.io.PushbackReader;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Main {
-    public static void main(String[] args){
-        try {
-            String file = "src/tests/teste.srptl";
+    public static void main(String[] args) throws IOException{
+        sucesso();
+        erro();
+    }
 
+    public static void sucesso() throws IOException {
+        try (Stream<Path> stream = Files.list(Paths.get("./src/tests/sucesso"))) {
+            stream
+              .filter(file -> !Files.isDirectory(file))
+              .map(Path::toString)
+              .collect(Collectors.toSet())
+              .forEach(Main::parse);
+        }
+    }
+
+    public static void erro() throws IOException {
+        try (Stream<Path> stream = Files.list(Paths.get("./src/tests/erro"))) {
+            stream
+              .filter(file -> !Files.isDirectory(file))
+              .map(Path::toString)
+              .collect(Collectors.toSet())
+              .forEach(Main::parse);
+        }
+    }
+
+    public static void parse(String file) {
+        try {
             Parser p = new Parser(new Lexer(new PushbackReader(new FileReader(file), 1024)));
             Start tree = p.parse();
-            tree.apply(new ASTDisplay());
             tree.apply(new ASTPrinter());
         } catch(Exception e) {
             System.out.println(e.getMessage());
         }
     }
+
 }
