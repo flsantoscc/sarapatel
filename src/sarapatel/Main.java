@@ -41,6 +41,8 @@ public class Main {
 
     public static void parse(String file) {
         try {
+            System.out.println("\n-------------------------------------------------------------------------------------------------\n");
+            System.out.println(file + "\n");
             Parser p = new Parser(new Lexer(new PushbackReader(new FileReader(file), 1024)));
             Start tree = p.parse();
             tree.apply(new ASTPrinter());
