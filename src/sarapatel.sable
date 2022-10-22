@@ -199,8 +199,8 @@ Productions
         {conj} conjuncao                          { -> conjuncao.exp }                   ;
 
     conjuncao { -> exp } =
-        {e} [left]:conjuncao e [right]:comparador { -> New exp.e(left.exp, right.exp)} |
-        {comparador} comparador                   { -> comparador.exp }                ;
+        {e} [left]:conjuncao e [right]:comparador { -> New exp.e(left.exp, right.exp) } |
+        {comparador} comparador                   { -> comparador.exp }                 ;
         
     comparador { -> exp } =
         {equal} [left]:comparador equal [right]:adicao           { -> New exp.equal(left.exp, right.exp) }      |
@@ -237,7 +237,7 @@ Productions
         {array_c} array_comp     { -> New exp.array_c(array_comp) }     ;
 
     bloco_expressoes { -> bloco_expressoes } =
-        {b_exp} comece exp termine { -> New bloco_expressoes([], exp)}                               |
+        {b_exp} comece exp termine { -> New bloco_expressoes([], exp) }                              |
         {b_dec_const_exp} comece dec_const exp termine { -> New bloco_expressoes([dec_const], exp) } ;
 
     chamada_funcao { -> chamada_funcao } =
