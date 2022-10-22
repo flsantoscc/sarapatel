@@ -1,0 +1,9 @@
+procedimento: principal () 
+comece
+   	const: inteiro i << 0;
+   	const: inteiro j << 1;
+termine
+
+
+
+

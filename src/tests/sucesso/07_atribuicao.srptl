@@ -1,0 +1,5 @@
+>> procedimento: principal () 
+comece
+   	var: inteiro i;
+   	i << 1 + 3;
+termine

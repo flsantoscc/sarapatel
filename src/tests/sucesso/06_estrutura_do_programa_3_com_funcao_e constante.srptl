@@ -1,0 +1,14 @@
+funcao: real pi()
+comece
+        const: real PI << 3,14;
+        PI
+termine
+
+>> procedimento: principal() 
+comece
+    var: inteiro numero;
+    numero << pi();
+termine
+
+
+

@@ -1,0 +1,9 @@
+var: real r;
+const: real PI << 3,14;
+
+>> procedimento : principal () 
+comece
+   r << PI;
+termine
+
+

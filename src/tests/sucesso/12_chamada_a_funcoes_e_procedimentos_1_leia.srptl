@@ -1,0 +1,11 @@
+
+>>procedimento: principal()
+comece
+
+    var: real i;  
+    
+    i << leia ();
+        
+termine
+
+

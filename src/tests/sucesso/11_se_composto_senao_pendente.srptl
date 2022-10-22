@@ -1,0 +1,12 @@
+>> procedimento: principal () 
+comece
+    var: inteiro i;
+    
+    i << 2;
+    
+    se (i > 10)
+       se ( i > 100)
+	      i << 1; 
+       senao 
+	      i << 0; 
+termine

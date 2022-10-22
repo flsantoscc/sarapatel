@@ -1,0 +1,14 @@
+>> procedimento: principal () 
+comece
+    var: inteiro i;
+    i << 9;
+    
+    se (10 > i)
+       comece
+	      i << i + 1; 
+       termine
+    senao 
+       comece
+	      i << i - 1; 
+       termine
+termine

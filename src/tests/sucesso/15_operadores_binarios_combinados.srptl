@@ -1,0 +1,12 @@
+>> procedimento: principal () 
+comece
+	var: inteiro i;
+	var: booleano b;
+	
+	b << ((i > 3) e (2 > i));
+	b << i > 3 ou 2 > i;
+	        
+	b << ((i >= 3) ou (2 + 1 > i));	  
+	        
+termine
+

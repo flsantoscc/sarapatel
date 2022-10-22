@@ -1,0 +1,7 @@
+procedimento: principal () 
+comece
+   	var: inteiro i,j;
+   	i<<1;
+termine
+
+

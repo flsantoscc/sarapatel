@@ -1,0 +1,7 @@
+procedimento: principal () 
+comece
+   	const: inteiro i << 0;
+   	const: real r << 3,14;
+   	const: booleano b << falso;
+   	const: cadeia c << 'Oi';
+termine

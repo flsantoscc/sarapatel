@@ -1,0 +1,14 @@
+>> procedimento: principal () 
+comece
+	var: booleano b;
+	var: inteiro i;
+
+	b << falso;
+	b << nao (verdade);
+	b << nao b;
+	              
+	i << -1;
+	i << 8*(-1);
+	                
+termine
+

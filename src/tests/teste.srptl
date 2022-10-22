@@ -1,5 +1,0 @@
-var: inteiro aaa << 1+2;
-
->> procedimento : principal ()
-comece
-termine

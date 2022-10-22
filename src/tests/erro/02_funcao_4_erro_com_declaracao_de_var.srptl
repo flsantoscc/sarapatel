@@ -1,0 +1,7 @@
+funcao: inteiro nome() 
+comece
+   	var: inteiro i<<0;
+   	i
+termine
+
+

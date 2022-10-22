@@ -1,0 +1,11 @@
+>> procedimento: principal () 
+comece
+
+	var: real i;
+	var: booleano b;
+	
+	b << true; 
+	i << se (b) 1 senao 0;
+	        
+termine
+

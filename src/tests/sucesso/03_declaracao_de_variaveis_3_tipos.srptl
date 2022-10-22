@@ -1,0 +1,7 @@
+procedimento: principal () 
+comece
+   	var: inteiro i;
+   	var: real r;
+   	var: cadeia c;
+   	var: booleano b;
+termine

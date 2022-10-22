@@ -31,3 +31,7 @@ sarapatel/parser
 
 
 out/
+
+# vscode
+.vscode
+.idea

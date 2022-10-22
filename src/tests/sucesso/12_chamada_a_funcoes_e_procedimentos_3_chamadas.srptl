@@ -1,0 +1,32 @@
+funcao: real soma_dois( real a | real b)
+comece
+       a+b
+termine 
+
+
+funcao : real soma_tres( real a | real b | real c)
+comece
+        a+b+c
+termine 
+
+procedimento: imprima_resultado (real a)
+comece
+      imprima ('O resultado é: ');
+      imprima (a);
+      imprima ('\n');
+termine
+
+>>procedimento: principal()
+comece
+
+    var: real i;  
+    
+    i << soma_dois(1|2);
+    imprima_resultado(i);
+    
+    i << soma_tres(1|2|3);
+    imprima_resultado(i);
+    
+termine
+
+

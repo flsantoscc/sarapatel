@@ -1,0 +1,8 @@
+>> procedimento: principal () 
+comece
+
+   	var: inteiro [10][5] a << [ i | [ j | i-j ] ];
+
+termine
+
+

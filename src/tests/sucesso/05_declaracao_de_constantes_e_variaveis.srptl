@@ -1,0 +1,11 @@
+procedimento: principal () 
+comece
+   	const: inteiro ca << 0;
+   	var: inteiro va;
+   	var: inteiro vb;
+   	const: inteiro cb << 1;
+termine
+
+
+
+

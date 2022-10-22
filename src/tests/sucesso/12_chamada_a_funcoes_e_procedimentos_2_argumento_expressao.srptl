@@ -1,0 +1,15 @@
+funcao: real soma_dois( real a | real b)
+comece
+       a+b
+termine 
+
+>>procedimento: principal()
+comece
+
+    var: real i;  
+    
+    i << soma_dois(3 | 5+2);
+    
+termine
+
+

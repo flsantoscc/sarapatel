@@ -1,0 +1,10 @@
+>> procedimento: principal () 
+comece
+
+   	var: cadeia[4][4] tabela;
+
+   	tabela[0][0] << 'teste';
+   	tabela[0][1] << tabela[0][0];
+termine
+
+

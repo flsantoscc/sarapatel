@@ -1,0 +1,10 @@
+>> procedimento: principal () 
+comece
+
+   	var: inteiro[3] vetor;
+   	   	
+   	vetor << [ i | i*1 ];
+
+termine
+
+

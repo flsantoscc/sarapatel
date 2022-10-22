@@ -1,0 +1,13 @@
+funcao: real um()
+comece
+        1,0
+termine
+
+>> procedimento: principal() 
+comece
+    var: inteiro numero;
+    numero << um();
+termine
+
+
+

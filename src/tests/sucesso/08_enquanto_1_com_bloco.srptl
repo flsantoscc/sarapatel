@@ -1,0 +1,9 @@
+>> procedimento: principal () 
+comece
+    var: inteiro i;
+    i << (10);
+    enquanto (i > 0)
+    comece
+       i << (i - 1);
+    termine
+termine

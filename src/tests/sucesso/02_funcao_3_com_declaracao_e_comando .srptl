@@ -1,0 +1,7 @@
+funcao: real pi () 
+comece
+   	const: real PI << 3,14;
+   	PI
+termine
+
+
