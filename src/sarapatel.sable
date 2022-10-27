@@ -161,6 +161,10 @@ Productions
     array_comp { -> array_comp } =
         l_brkt id pipe exp r_brkt { -> New array_comp(id, exp) } ;
 
+    comando_list { -> comando* } =
+        {single} comando                { -> [comando] }                       |
+        {multiple} comando comando_list { -> [comando, comando_list.comando] } ;
+
     comando { -> comando } =
         {se} se l_par exp r_par comando                                                  { -> New comando.se(exp, comando) }                                                                                |
         {se_senao} se l_par exp r_par comando_aux senao comando                          { -> New comando.se_senao(exp, comando_aux, comando) }                                                             |
@@ -181,10 +185,6 @@ Productions
         {b_dec_var_or_dec_const} comece dec_var_or_dec_const_list termine               { -> New comando_aux.dec_var_or_dec_const([dec_var_or_dec_const_list.dec_var_or_dec_const], []) }                      |
         {b_dec_var_or_dec_const2} comece dec_var_or_dec_const_list comando_list termine { -> New comando_aux.dec_var_or_dec_const ([dec_var_or_dec_const_list.dec_var_or_dec_const], [comando_list.comando]) } |
         {bloco_comando} comece comando_list termine                                     { -> New comando_aux.dec_var_or_dec_const([], [comando_list.comando]) }                                                ;
-
-    comando_list { -> comando* } =
-        {single} comando                { -> [comando] }              |
-        {multiple} comando comando_list { -> [comando_list.comando] } ;
 
     exp_list { -> exp* } =
         {single} exp                 { -> [exp] }               |
