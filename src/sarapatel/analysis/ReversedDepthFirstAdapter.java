@@ -320,6 +320,48 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         outAIdAtribuicao(node);
     }
 
+    public void inADecProcDecProcOrDecFunc(ADecProcDecProcOrDecFunc node)
+    {
+        defaultIn(node);
+    }
+
+    public void outADecProcDecProcOrDecFunc(ADecProcDecProcOrDecFunc node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseADecProcDecProcOrDecFunc(ADecProcDecProcOrDecFunc node)
+    {
+        inADecProcDecProcOrDecFunc(node);
+        if(node.getDecProc() != null)
+        {
+            node.getDecProc().apply(this);
+        }
+        outADecProcDecProcOrDecFunc(node);
+    }
+
+    public void inADecFuncDecProcOrDecFunc(ADecFuncDecProcOrDecFunc node)
+    {
+        defaultIn(node);
+    }
+
+    public void outADecFuncDecProcOrDecFunc(ADecFuncDecProcOrDecFunc node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseADecFuncDecProcOrDecFunc(ADecFuncDecProcOrDecFunc node)
+    {
+        inADecFuncDecProcOrDecFunc(node);
+        if(node.getDecFunc() != null)
+        {
+            node.getDecFunc().apply(this);
+        }
+        outADecFuncDecProcOrDecFunc(node);
+    }
+
     public void inADecProc(ADecProc node)
     {
         defaultIn(node);
@@ -388,48 +430,6 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
             node.getTipoFunc().apply(this);
         }
         outADecFunc(node);
-    }
-
-    public void inADecProcDecProcOrDecFunc(ADecProcDecProcOrDecFunc node)
-    {
-        defaultIn(node);
-    }
-
-    public void outADecProcDecProcOrDecFunc(ADecProcDecProcOrDecFunc node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseADecProcDecProcOrDecFunc(ADecProcDecProcOrDecFunc node)
-    {
-        inADecProcDecProcOrDecFunc(node);
-        if(node.getDecProc() != null)
-        {
-            node.getDecProc().apply(this);
-        }
-        outADecProcDecProcOrDecFunc(node);
-    }
-
-    public void inADecFuncDecProcOrDecFunc(ADecFuncDecProcOrDecFunc node)
-    {
-        defaultIn(node);
-    }
-
-    public void outADecFuncDecProcOrDecFunc(ADecFuncDecProcOrDecFunc node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseADecFuncDecProcOrDecFunc(ADecFuncDecProcOrDecFunc node)
-    {
-        inADecFuncDecProcOrDecFunc(node);
-        if(node.getDecFunc() != null)
-        {
-            node.getDecFunc().apply(this);
-        }
-        outADecFuncDecProcOrDecFunc(node);
     }
 
     public void inAParametro(AParametro node)

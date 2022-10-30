@@ -24,10 +24,10 @@ public interface Analysis extends Switch
     void caseARealTipoBase(ARealTipoBase node);
     void caseACadeiaTipoBase(ACadeiaTipoBase node);
     void caseAIdAtribuicao(AIdAtribuicao node);
-    void caseADecProc(ADecProc node);
-    void caseADecFunc(ADecFunc node);
     void caseADecProcDecProcOrDecFunc(ADecProcDecProcOrDecFunc node);
     void caseADecFuncDecProcOrDecFunc(ADecFuncDecProcOrDecFunc node);
+    void caseADecProc(ADecProc node);
+    void caseADecFunc(ADecFunc node);
     void caseAParametro(AParametro node);
     void caseAParTipoParam(AParTipoParam node);
     void caseAArrParTipoParam(AArrParTipoParam node);
@@ -118,4 +118,40 @@ public interface Analysis extends Switch
     void caseTBlank(TBlank node);
     void caseEOF(EOF node);
     void caseInvalidToken(InvalidToken node);
+
+    void caseAAchamadafuncao1ChamadaFuncao(AAchamadafuncao1ChamadaFuncao node);
+    void caseAAchamadafuncao2ChamadaFuncao(AAchamadafuncao2ChamadaFuncao node);
+    void caseAAchamadafuncaoChamadaFuncao(AAchamadafuncaoChamadaFuncao node);
+    void caseAAchamadaprocedimento1ChamadaProcedimento(AAchamadaprocedimento1ChamadaProcedimento node);
+    void caseAAchamadaprocedimento2ChamadaProcedimento(AAchamadaprocedimento2ChamadaProcedimento node);
+    void caseAAchamadaprocedimentoChamadaProcedimento(AAchamadaprocedimentoChamadaProcedimento node);
+
+    void caseAAdecfunc1DecFunc(AAdecfunc1DecFunc node);
+    void caseAAdecfunc2DecFunc(AAdecfunc2DecFunc node);
+    void caseAAdecfuncDecFunc(AAdecfuncDecFunc node);
+    void caseAAdecproc1DecProc(AAdecproc1DecProc node);
+    void caseAAdecproc2DecProc(AAdecproc2DecProc node);
+    void caseAAdecproc3DecProc(AAdecproc3DecProc node);
+    void caseAAdecproc4DecProc(AAdecproc4DecProc node);
+    void caseAAdecprocDecProc(AAdecprocDecProc node);
+    void caseAAdicaoRelacao(AAdicaoRelacao node);
+    void caseAAexplist1ExpList(AAexplist1ExpList node);
+    void caseAAexplist2ExpList(AAexplist2ExpList node);
+    void caseAAprograma1Programa(AAprograma1Programa node);
+    void caseAAprograma2Programa(AAprograma2Programa node);
+    void caseAAprograma3Programa(AAprograma3Programa node);
+    void caseAAprograma4Programa(AAprograma4Programa node);
+    void caseAAprograma5Programa(AAprograma5Programa node);
+    void caseAAprograma6Programa(AAprograma6Programa node);
+    void caseAAprograma7Programa(AAprograma7Programa node);
+    void caseAAprograma8Programa(AAprograma8Programa node);
+    void caseAArrArrAttr(AArrArrAttr node);
+    void caseAAttr(AAttr node);
+    void caseAAttrComando(AAttrComando node);
+    void caseAAttrComandoAux(AAttrComandoAux node);
+    void caseAAttrComandoComando(AAttrComandoComando node);
+    void caseAAttrComandoComandoAux(AAttrComandoComandoAux node);
+    void caseABDecConstExpBlocoExpressoes(ABDecConstExpBlocoExpressoes node);
+
+
 }

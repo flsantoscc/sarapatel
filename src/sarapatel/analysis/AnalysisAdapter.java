@@ -147,18 +147,6 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseADecProc(ADecProc node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseADecFunc(ADecFunc node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
     public void caseADecProcDecProcOrDecFunc(ADecProcDecProcOrDecFunc node)
     {
         defaultCase(node);
@@ -166,6 +154,18 @@ public class AnalysisAdapter implements Analysis
 
     @Override
     public void caseADecFuncDecProcOrDecFunc(ADecFuncDecProcOrDecFunc node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseADecProc(ADecProc node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseADecFunc(ADecFunc node)
     {
         defaultCase(node);
     }
@@ -703,6 +703,105 @@ public class AnalysisAdapter implements Analysis
     {
         defaultCase(node);
     }
+
+    @Override
+    public void caseAAchamadafuncao1ChamadaFuncao(AAchamadafuncao1ChamadaFuncao node) { defaultCase(node);}
+
+    @Override
+    public void caseAAchamadafuncao2ChamadaFuncao(AAchamadafuncao2ChamadaFuncao node) { defaultCase(node);}
+
+    @Override
+    public void caseAAchamadafuncaoChamadaFuncao(AAchamadafuncaoChamadaFuncao node) { defaultCase(node);}
+
+    @Override
+    public void caseAAchamadaprocedimento1ChamadaProcedimento(AAchamadaprocedimento1ChamadaProcedimento node) { defaultCase(node);}
+
+    @Override
+    public void caseAAchamadaprocedimento2ChamadaProcedimento(AAchamadaprocedimento2ChamadaProcedimento node) { defaultCase(node);}
+
+    @Override
+    public void caseAAchamadaprocedimentoChamadaProcedimento(AAchamadaprocedimentoChamadaProcedimento node) { defaultCase(node);}
+
+    @Override
+    public void caseAAdecfunc1DecFunc(AAdecfunc1DecFunc node){ defaultCase(node);}
+
+    @Override
+    public void caseAAdecfunc2DecFunc(AAdecfunc2DecFunc node){ defaultCase(node);}
+
+    @Override
+    public void caseAAdecfuncDecFunc(AAdecfuncDecFunc node){ defaultCase(node);}
+
+    @Override
+    public void caseAAdecproc1DecProc(AAdecproc1DecProc node){ defaultCase(node);}
+
+    @Override
+    public void caseAAdecproc2DecProc(AAdecproc2DecProc node){ defaultCase(node);}
+
+    @Override
+    public void caseAAdecproc3DecProc(AAdecproc3DecProc node){ defaultCase(node);}
+
+    @Override
+    public void caseAAdecproc4DecProc(AAdecproc4DecProc node){ defaultCase(node);}
+
+    @Override
+    public void caseAAdecprocDecProc(AAdecprocDecProc node){ defaultCase(node);}
+
+    @Override
+    public void caseAAdicaoRelacao(AAdicaoRelacao node){ defaultCase(node);}
+
+    @Override
+    public void caseAAexplist1ExpList(AAexplist1ExpList node){ defaultCase(node);}
+
+    @Override
+    public void caseAAexplist2ExpList(AAexplist2ExpList node){ defaultCase(node);}
+
+    @Override
+    public void caseAAprograma1Programa(AAprograma1Programa node){ defaultCase(node);}
+
+    @Override
+    public void caseAAprograma2Programa(AAprograma2Programa node){ defaultCase(node);}
+
+    @Override
+    public void caseAAprograma3Programa(AAprograma3Programa node){ defaultCase(node);}
+
+    @Override
+    public void caseAAprograma4Programa(AAprograma4Programa node){ defaultCase(node);}
+
+    @Override
+    public void caseAAprograma5Programa(AAprograma5Programa node){ defaultCase(node);}
+
+    @Override
+    public void caseAAprograma6Programa(AAprograma6Programa node){ defaultCase(node);}
+
+    @Override
+    public void caseAAprograma7Programa(AAprograma7Programa node){ defaultCase(node);}
+
+    @Override
+    public void caseAAprograma8Programa(AAprograma8Programa node){ defaultCase(node);}
+
+    @Override
+    public void caseAArrArrAttr(AArrArrAttr node){ defaultCase(node);}
+
+    @Override
+    public void caseAAttr(AAttr node){ defaultCase(node);}
+
+    @Override
+    public void caseAAttrComando(AAttrComando node){ defaultCase(node);}
+
+    @Override
+    public void caseAAttrComandoAux(AAttrComandoAux node){ defaultCase(node);}
+
+    @Override
+    public void caseAAttrComandoComando(AAttrComandoComando node){ defaultCase(node);}
+
+    @Override
+    public void caseAAttrComandoComandoAux(AAttrComandoComandoAux node){ defaultCase(node);}
+
+    @Override
+    public void caseABDecConstExpBlocoExpressoes(ABDecConstExpBlocoExpressoes node){ defaultCase(node);}
+
+    //@Override
+    //public { defaultCase(node);};
 
     public void defaultCase(@SuppressWarnings("unused") Node node)
     {
