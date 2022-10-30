@@ -129,6 +129,12 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
+    public void caseABoolTipoKw(ABoolTipoKw node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
     public void caseARealTipoBase(ARealTipoBase node)
     {
         defaultCase(node);
@@ -340,6 +346,12 @@ public class AnalysisAdapter implements Analysis
 
     @Override
     public void caseASomaExp(ASomaExp node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseASomaAdicao(ASomaAdicao node)
     {
         defaultCase(node);
     }
@@ -800,8 +812,172 @@ public class AnalysisAdapter implements Analysis
     @Override
     public void caseABDecConstExpBlocoExpressoes(ABDecConstExpBlocoExpressoes node){ defaultCase(node);}
 
-    //@Override
-    //public { defaultCase(node);};
+    @Override
+    public void caseABExpBlocoExpressoes(ABExpBlocoExpressoes node){ defaultCase(node);}
+
+    @Override
+    public void caseABlocoComando(ABlocoComando node){ defaultCase(node);}
+
+    @Override
+    public  void caseABlocoComandoAux(ABlocoComandoAux node){ defaultCase(node);}
+
+    @Override
+    public void caseABlocoConstComando(ABlocoConstComando node){ defaultCase(node);}
+
+    @Override
+    public void caseABlocoConstComandoAux(ABlocoConstComandoAux node){ defaultCase(node);};
+
+    @Override
+    public void caseABlocoVarComando(ABlocoVarComando node){ defaultCase(node);};
+
+    @Override
+    public void caseABlocoVarComandoAux(ABlocoVarComandoAux node){ defaultCase(node);};
+
+    @Override
+    public void caseACadeiaTipoKw(ACadeiaTipoKw node){ defaultCase(node);};
+
+    @Override
+    public void caseAComandoExp(AComandoExp node){ defaultCase(node);};
+
+    @Override
+    public void caseAConjDisjuncao(AConjDisjuncao node){ defaultCase(node);};
+
+    @Override
+    public void caseAConstDecVarOrConst(AConstDecVarOrConst node){ defaultCase(node);};
+
+    @Override
+    public void caseAConstSubBloco(AConstSubBloco node){ defaultCase(node);};
+
+    @Override
+    public void caseADecConstDecVarDecConst(ADecConstDecVarDecConst node){ defaultCase(node);};
+
+    @Override
+    public void caseADecVar1DecVar(ADecVar1DecVar node){ defaultCase(node);};
+
+    @Override
+    public void caseADecVar2DecVar(ADecVar2DecVar node){ defaultCase(node);};
+
+    @Override
+    public void caseADecVarDecConstComando(ADecVarDecConstComando node){ defaultCase(node);};
+
+    @Override
+    public void caseADecVarDecConstComandoAux(ADecVarDecConstComandoAux node){ defaultCase(node);};
+
+    @Override
+    public void caseADecVarDecVar(ADecVarDecVar node){ defaultCase(node);}
+
+    @Override
+    public void caseADecVarDecVarDecConst(ADecVarDecVarDecConst node){ defaultCase(node);};
+
+    @Override
+    public void caseADisjCondicao(ADisjCondicao node){ defaultCase(node);};
+
+    @Override
+    public void caseADivProduto(ADivProduto node){ defaultCase(node);};
+
+    @Override
+    public void caseAEConjuncao(AEConjuncao node){ defaultCase(node);};
+
+    @Override
+    public void caseAEqualRelacao(AEqualRelacao node){ defaultCase(node);};
+
+    @Override
+    public void caseAExpList(AExpList node){ defaultCase(node);};
+
+    @Override
+    public void caseAExpRelUnaria(AExpRelUnaria node){ defaultCase(node);};
+
+    @Override
+    public void caseAFuncDecProcOrFunc(AFuncDecProcOrFunc node){ defaultCase(node);};
+
+    @Override
+    public void caseAGreaterEqRelacao(AGreaterEqRelacao node){ defaultCase(node);};
+
+    @Override
+    public void caseAGreaterRelacao(AGreaterRelacao node){ defaultCase(node);};
+
+    @Override
+    public void caseAIdArrAttr(AIdArrAttr node){ defaultCase(node);};
+
+    @Override
+    public void caseAIdAtrIdDec(AIdAtrIdDec node){ defaultCase(node);};
+
+    @Override
+    public void caseAIdIdDec(AIdIdDec node){ defaultCase(node);};
+
+    @Override
+    public void caseAIntTipoKw(AIntTipoKw node){ defaultCase(node);};
+
+    @Override
+    public void caseAMaisRelUnaria(AMaisRelUnaria node){ defaultCase(node);}
+
+    @Override
+    public void caseAMenosRelUnaria(AMenosRelUnaria node){ defaultCase(node);}
+
+    @Override
+    public void caseAMinusAdicao(AMinusAdicao node){ defaultCase(node);}
+
+
+    @Override
+    public void caseAModProduto(AModProduto node){ defaultCase(node);}
+
+    @Override
+    public void caseAMultipleDecConstList(AMultipleDecConstList node){ defaultCase(node);}
+
+    @Override
+    public void caseAMultProduto(AMultProduto node){ defaultCase(node);}
+
+    @Override
+    public void caseANegacaoRelUnaria(ANegacaoRelUnaria node){ defaultCase(node);}
+
+
+    @Override
+    public void caseAOuDisjuncao(AOuDisjuncao node){ defaultCase(node);}
+
+
+    @Override
+    public void caseAParam(AParam node){ defaultCase(node);}
+
+
+    @Override
+    public void caseAPipeExp(APipeExp node){ defaultCase(node);}
+
+
+    @Override
+    public void caseAPipeExpPipeExp(APipeExpPipeExp node){ defaultCase(node);}
+
+    @Override
+    public void caseAPipeParam(APipeParam node){ defaultCase(node);}
+
+    @Override
+    public void caseAProcDecProcOrFunc(AProcDecProcOrFunc node){ defaultCase(node);}
+
+    @Override
+    public void caseAProdutoAdicao(AProdutoAdicao node){ defaultCase(node);}
+
+    @Override
+    public void caseAPrograma(APrograma node){ defaultCase(node);}
+
+    @Override
+    public void caseARealTipoKw(ARealTipoKw node){ defaultCase(node);}
+
+    @Override
+    public void caseARelConjuncao(ARelConjuncao node){ defaultCase(node);}
+
+    @Override
+    public void caseARelUnariaProduto(ARelUnariaProduto node){ defaultCase(node);}
+
+    @Override
+    public void caseASeExpCondicao(ASeExpCondicao node){ defaultCase(node);}
+
+    @Override
+    public void caseASingleDecConstList(ASingleDecConstList node){ defaultCase(node);}
+
+    @Override
+    public void caseAVarDecVarOrConst(AVarDecVarOrConst node){ defaultCase(node);}
+
+    @Override
+    public void caseAVarSubBloco(AVarSubBloco node){ defaultCase(node);}
 
     public void defaultCase(@SuppressWarnings("unused") Node node)
     {
