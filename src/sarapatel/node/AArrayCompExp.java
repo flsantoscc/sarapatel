@@ -5,16 +5,16 @@ package sarapatel.node;
 import sarapatel.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AArrayCExp extends PExp
+public final class AArrayCompExp extends PExp
 {
     private PArrayComp _arrayComp_;
 
-    public AArrayCExp()
+    public AArrayCompExp()
     {
         // Constructor
     }
 
-    public AArrayCExp(
+    public AArrayCompExp(
         @SuppressWarnings("hiding") PArrayComp _arrayComp_)
     {
         // Constructor
@@ -25,14 +25,14 @@ public final class AArrayCExp extends PExp
     @Override
     public Object clone()
     {
-        return new AArrayCExp(
+        return new AArrayCompExp(
             cloneNode(this._arrayComp_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAArrayCExp(this);
+        ((Analysis) sw).caseAArrayCompExp(this);
     }
 
     public PArrayComp getArrayComp()

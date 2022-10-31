@@ -12,7 +12,7 @@ public interface Analysis extends Switch
     void setOut(Node node, Object o);
 
     void caseStart(Start node);
-    void caseAAprogramaPrograma(AAprogramaPrograma node);
+    void caseAProgramaPrograma(AProgramaPrograma node);
     void caseADecVar(ADecVar node);
     void caseADecConst(ADecConst node);
     void caseADecVarDecVarOrDecConst(ADecVarDecVarOrDecConst node);
@@ -52,7 +52,7 @@ public interface Analysis extends Switch
     void caseACadeiaExp(ACadeiaExp node);
     void caseAValorExp(AValorExp node);
     void caseACFuncExp(ACFuncExp node);
-    void caseAArrayCExp(AArrayCExp node);
+    void caseAArrayCompExp(AArrayCompExp node);
     void caseAIncrementoExp(AIncrementoExp node);
     void caseADecrementoExp(ADecrementoExp node);
     void caseASeExpExp(ASeExpExp node);
@@ -118,99 +118,4 @@ public interface Analysis extends Switch
     void caseTBlank(TBlank node);
     void caseEOF(EOF node);
     void caseInvalidToken(InvalidToken node);
-
-    void caseAAchamadafuncao1ChamadaFuncao(AAchamadafuncao1ChamadaFuncao node);
-    void caseAAchamadafuncao2ChamadaFuncao(AAchamadafuncao2ChamadaFuncao node);
-    void caseAAchamadafuncaoChamadaFuncao(AAchamadafuncaoChamadaFuncao node);
-    void caseAAchamadaprocedimento1ChamadaProcedimento(AAchamadaprocedimento1ChamadaProcedimento node);
-    void caseAAchamadaprocedimento2ChamadaProcedimento(AAchamadaprocedimento2ChamadaProcedimento node);
-    void caseAAchamadaprocedimentoChamadaProcedimento(AAchamadaprocedimentoChamadaProcedimento node);
-    void caseAAdecfunc1DecFunc(AAdecfunc1DecFunc node);
-    void caseAAdecfunc2DecFunc(AAdecfunc2DecFunc node);
-    void caseAAdecfuncDecFunc(AAdecfuncDecFunc node);
-    void caseAAdecproc1DecProc(AAdecproc1DecProc node);
-    void caseAAdecproc2DecProc(AAdecproc2DecProc node);
-    void caseAAdecproc3DecProc(AAdecproc3DecProc node);
-    void caseAAdecproc4DecProc(AAdecproc4DecProc node);
-    void caseAAdecprocDecProc(AAdecprocDecProc node);
-    void caseAAdicaoRelacao(AAdicaoRelacao node);
-    void caseAAexplist1ExpList(AAexplist1ExpList node);
-    void caseAAexplist2ExpList(AAexplist2ExpList node);
-    void caseAAprograma1Programa(AAprograma1Programa node);
-    void caseAAprograma2Programa(AAprograma2Programa node);
-    void caseAAprograma3Programa(AAprograma3Programa node);
-    void caseAAprograma4Programa(AAprograma4Programa node);
-    void caseAAprograma5Programa(AAprograma5Programa node);
-    void caseAAprograma6Programa(AAprograma6Programa node);
-    void caseAAprograma7Programa(AAprograma7Programa node);
-    void caseAAprograma8Programa(AAprograma8Programa node);
-    void caseAArrArrAttr(AArrArrAttr node);
-    void caseAAttr(AAttr node);
-    void caseAAttrComando(AAttrComando node);
-    void caseAAttrComandoAux(AAttrComandoAux node);
-    void caseAAttrComandoComando(AAttrComandoComando node);
-    void caseAAttrComandoComandoAux(AAttrComandoComandoAux node);
-    void caseABDecConstExpBlocoExpressoes(ABDecConstExpBlocoExpressoes node);
-
-    void caseABExpBlocoExpressoes(ABExpBlocoExpressoes node);
-    void caseABlocoComando(ABlocoComando node);
-    void caseABlocoComandoAux(ABlocoComandoAux node);
-    void caseABlocoConstComando(ABlocoConstComando node);
-    void caseABlocoConstComandoAux(ABlocoConstComandoAux node);
-    void caseABlocoVarComando(ABlocoVarComando node);
-    void caseABlocoVarComandoAux(ABlocoVarComandoAux node);
-    void caseABoolTipoKw(ABoolTipoKw node);
-    void caseACadeiaTipoKw(ACadeiaTipoKw node);
-    void caseAComandoExp(AComandoExp node);
-    void caseAConjDisjuncao(AConjDisjuncao node);
-    void caseAConstDecVarOrConst(AConstDecVarOrConst node);
-    void caseAConstSubBloco(AConstSubBloco node);
-    void caseADecConstDecVarDecConst(ADecConstDecVarDecConst node);
-    void caseADecVar1DecVar(ADecVar1DecVar node);
-    void caseADecVar2DecVar(ADecVar2DecVar node);
-    void caseADecVarDecConstComando(ADecVarDecConstComando node);
-    void caseADecVarDecConstComandoAux(ADecVarDecConstComandoAux node);
-    void caseADecVarDecVar(ADecVarDecVar node);
-    void caseADecVarDecVarDecConst(ADecVarDecVarDecConst node);
-    void caseADisjCondicao(ADisjCondicao node);
-    void caseADivProduto(ADivProduto node);
-    void caseAEConjuncao(AEConjuncao node);
-    void caseAEqualRelacao(AEqualRelacao node);
-    void caseAExpList(AExpList node);
-    void caseAExpRelUnaria(AExpRelUnaria node);
-    void caseAFuncDecProcOrFunc(AFuncDecProcOrFunc node);
-    void caseAGreaterEqRelacao(AGreaterEqRelacao node);
-    void caseAGreaterRelacao(AGreaterRelacao node);
-    void caseAIdArrAttr(AIdArrAttr node);
-    void caseAIdAtrIdDec(AIdAtrIdDec node);
-    void caseAIdIdDec(AIdIdDec node);
-    void caseAIntTipoKw(AIntTipoKw node);
-    void caseAMaisRelUnaria(AMaisRelUnaria node);
-    void caseAMenosRelUnaria(AMenosRelUnaria node);
-    void caseAMinusAdicao(AMinusAdicao node);
-    void caseAModProduto(AModProduto node);
-    void caseAMultipleDecConstList(AMultipleDecConstList node);
-    void caseAMultProduto(AMultProduto node);
-    void caseANegacaoRelUnaria(ANegacaoRelUnaria node);
-    void caseAOuDisjuncao(AOuDisjuncao node);
-    void caseAParam(AParam node);
-    void caseAPipeExp(APipeExp node);
-    void caseAPipeExpPipeExp(APipeExpPipeExp node);
-    void caseAPipeParam(APipeParam node);
-    void caseAProcDecProcOrFunc(AProcDecProcOrFunc node);
-    void caseAProdutoAdicao(AProdutoAdicao node);
-    void caseAPrograma(APrograma node);
-    void caseARealTipoKw(ARealTipoKw node);
-    void caseARelConjuncao(ARelConjuncao node);
-    void caseARelUnariaProduto(ARelUnariaProduto node);
-    void caseASeExpCondicao(ASeExpCondicao node);
-    void caseASingleDecConstList(ASingleDecConstList node);
-    void caseASomaAdicao(ASomaAdicao node);
-    void caseAVarDecVarOrConst(AVarDecVarOrConst node);
-    void caseAVarSubBloco(AVarSubBloco node);
-
-
-
-
-
 }

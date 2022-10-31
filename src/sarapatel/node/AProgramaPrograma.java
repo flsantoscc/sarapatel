@@ -6,90 +6,90 @@ import java.util.*;
 import sarapatel.analysis.*;
 
 @SuppressWarnings("nls")
-public final class AAprograma7Programa extends PPrograma
+public final class AProgramaPrograma extends PPrograma
 {
-    private final LinkedList<PDecConst> _decConst_ = new LinkedList<PDecConst>();
-    private final LinkedList<PDecProc> _decProc_ = new LinkedList<PDecProc>();
+    private final LinkedList<PDecVarOrDecConst> _decVarOrDecConst_ = new LinkedList<PDecVarOrDecConst>();
+    private final LinkedList<PDecProcOrDecFunc> _decProcOrDecFunc_ = new LinkedList<PDecProcOrDecFunc>();
 
-    public AAprograma7Programa()
+    public AProgramaPrograma()
     {
         // Constructor
     }
 
-    public AAprograma7Programa(
-        @SuppressWarnings("hiding") List<?> _decConst_,
-        @SuppressWarnings("hiding") List<?> _decProc_)
+    public AProgramaPrograma(
+        @SuppressWarnings("hiding") List<?> _decVarOrDecConst_,
+        @SuppressWarnings("hiding") List<?> _decProcOrDecFunc_)
     {
         // Constructor
-        setDecConst(_decConst_);
+        setDecVarOrDecConst(_decVarOrDecConst_);
 
-        setDecProc(_decProc_);
+        setDecProcOrDecFunc(_decProcOrDecFunc_);
 
     }
 
     @Override
     public Object clone()
     {
-        return new AAprograma7Programa(
-            cloneList(this._decConst_),
-            cloneList(this._decProc_));
+        return new AProgramaPrograma(
+            cloneList(this._decVarOrDecConst_),
+            cloneList(this._decProcOrDecFunc_));
     }
 
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseAAprograma7Programa(this);
+        ((Analysis) sw).caseAProgramaPrograma(this);
     }
 
-    public LinkedList<PDecConst> getDecConst()
+    public LinkedList<PDecVarOrDecConst> getDecVarOrDecConst()
     {
-        return this._decConst_;
+        return this._decVarOrDecConst_;
     }
 
-    public void setDecConst(List<?> list)
+    public void setDecVarOrDecConst(List<?> list)
     {
-        for(PDecConst e : this._decConst_)
+        for(PDecVarOrDecConst e : this._decVarOrDecConst_)
         {
             e.parent(null);
         }
-        this._decConst_.clear();
+        this._decVarOrDecConst_.clear();
 
         for(Object obj_e : list)
         {
-            PDecConst e = (PDecConst) obj_e;
+            PDecVarOrDecConst e = (PDecVarOrDecConst) obj_e;
             if(e.parent() != null)
             {
                 e.parent().removeChild(e);
             }
 
             e.parent(this);
-            this._decConst_.add(e);
+            this._decVarOrDecConst_.add(e);
         }
     }
 
-    public LinkedList<PDecProc> getDecProc()
+    public LinkedList<PDecProcOrDecFunc> getDecProcOrDecFunc()
     {
-        return this._decProc_;
+        return this._decProcOrDecFunc_;
     }
 
-    public void setDecProc(List<?> list)
+    public void setDecProcOrDecFunc(List<?> list)
     {
-        for(PDecProc e : this._decProc_)
+        for(PDecProcOrDecFunc e : this._decProcOrDecFunc_)
         {
             e.parent(null);
         }
-        this._decProc_.clear();
+        this._decProcOrDecFunc_.clear();
 
         for(Object obj_e : list)
         {
-            PDecProc e = (PDecProc) obj_e;
+            PDecProcOrDecFunc e = (PDecProcOrDecFunc) obj_e;
             if(e.parent() != null)
             {
                 e.parent().removeChild(e);
             }
 
             e.parent(this);
-            this._decProc_.add(e);
+            this._decProcOrDecFunc_.add(e);
         }
     }
 
@@ -97,20 +97,20 @@ public final class AAprograma7Programa extends PPrograma
     public String toString()
     {
         return ""
-            + toString(this._decConst_)
-            + toString(this._decProc_);
+            + toString(this._decVarOrDecConst_)
+            + toString(this._decProcOrDecFunc_);
     }
 
     @Override
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._decConst_.remove(child))
+        if(this._decVarOrDecConst_.remove(child))
         {
             return;
         }
 
-        if(this._decProc_.remove(child))
+        if(this._decProcOrDecFunc_.remove(child))
         {
             return;
         }
@@ -122,13 +122,13 @@ public final class AAprograma7Programa extends PPrograma
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        for(ListIterator<PDecConst> i = this._decConst_.listIterator(); i.hasNext();)
+        for(ListIterator<PDecVarOrDecConst> i = this._decVarOrDecConst_.listIterator(); i.hasNext();)
         {
             if(i.next() == oldChild)
             {
                 if(newChild != null)
                 {
-                    i.set((PDecConst) newChild);
+                    i.set((PDecVarOrDecConst) newChild);
                     newChild.parent(this);
                     oldChild.parent(null);
                     return;
@@ -140,13 +140,13 @@ public final class AAprograma7Programa extends PPrograma
             }
         }
 
-        for(ListIterator<PDecProc> i = this._decProc_.listIterator(); i.hasNext();)
+        for(ListIterator<PDecProcOrDecFunc> i = this._decProcOrDecFunc_.listIterator(); i.hasNext();)
         {
             if(i.next() == oldChild)
             {
                 if(newChild != null)
                 {
-                    i.set((PDecProc) newChild);
+                    i.set((PDecProcOrDecFunc) newChild);
                     newChild.parent(this);
                     oldChild.parent(null);
                     return;

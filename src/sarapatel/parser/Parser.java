@@ -189,13 +189,13 @@ public class Parser
     {
         switch(reduction)
         {
-            case 0: /* reduce AAprograma1Programa */
+            case 0: /* reduce APrograma1Programa */
             {
                 ArrayList<Object> list = new0();
                 push(goTo(0), list);
             }
             break;
-            case 1: /* reduce AAprograma2Programa */
+            case 1: /* reduce APrograma2Programa */
             {
                 ArrayList<Object> list = new1();
                 push(goTo(0), list);
@@ -753,7 +753,7 @@ public class Parser
                 push(goTo(33), list);
             }
             break;
-            case 94: /* reduce AArrayCValue */
+            case 94: /* reduce AArrayCompValue */
             {
                 ArrayList<Object> list = new94();
                 push(goTo(33), list);
@@ -801,7 +801,7 @@ public class Parser
 
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new0() /* reduce AAprograma1Programa */
+    ArrayList<Object> new0() /* reduce APrograma1Programa */
     {
         @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
 
@@ -824,7 +824,7 @@ public class Parser
 	}
         }
 
-        pprogramaNode1 = new AAprogramaPrograma(listNode2, listNode4);
+        pprogramaNode1 = new AProgramaPrograma(listNode2, listNode4);
         }
 	nodeList.add(pprogramaNode1);
         return nodeList;
@@ -833,7 +833,7 @@ public class Parser
 
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new1() /* reduce AAprograma2Programa */
+    ArrayList<Object> new1() /* reduce APrograma2Programa */
     {
         @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
 
@@ -863,7 +863,7 @@ public class Parser
 	}
         }
 
-        pprogramaNode1 = new AAprogramaPrograma(listNode3, listNode5);
+        pprogramaNode1 = new AProgramaPrograma(listNode3, listNode5);
         }
 	nodeList.add(pprogramaNode1);
         return nodeList;
@@ -3122,7 +3122,7 @@ public class Parser
 
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new94() /* reduce AArrayCValue */
+    ArrayList<Object> new94() /* reduce AArrayCompValue */
     {
         @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
 
@@ -3133,7 +3133,7 @@ public class Parser
         PArrayComp parraycompNode2;
         parraycompNode2 = (PArrayComp)nodeArrayList1.get(0);
 
-        pexpNode1 = new AArrayCExp(parraycompNode2);
+        pexpNode1 = new AArrayCompExp(parraycompNode2);
         }
 	nodeList.add(pexpNode1);
         return nodeList;

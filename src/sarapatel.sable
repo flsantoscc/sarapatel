@@ -74,8 +74,8 @@ Ignored Tokens
 Productions
 
     programa { -> programa  } =
-        {aprograma1} dec_proc_or_dec_func_list                           { -> New programa.aprograma([], [dec_proc_or_dec_func_list.dec_proc_or_dec_func]) }                                               |
-        {aprograma2} dec_var_or_dec_const_list dec_proc_or_dec_func_list { -> New programa.aprograma([dec_var_or_dec_const_list.dec_var_or_dec_const], [dec_proc_or_dec_func_list.dec_proc_or_dec_func]) } ;
+        {programa1} dec_proc_or_dec_func_list                           { -> New programa.programa([], [dec_proc_or_dec_func_list.dec_proc_or_dec_func]) }                                               |
+        {programa2} dec_var_or_dec_const_list dec_proc_or_dec_func_list { -> New programa.programa([dec_var_or_dec_const_list.dec_var_or_dec_const], [dec_proc_or_dec_func_list.dec_proc_or_dec_func]) } ;
 
     dec_var_or_dec_const_list { -> dec_var_or_dec_const * } = 
         {single} dec_var_or_dec_const                             { -> [dec_var_or_dec_const] }                                                 |
@@ -234,7 +234,7 @@ Productions
         {par} l_par exp r_par    { -> New exp.par(exp) }                |
         {c_func} chamada_funcao  { -> New exp.c_func(chamada_funcao) }  |
         {b_exp} bloco_expressoes { -> New exp.b_exp(bloco_expressoes) } |
-        {array_c} array_comp     { -> New exp.array_c(array_comp) }     ;
+        {array_comp} array_comp  { -> New exp.array_comp(array_comp) }  ;
 
     bloco_expressoes { -> bloco_expressoes } =
         {b_exp} comece exp termine { -> New bloco_expressoes([], exp) }                              |
@@ -250,7 +250,7 @@ Productions
         
 Abstract Syntax Tree
     programa =
-        {aprograma} dec_var_or_dec_const* dec_proc_or_dec_func+ ;
+        {programa} dec_var_or_dec_const* dec_proc_or_dec_func+ ;
 
     dec_var = tipo id? id_atribuicao? ;
 
@@ -316,7 +316,7 @@ Abstract Syntax Tree
         {cadeia} string                         |
         {valor} valor                           |
         {c_func} chamada_funcao                 |
-        {array_c} array_comp                    |
+        {array_comp} array_comp                 |
         {incremento} exp                        |
         {decremento} exp                        |
         {se_exp} [if]:exp [then]:exp [else]:exp |

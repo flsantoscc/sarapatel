@@ -36,20 +36,20 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         outStart(node);
     }
 
-    public void inAAprogramaPrograma(AAprogramaPrograma node)
+    public void inAProgramaPrograma(AProgramaPrograma node)
     {
         defaultIn(node);
     }
 
-    public void outAAprogramaPrograma(AAprogramaPrograma node)
+    public void outAProgramaPrograma(AProgramaPrograma node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAAprogramaPrograma(AAprogramaPrograma node)
+    public void caseAProgramaPrograma(AProgramaPrograma node)
     {
-        inAAprogramaPrograma(node);
+        inAProgramaPrograma(node);
         {
             List<PDecProcOrDecFunc> copy = new ArrayList<PDecProcOrDecFunc>(node.getDecProcOrDecFunc());
             Collections.reverse(copy);
@@ -66,7 +66,7 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
                 e.apply(this);
             }
         }
-        outAAprogramaPrograma(node);
+        outAProgramaPrograma(node);
     }
 
     public void inADecVar(ADecVar node)
@@ -996,25 +996,25 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         outACFuncExp(node);
     }
 
-    public void inAArrayCExp(AArrayCExp node)
+    public void inAArrayCompExp(AArrayCompExp node)
     {
         defaultIn(node);
     }
 
-    public void outAArrayCExp(AArrayCExp node)
+    public void outAArrayCompExp(AArrayCompExp node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAArrayCExp(AArrayCExp node)
+    public void caseAArrayCompExp(AArrayCompExp node)
     {
-        inAArrayCExp(node);
+        inAArrayCompExp(node);
         if(node.getArrayComp() != null)
         {
             node.getArrayComp().apply(this);
         }
-        outAArrayCExp(node);
+        outAArrayCompExp(node);
     }
 
     public void inAIncrementoExp(AIncrementoExp node)
