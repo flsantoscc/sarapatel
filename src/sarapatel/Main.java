@@ -24,6 +24,7 @@ public class Main {
             stream
               .filter(file -> !Files.isDirectory(file))
               .map(Path::toString)
+              .sorted()
               .collect(Collectors.toSet())
               .forEach(Main::parse);
         }
@@ -34,6 +35,7 @@ public class Main {
             stream
               .filter(file -> !Files.isDirectory(file))
               .map(Path::toString)
+              .sorted()
               .collect(Collectors.toSet())
               .forEach(Main::parse);
         }
@@ -46,6 +48,7 @@ public class Main {
             Parser p = new Parser(new Lexer(new PushbackReader(new FileReader(file), 1024)));
             Start tree = p.parse();
             tree.apply(new ASTPrinter());
+            tree.apply(new SemanticAnalyzer());
         } catch(Exception e) {
             System.out.println(e.getMessage());
         }
