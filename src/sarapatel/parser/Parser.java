@@ -579,7 +579,7 @@ public class Parser
                 push(goTo(25), list);
             }
             break;
-            case 65: /* reduce ASeExpExp */
+            case 65: /* reduce ASeExp */
             {
                 ArrayList<Object> list = new65();
                 push(goTo(26), list);
@@ -824,7 +824,7 @@ public class Parser
 	}
         }
 
-        pprogramaNode1 = new AProgramaPrograma(listNode2, listNode4);
+        pprogramaNode1 = new APrograma(listNode2, listNode4);
         }
 	nodeList.add(pprogramaNode1);
         return nodeList;
@@ -863,7 +863,7 @@ public class Parser
 	}
         }
 
-        pprogramaNode1 = new AProgramaPrograma(listNode3, listNode5);
+        pprogramaNode1 = new APrograma(listNode3, listNode5);
         }
 	nodeList.add(pprogramaNode1);
         return nodeList;
@@ -2529,7 +2529,7 @@ public class Parser
 
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
-    ArrayList<Object> new65() /* reduce ASeExpExp */
+    ArrayList<Object> new65() /* reduce ASeExp */
     {
         @SuppressWarnings("hiding") ArrayList<Object> nodeList = new ArrayList<Object>();
 
@@ -2550,7 +2550,7 @@ public class Parser
         pexpNode3 = (PExp)nodeArrayList5.get(0);
         pexpNode4 = (PExp)nodeArrayList7.get(0);
 
-        pexpNode1 = new ASeExpExp(pexpNode2, pexpNode3, pexpNode4);
+        pexpNode1 = new ASeExp(pexpNode2, pexpNode3, pexpNode4);
         }
 	nodeList.add(pexpNode1);
         return nodeList;
