@@ -74,8 +74,8 @@ Ignored Tokens
 Productions
 
     programa { -> programa  } =
-        {programa1} dec_proc_or_dec_func_list                           { -> New programa([], [dec_proc_or_dec_func_list.dec_proc_or_dec_func]) }                                               |
-        {programa2} dec_var_or_dec_const_list dec_proc_or_dec_func_list { -> New programa([dec_var_or_dec_const_list.dec_var_or_dec_const], [dec_proc_or_dec_func_list.dec_proc_or_dec_func]) } ;
+        {programa1} dec_proc_or_dec_func_list                           { -> New programa.programa([], [dec_proc_or_dec_func_list.dec_proc_or_dec_func]) }                                               |
+        {programa2} dec_var_or_dec_const_list dec_proc_or_dec_func_list { -> New programa.programa([dec_var_or_dec_const_list.dec_var_or_dec_const], [dec_proc_or_dec_func_list.dec_proc_or_dec_func]) } ;
 
     dec_var_or_dec_const_list { -> dec_var_or_dec_const * } = 
         {single} dec_var_or_dec_const                             { -> [dec_var_or_dec_const] }                                                 |
@@ -191,8 +191,8 @@ Productions
         {multiple} exp pipe exp_list { -> [exp, exp_list.exp] } ;
 
     exp { -> exp } =
-        {se} se l_par [if]:exp r_par [then]:exp senao [else]:disjucao { -> New exp.se(if.exp, then.exp, else.exp) } |
-        {disjucao} disjucao                                           { -> disjucao.exp }                               ;
+        {se_exp} se l_par [if]:exp r_par [then]:exp senao [else]:disjucao { -> New exp.se_exp(if.exp, then.exp, else.exp) } |
+        {disjucao} disjucao                                               { -> disjucao.exp }                               ;
 
     disjucao { -> exp } =
         {ou} [left]:disjucao ou [right]:conjuncao { -> New exp.ou(left.exp, right.exp) } |
@@ -249,7 +249,8 @@ Productions
         {achamadaprocedimento2} id l_par exp_list r_par { -> New chamada_procedimento(id, [exp_list.exp]) } ;    
         
 Abstract Syntax Tree
-    programa = dec_var_or_dec_const* dec_proc_or_dec_func+ ;
+    programa =
+        {programa} dec_var_or_dec_const* dec_proc_or_dec_func+ ;
 
     dec_var = tipo id? id_atribuicao? ;
 
@@ -318,7 +319,7 @@ Abstract Syntax Tree
         {array_comp} array_comp                 |
         {incremento} exp                        |
         {decremento} exp                        |
-        {se} [if]:exp [then]:exp [else]:exp     |
+        {se_exp} [if]:exp [then]:exp [else]:exp |
         {soma} [left]:exp [right]:exp           |
         {minus} [left]:exp [right]:exp          |
         {mult} [left]:exp [right]:exp           |

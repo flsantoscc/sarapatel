@@ -9,13 +9,11 @@ import sarapatel.iterator.Iterator;
 public class Funcao extends Entry implements hasParametro, hasTipo {
     private Tipo tipo;
     private ConcreteAggregate list;
-    private int label;
 
-    public Funcao(String name, Tipo tipo, ConcreteAggregate list, int label) {
+    public Funcao(String name, Tipo tipo, ConcreteAggregate list) {
         super(name);
         this.tipo = tipo;
         this.list = list;
-        this.label = label;
     }
 
     public Tipo getTipo() {
@@ -36,14 +34,6 @@ public class Funcao extends Entry implements hasParametro, hasTipo {
 
     public ConcreteAggregate getList() {
         return list;
-    }
-
-    public int getLabel() {
-        return label;
-    }
-
-    public void setLabel(int label) {
-        this.label = label;
     }
 
 }

@@ -5,5 +5,4 @@ package sarapatel.table;
  */
 public interface hasBlock {
 
-	0
 }

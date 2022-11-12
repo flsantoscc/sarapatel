@@ -12,7 +12,7 @@ public interface Analysis extends Switch
     void setOut(Node node, Object o);
 
     void caseStart(Start node);
-    void caseAPrograma(APrograma node);
+    void caseAProgramaPrograma(AProgramaPrograma node);
     void caseADecVar(ADecVar node);
     void caseADecConst(ADecConst node);
     void caseADecVarDecVarOrDecConst(ADecVarDecVarOrDecConst node);
@@ -55,7 +55,7 @@ public interface Analysis extends Switch
     void caseAArrayCompExp(AArrayCompExp node);
     void caseAIncrementoExp(AIncrementoExp node);
     void caseADecrementoExp(ADecrementoExp node);
-    void caseASeExp(ASeExp node);
+    void caseASeExpExp(ASeExpExp node);
     void caseASomaExp(ASomaExp node);
     void caseAMinusExp(AMinusExp node);
     void caseAMultExp(AMultExp node);

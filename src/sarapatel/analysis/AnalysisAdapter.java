@@ -75,7 +75,7 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseAPrograma(APrograma node)
+    public void caseAProgramaPrograma(AProgramaPrograma node)
     {
         defaultCase(node);
     }
@@ -333,7 +333,7 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseASeExp(ASeExp node)
+    public void caseASeExpExp(ASeExpExp node)
     {
         defaultCase(node);
     }
