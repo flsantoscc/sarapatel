@@ -14,7 +14,9 @@ import sarapatel.semantic.SemanticAnalyzer;
 public class Main {
     public static void main(String[] args) {
         try {
-            PushbackReader pr = new PushbackReader(new BufferedReader(new FileReader(args[0])), 1024);
+            PushbackReader pr = new PushbackReader(
+                    new BufferedReader(new FileReader("src/tests/sucesso/01_procedimento_3_com_declaracao.srptl")),
+                    1024);
 
             Lexer l = new Lexer(pr);
 

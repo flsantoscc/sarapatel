@@ -5,18 +5,18 @@ package sarapatel.node;
 import sarapatel.analysis.*;
 
 @SuppressWarnings("nls")
-public final class ASeExp extends PExp
+public final class ASeExpExp extends PExp
 {
     private PExp _if_;
     private PExp _then_;
     private PExp _else_;
 
-    public ASeExp()
+    public ASeExpExp()
     {
         // Constructor
     }
 
-    public ASeExp(
+    public ASeExpExp(
         @SuppressWarnings("hiding") PExp _if_,
         @SuppressWarnings("hiding") PExp _then_,
         @SuppressWarnings("hiding") PExp _else_)
@@ -33,7 +33,7 @@ public final class ASeExp extends PExp
     @Override
     public Object clone()
     {
-        return new ASeExp(
+        return new ASeExpExp(
             cloneNode(this._if_),
             cloneNode(this._then_),
             cloneNode(this._else_));
@@ -42,7 +42,7 @@ public final class ASeExp extends PExp
     @Override
     public void apply(Switch sw)
     {
-        ((Analysis) sw).caseASeExp(this);
+        ((Analysis) sw).caseASeExpExp(this);
     }
 
     public PExp getIf()

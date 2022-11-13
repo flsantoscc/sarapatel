@@ -36,20 +36,20 @@ public class DepthFirstAdapter extends AnalysisAdapter
         outStart(node);
     }
 
-    public void inAProgramaPrograma(AProgramaPrograma node)
+    public void inAPrograma(APrograma node)
     {
         defaultIn(node);
     }
 
-    public void outAProgramaPrograma(AProgramaPrograma node)
+    public void outAPrograma(APrograma node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseAProgramaPrograma(AProgramaPrograma node)
+    public void caseAPrograma(APrograma node)
     {
-        inAProgramaPrograma(node);
+        inAPrograma(node);
         {
             List<PDecVarOrDecConst> copy = new ArrayList<PDecVarOrDecConst>(node.getDecVarOrDecConst());
             for(PDecVarOrDecConst e : copy)
@@ -64,7 +64,7 @@ public class DepthFirstAdapter extends AnalysisAdapter
                 e.apply(this);
             }
         }
-        outAProgramaPrograma(node);
+        outAPrograma(node);
     }
 
     public void inADecVar(ADecVar node)
@@ -1051,20 +1051,20 @@ public class DepthFirstAdapter extends AnalysisAdapter
         outADecrementoExp(node);
     }
 
-    public void inASeExpExp(ASeExpExp node)
+    public void inASeExp(ASeExp node)
     {
         defaultIn(node);
     }
 
-    public void outASeExpExp(ASeExpExp node)
+    public void outASeExp(ASeExp node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseASeExpExp(ASeExpExp node)
+    public void caseASeExp(ASeExp node)
     {
-        inASeExpExp(node);
+        inASeExp(node);
         if(node.getIf() != null)
         {
             node.getIf().apply(this);
@@ -1077,7 +1077,7 @@ public class DepthFirstAdapter extends AnalysisAdapter
         {
             node.getElse().apply(this);
         }
-        outASeExpExp(node);
+        outASeExp(node);
     }
 
     public void inASomaExp(ASomaExp node)

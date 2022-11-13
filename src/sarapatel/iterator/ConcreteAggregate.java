@@ -32,6 +32,7 @@ public class ConcreteAggregate implements Aggregate {
         return list.size();
     }
 
+    @Override
     public Iterator iterator() {
         return new ConcreteIterator(this);
     }
