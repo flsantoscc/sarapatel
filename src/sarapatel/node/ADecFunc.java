@@ -8,7 +8,7 @@ import sarapatel.analysis.*;
 @SuppressWarnings("nls")
 public final class ADecFunc extends PDecFunc
 {
-    private PTipoFunc _tipoFunc_;
+    private PTipo _tipo_;
     private TId _id_;
     private final LinkedList<PParametro> _parametro_ = new LinkedList<PParametro>();
     private PExp _exp_;
@@ -19,13 +19,13 @@ public final class ADecFunc extends PDecFunc
     }
 
     public ADecFunc(
-        @SuppressWarnings("hiding") PTipoFunc _tipoFunc_,
+        @SuppressWarnings("hiding") PTipo _tipo_,
         @SuppressWarnings("hiding") TId _id_,
         @SuppressWarnings("hiding") List<?> _parametro_,
         @SuppressWarnings("hiding") PExp _exp_)
     {
         // Constructor
-        setTipoFunc(_tipoFunc_);
+        setTipo(_tipo_);
 
         setId(_id_);
 
@@ -39,7 +39,7 @@ public final class ADecFunc extends PDecFunc
     public Object clone()
     {
         return new ADecFunc(
-            cloneNode(this._tipoFunc_),
+            cloneNode(this._tipo_),
             cloneNode(this._id_),
             cloneList(this._parametro_),
             cloneNode(this._exp_));
@@ -51,16 +51,16 @@ public final class ADecFunc extends PDecFunc
         ((Analysis) sw).caseADecFunc(this);
     }
 
-    public PTipoFunc getTipoFunc()
+    public PTipo getTipo()
     {
-        return this._tipoFunc_;
+        return this._tipo_;
     }
 
-    public void setTipoFunc(PTipoFunc node)
+    public void setTipo(PTipo node)
     {
-        if(this._tipoFunc_ != null)
+        if(this._tipo_ != null)
         {
-            this._tipoFunc_.parent(null);
+            this._tipo_.parent(null);
         }
 
         if(node != null)
@@ -73,7 +73,7 @@ public final class ADecFunc extends PDecFunc
             node.parent(this);
         }
 
-        this._tipoFunc_ = node;
+        this._tipo_ = node;
     }
 
     public TId getId()
@@ -156,7 +156,7 @@ public final class ADecFunc extends PDecFunc
     public String toString()
     {
         return ""
-            + toString(this._tipoFunc_)
+            + toString(this._tipo_)
             + toString(this._id_)
             + toString(this._parametro_)
             + toString(this._exp_);
@@ -166,9 +166,9 @@ public final class ADecFunc extends PDecFunc
     void removeChild(@SuppressWarnings("unused") Node child)
     {
         // Remove child
-        if(this._tipoFunc_ == child)
+        if(this._tipo_ == child)
         {
-            this._tipoFunc_ = null;
+            this._tipo_ = null;
             return;
         }
 
@@ -196,9 +196,9 @@ public final class ADecFunc extends PDecFunc
     void replaceChild(@SuppressWarnings("unused") Node oldChild, @SuppressWarnings("unused") Node newChild)
     {
         // Replace child
-        if(this._tipoFunc_ == oldChild)
+        if(this._tipo_ == oldChild)
         {
-            setTipoFunc((PTipoFunc) newChild);
+            setTipo((PTipo) newChild);
             return;
         }
 

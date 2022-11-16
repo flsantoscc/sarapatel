@@ -69,24 +69,20 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         outAPrograma(node);
     }
 
-    public void inADecVar(ADecVar node)
+    public void inAIdDecVar(AIdDecVar node)
     {
         defaultIn(node);
     }
 
-    public void outADecVar(ADecVar node)
+    public void outAIdDecVar(AIdDecVar node)
     {
         defaultOut(node);
     }
 
     @Override
-    public void caseADecVar(ADecVar node)
+    public void caseAIdDecVar(AIdDecVar node)
     {
-        inADecVar(node);
-        if(node.getIdAtribuicao() != null)
-        {
-            node.getIdAtribuicao().apply(this);
-        }
+        inAIdDecVar(node);
         if(node.getId() != null)
         {
             node.getId().apply(this);
@@ -95,7 +91,32 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         {
             node.getTipo().apply(this);
         }
-        outADecVar(node);
+        outAIdDecVar(node);
+    }
+
+    public void inAIdAtribuicaoDecVar(AIdAtribuicaoDecVar node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAIdAtribuicaoDecVar(AIdAtribuicaoDecVar node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAIdAtribuicaoDecVar(AIdAtribuicaoDecVar node)
+    {
+        inAIdAtribuicaoDecVar(node);
+        if(node.getIdAtribuicao() != null)
+        {
+            node.getIdAtribuicao().apply(this);
+        }
+        if(node.getTipo() != null)
+        {
+            node.getTipo().apply(this);
+        }
+        outAIdAtribuicaoDecVar(node);
     }
 
     public void inADecConst(ADecConst node)
@@ -320,6 +341,52 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         outAIdAtribuicao(node);
     }
 
+    public void inAIdValor(AIdValor node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAIdValor(AIdValor node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAIdValor(AIdValor node)
+    {
+        inAIdValor(node);
+        if(node.getId() != null)
+        {
+            node.getId().apply(this);
+        }
+        outAIdValor(node);
+    }
+
+    public void inAExpValor(AExpValor node)
+    {
+        defaultIn(node);
+    }
+
+    public void outAExpValor(AExpValor node)
+    {
+        defaultOut(node);
+    }
+
+    @Override
+    public void caseAExpValor(AExpValor node)
+    {
+        inAExpValor(node);
+        if(node.getExp() != null)
+        {
+            node.getExp().apply(this);
+        }
+        if(node.getValor() != null)
+        {
+            node.getValor().apply(this);
+        }
+        outAExpValor(node);
+    }
+
     public void inADecProcDecProcOrDecFunc(ADecProcDecProcOrDecFunc node)
     {
         defaultIn(node);
@@ -425,9 +492,9 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
         {
             node.getId().apply(this);
         }
-        if(node.getTipoFunc() != null)
+        if(node.getTipo() != null)
         {
-            node.getTipoFunc().apply(this);
+            node.getTipo().apply(this);
         }
         outADecFunc(node);
     }
@@ -497,48 +564,6 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
             node.getTipoParam().apply(this);
         }
         outAArrParTipoParam(node);
-    }
-
-    public void inABaseTipoFunc(ABaseTipoFunc node)
-    {
-        defaultIn(node);
-    }
-
-    public void outABaseTipoFunc(ABaseTipoFunc node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseABaseTipoFunc(ABaseTipoFunc node)
-    {
-        inABaseTipoFunc(node);
-        if(node.getTipoBase() != null)
-        {
-            node.getTipoBase().apply(this);
-        }
-        outABaseTipoFunc(node);
-    }
-
-    public void inAArrTipoFunc(AArrTipoFunc node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAArrTipoFunc(AArrTipoFunc node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAArrTipoFunc(AArrTipoFunc node)
-    {
-        inAArrTipoFunc(node);
-        if(node.getTipoFunc() != null)
-        {
-            node.getTipoFunc().apply(this);
-        }
-        outAArrTipoFunc(node);
     }
 
     public void inASeComando(ASeComando node)
@@ -822,52 +847,6 @@ public class ReversedDepthFirstAdapter extends AnalysisAdapter
             }
         }
         outADecVarOrDecConstComandoAux(node);
-    }
-
-    public void inAIdValor(AIdValor node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAIdValor(AIdValor node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAIdValor(AIdValor node)
-    {
-        inAIdValor(node);
-        if(node.getId() != null)
-        {
-            node.getId().apply(this);
-        }
-        outAIdValor(node);
-    }
-
-    public void inAExpValor(AExpValor node)
-    {
-        defaultIn(node);
-    }
-
-    public void outAExpValor(AExpValor node)
-    {
-        defaultOut(node);
-    }
-
-    @Override
-    public void caseAExpValor(AExpValor node)
-    {
-        inAExpValor(node);
-        if(node.getExp() != null)
-        {
-            node.getExp().apply(this);
-        }
-        if(node.getValor() != null)
-        {
-            node.getValor().apply(this);
-        }
-        outAExpValor(node);
     }
 
     public void inAIntExp(AIntExp node)

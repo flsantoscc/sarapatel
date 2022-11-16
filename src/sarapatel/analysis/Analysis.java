@@ -13,7 +13,8 @@ public interface Analysis extends Switch
 
     void caseStart(Start node);
     void caseAPrograma(APrograma node);
-    void caseADecVar(ADecVar node);
+    void caseAIdDecVar(AIdDecVar node);
+    void caseAIdAtribuicaoDecVar(AIdAtribuicaoDecVar node);
     void caseADecConst(ADecConst node);
     void caseADecVarDecVarOrDecConst(ADecVarDecVarOrDecConst node);
     void caseADecConstDecVarOrDecConst(ADecConstDecVarOrDecConst node);
@@ -24,6 +25,8 @@ public interface Analysis extends Switch
     void caseARealTipoBase(ARealTipoBase node);
     void caseACadeiaTipoBase(ACadeiaTipoBase node);
     void caseAIdAtribuicao(AIdAtribuicao node);
+    void caseAIdValor(AIdValor node);
+    void caseAExpValor(AExpValor node);
     void caseADecProcDecProcOrDecFunc(ADecProcDecProcOrDecFunc node);
     void caseADecFuncDecProcOrDecFunc(ADecFuncDecProcOrDecFunc node);
     void caseADecProc(ADecProc node);
@@ -31,8 +34,6 @@ public interface Analysis extends Switch
     void caseAParametro(AParametro node);
     void caseAParTipoParam(AParTipoParam node);
     void caseAArrParTipoParam(AArrParTipoParam node);
-    void caseABaseTipoFunc(ABaseTipoFunc node);
-    void caseAArrTipoFunc(AArrTipoFunc node);
     void caseASeComando(ASeComando node);
     void caseASeSenaoComando(ASeSenaoComando node);
     void caseAEnquantoComando(AEnquantoComando node);
@@ -44,8 +45,6 @@ public interface Analysis extends Switch
     void caseAProcComandoAux(AProcComandoAux node);
     void caseAIdAtribuicaoComandoAux(AIdAtribuicaoComandoAux node);
     void caseADecVarOrDecConstComandoAux(ADecVarOrDecConstComandoAux node);
-    void caseAIdValor(AIdValor node);
-    void caseAExpValor(AExpValor node);
     void caseAIntExp(AIntExp node);
     void caseABoolExp(ABoolExp node);
     void caseARealExp(ARealExp node);

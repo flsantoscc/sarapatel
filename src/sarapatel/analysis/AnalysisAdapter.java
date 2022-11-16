@@ -81,7 +81,13 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseADecVar(ADecVar node)
+    public void caseAIdDecVar(AIdDecVar node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAIdAtribuicaoDecVar(AIdAtribuicaoDecVar node)
     {
         defaultCase(node);
     }
@@ -147,6 +153,18 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
+    public void caseAIdValor(AIdValor node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAExpValor(AExpValor node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
     public void caseADecProcDecProcOrDecFunc(ADecProcDecProcOrDecFunc node)
     {
         defaultCase(node);
@@ -184,18 +202,6 @@ public class AnalysisAdapter implements Analysis
 
     @Override
     public void caseAArrParTipoParam(AArrParTipoParam node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseABaseTipoFunc(ABaseTipoFunc node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAArrTipoFunc(AArrTipoFunc node)
     {
         defaultCase(node);
     }
@@ -262,18 +268,6 @@ public class AnalysisAdapter implements Analysis
 
     @Override
     public void caseADecVarOrDecConstComandoAux(ADecVarOrDecConstComandoAux node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAIdValor(AIdValor node)
-    {
-        defaultCase(node);
-    }
-
-    @Override
-    public void caseAExpValor(AExpValor node)
     {
         defaultCase(node);
     }
