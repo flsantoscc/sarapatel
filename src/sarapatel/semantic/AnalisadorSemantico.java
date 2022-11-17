@@ -1,7 +1,6 @@
 package sarapatel.semantic;
 
 import sarapatel.analysis.DepthFirstAdapter;
-import sarapatel.node.ABlocoExpressoes;
 import sarapatel.node.ABoolExp;
 import sarapatel.node.ACadeiaExp;
 import sarapatel.node.AIdAtribuicao;
@@ -9,6 +8,8 @@ import sarapatel.node.AIdAtribuicaoDecVar;
 import sarapatel.node.AIdDecVar;
 import sarapatel.node.AIdValor;
 import sarapatel.node.AIntExp;
+import sarapatel.node.AMinusExp;
+import sarapatel.node.AMultExp;
 import sarapatel.node.ARealExp;
 import sarapatel.node.ASomaExp;
 import sarapatel.node.PExp;
@@ -37,6 +38,7 @@ public class AnalisadorSemantico extends DepthFirstAdapter {
             tabela.inserir(id, new Simbolo(id, tipo[0]));
         } else {
             System.out.println("Variável `" + id + "` já declarada.");
+            System.exit(1);
         }
 
         System.out.println(tabela.getTabela());
@@ -60,17 +62,32 @@ public class AnalisadorSemantico extends DepthFirstAdapter {
                 System.exit(1);
             }
         }
-
-        System.out.println(tabela.getTabela());
     }
 
     @Override
     public void outASomaExp(ASomaExp node) {
-        if (!(((node.getLeft() instanceof AIntExp) && (node.getRight() instanceof AIntExp))
-                || ((node.getLeft() instanceof ARealExp) && (node.getRight() instanceof ARealExp)))) {
-            System.out.println("Tipos incompatíveis");
+        if (((node.getLeft() instanceof ACadeiaExp) || (node.getRight() instanceof ACadeiaExp))) {
+            System.out.println("Não é possível somar expressões de tipo `cadeia`");
+            System.exit(1);
+        } else if (((node.getLeft() instanceof ABoolExp)) || (node.getRight() instanceof ABoolExp)) {
+            System.out.println("Não é possível somar expressões de tipo `booleano`");
             System.exit(1);
         }
     }
 
+    @Override
+    public void outAMinusExp(AMinusExp node) {
+        if ((node.getLeft() instanceof ACadeiaExp) || (node.getRight() instanceof ACadeiaExp)) {
+            System.out.println("Não é possível somar expressões de tipo `cadeia`");
+            System.exit(1);
+        } else if ((node.getLeft() instanceof ABoolExp) || (node.getRight() instanceof ABoolExp)) {
+            System.out.println("Não é possível somar expressões de tipo `booleano`");
+            System.exit(1);
+        }
+    }
+
+    @Override
+    public void outAMultExp(AMultExp node) {
+
+    }
 }
