@@ -15,7 +15,6 @@ import sarapatel.lexer.Lexer;
 import sarapatel.node.Start;
 import sarapatel.parser.Parser;
 import sarapatel.semantic.AnalisadorSemantico;
-import sarapatel.semantic.SemanticAnalyzer;
 
 public class Main {
     // public static void main(String[] args) {
